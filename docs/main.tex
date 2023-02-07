@@ -1,0 +1,43 @@
+\documentclass{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[affil-it]{authblk}
+
+
+\newenvironment*{remerciements}{%
+  \renewcommand*{\abstractname}{Remerciements}
+  \begin{abstract}
+}{
+  \end{abstract}
+}
+
+
+\begin{document}
+\title{Etats de l'art des protocoles inter-blockchains}
+\author{VOLPE Dorian, ROTONDO Eloïse, TESTUD Romain,\\DE CAMPOU Louis, JOLY Amaury}
+\affil{M2 Informatique Option FSI,\\ Université Aix-Marseille}
+
+
+\begin{titlepage}
+  \maketitle
+  \begin{remerciements}
+    Merci à M. TRAVERS Corentin et M. LABOUREL Aranaud pour la proposition de ce sujet et son encadrement.
+  \end{remerciements}
+  \begin{abstract}
+    abstract
+  \end{abstract}
+\end{titlepage}
+
+
+\tableofcontents
+
+\part{Introduction}
+\input{introduction/index.tex}
+\part{Systèmes Centralisés}
+\input{centralisation/index.tex}
+\part{Systèmes Décentralisés}
+\input{decentralisation/index.tex}
+
+\end{document}

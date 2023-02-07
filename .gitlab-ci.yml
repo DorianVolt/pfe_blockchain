@@ -1,0 +1,13 @@
+image:
+  name: texlive/texlive:latest
+  entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
+
+build_and_deploy: 
+  script:
+    - cd docs
+    - pdflatex main.tex
+  after_script:
+    - cat ./docs/main.log
+  artifacts:
+    paths:
+      - ./docs/main.pdf

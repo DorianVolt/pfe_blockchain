@@ -6,6 +6,14 @@ build_and_deploy:
   script:
     - cd docs
     - pdflatex main.tex
+  only:
+    refs:
+      - merge_request
+      - develop
+      - main
+    changes:
+      - docs/**/*
+      - .gitlab-ci.yml
   after_script:
     - cat ./docs/main.log
   artifacts:

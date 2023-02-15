@@ -11,6 +11,7 @@
 ### Centralisé:
 ### Décentralisé:
 - JOLY Amaury
+- VOLPE Dorian
 
 ## Références:
 - Maurice Herlihy : Atomic Cross-Chain Swaps. PODC 2018 : 245-254 https://arxiv.org/abs/1801.09515

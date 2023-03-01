@@ -1,0 +1,21 @@
+Auteur: Amaury  
+Derniere mise à jour: 01/03/23
+
+# Pratique de la Finance Décentralisée
+
+## Pourquoi ?
+
+Pendant ma lecture de la méta-analyse portant sur l'intéropérabilité entre les blockchains j'ai pu me rendre compte que plusieurs solution de swap de crypto décentralisé existaient déjà, et était déjà en cours d'usage.  
+Il semble que ce dispositif ne ce contone néanmoins que sur des swap cross-chain, et non cross-blockchain (hormis entre blockchain techniquement très proches (à confirmer)).  
+J'ai donc décidé d'expérimenter ces solutions de manière comprendre leur fonctionnement et leurs propriété a être réelement décentralisé. Ainsi que comprendre la raison de leurs non-application sur des cas de swap cross-blockchain.  
+
+## Experimentations
+
+### Pool de liquidité
+
+Les pools de liquidité sont des dispositifs financier qui proposent à des possesseurs de crypto de mettre à dispositions leurs jetons sur un smart-contrats en échange d'une récompense.  
+Ainsi la grace à la liquidité disponibles les utilisateurs d'actifs numériques souhaitant réaliser un swap peuvent passer par ses pools en payant une contrepartie qui permettra de rémunerer les possesseurs de liquidité.  
+Ce systèmes est techniquement décentralisé puisque les pools sont des smart-contrats qui sont déployés sur la blockchain. Il présente l'avantage d'être simple pour l'utilisateur final, ne lui demandant pas de connaitre un autre utilisateur ayant l'envie de fair l'échange inverse pour réaliser son swap (ce qui n'est pas le cas du swap atomique c.f.: Maurice Herlihy : Atomic Cross-Chain Swaps).
+Néanmoins il requiert que les blockchains utilisées soient techniquement proches (c'est à dire qu'elles utilisent le même langage de programmation pour leurs smart-contrats).  
+
+#### Exemple de smart-contract de pool de liquidité (TODO) 

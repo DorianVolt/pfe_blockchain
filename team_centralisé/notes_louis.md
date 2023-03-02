@@ -65,6 +65,78 @@ Wormhole, le bridge de Solana, a été manipulé pour créditer 120k ETH comme a
 
 3) En utilisant un compte créé quelques heures plus tôt avec une seule instruction sérialisée correspondant au contrat Sep256k1, l'attaquant a pu falsifier le "SignatureSet", appeler "complete\_wrapped" et frapper frauduleusement 120k ETH sur Solana en utilisant la vérification VAA qui avait été créée dans une transaction précédente.
 
+## Wormhole
+
+Token bridge entre Ethereum et Solana. (initialement)
+
+```
+struct WormholeMsg {
+
+  uint8 version;
+  uint32 timestamp;
+  uint32 nonce;
+  uint16 emitterChainId;
+  bytes32 emitterAddress;
+  uint64 sequence;
+  uint8 consistencyLevel;
+  bytes payload;
+  uint32 guardianSetIndex;
+  Signature[] signatures;
+  bytes32 hash;
+}
+```
+
+5 payloads :
+* Transfer (déclenche la libération de jetons verrouillés)
+* TransferWithPayload (pareil que ci-dessus avec un payload supplémentaire spécifique au domaine)
+* AssetMeta (requis avant le premier transfert, atteste les metadatas de l'actif)
+* RegisterChain (enregistre le contrat bridge for une chaîne étrangère)
+* UpgradeContract
+
+```
+PayloadID uint8 = 1
+// Amount being transferred (big-endian uint256)
+Amount uint256
+// Address of the token. Left-zero-padded if shorter than 32 bytes
+TokenAddress bytes32
+// Chain ID of the token
+TokenChain uint16
+// Address of the recipient. Left-zero-padded if shorter than 32 bytes
+To bytes32
+// Chain ID of the recipient
+ToChain uint16
+// Amount of tokens (big-endian uint256) that the user is willing to pay as relayer fee. Must be <= Amount.
+Fee uint256
+```
+
+## ERC 5164
+
+Exécution cross-chain (14/06/2022)
+
+Création d'une interface d'éxécution crosschain pour les blockchain basées sur EVM.
+
+Permet à un contrat hébergé sur une chaîne 1 d'appeler des contrats sur une chaîne 2 en envoyant un message cross-chain.
+
+2 composants :
+* Message Dispatcher : chaîne d'origine / diffuse message via une couche de transport à un ou plusieurs contrats de type "MessageExecutor"
+* Message Executor : chaîne de destination / exécute les messages "dispatchés"
+
+```
+struct Message {
+  address to;
+  bytes data;
+}
+
+interface MessageDispatcher {
+  event MessageBatchDispatched(
+    bytes32 indexed messageId,
+    address indexed from,
+    uint256 indexed toChainId,
+    Message[] messages
+  );
+}
+```
+
 Sources :
   * [Article 4 PFE](https://medium.com/coinmonks/cross-chain-bridge-vulnerability-summary-f16b7747f364)
   * [DeFi Hacks Analysis - Root Cause](https://web3sec.notion.site/web3sec/ba459372dc434341b99ec92a932f98dc?v=7fceca7b3da74aa8a99b49c44a2a3916)
@@ -72,13 +144,14 @@ Sources :
   * [Coinbase -  Nomad bridge incident analysis](https://www.coinbase.com/blog/nomad-bridge-incident-analysis)
   * [Rekt - Le layer 2](https://rekt.news/fr/the-second-layer/)
   * [Rekt - Wormhole](https://rekt.news/fr/wormhole-rekt/)
+  * [Wormhole whitepaper](https://github.com/wormhole-foundation/wormhole/blob/main/whitepapers/0003_token_bridge.md)
+  * [ERC 5164, 6170](https://eips.ethereum.org/erc)
+  * [ERC 5164 Thread](https://ethereum-magicians.org/t/eip-5164-cross-chain-execution/9658/13)
+  * [ERC 5164 Implementation](https://github.com/pooltogether/ERC5164)
 
 A fouiller : 
 
 * [Ethereum - Bridges](https://ethereum.org/fr/developers/docs/bridges/)
 * [Github - Blockchain bridge simplified](https://github.com/chainstack/blockchain-bridge-simplified)
 * [Github - EVM Bridge](https://github.com/mineables/EVMBridge)
-* [Ethereum - ERC 20, 5164 & 6170 cross-chain](https://eips.ethereum.org/erc)
-* [Chain Agnostic Improvement Proposals](https://chainagnostic.org/CAIPs/caip-1)
-* [Github - Chain Agnostic Improvement Proposals](https://github.com/ChainAgnostic/CAIPs)
 

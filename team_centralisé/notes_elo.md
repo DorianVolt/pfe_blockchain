@@ -43,3 +43,35 @@
 	Source: https://www.ccn.com/cryptocurrency-exchange-etherdelta-hacked-in-dns-hijacking-scheme/
 
 Source vulnérabilités : https://resources.infosecinstitute.com/topic/security-vulnerabilities-of-cryptocurrency-exchanges/
+
+=============================================================================================
+
+https://learn.bybit.com/glossary/definition-centralized-exchange-cex/
+
+Méthode utilisée pour les échanges : Order Book Method
+"Order book records the entire open orders to enable buying and selling of assets to traders. If a person wants to buy a particular asset, he must disclose the asset’s estimated price to the middle man involved in the exchange process.
+Once that middleman finds someone whose request matches the buyer, it swaps the assets and completes the exchange between them. Order books have disadvantages, such as long waiting time for the exchange to be done and traders’ inability to cross-verify the transaction."
+
+Procédure échange centralisé
+- Enregistrement des info avec KYC (know your customer)
+- L'utilisateur A dépose la somme qu'il veut échanger dans un portemonnaie
+- Un nombre équivalent de IOU est créé
+(IOU remplace les smart contracts ici)
+- Le CEX échange les IOU contre la monnaie souhaitée lors d'un retrait ou un échange
+
+https://freewallet.org/blog/what-is-an-iou/
+Qu'est-ce qu'un IOU ?
+IOU = I own you
+Ce sont des toxens, qui permettent de quantifier la dette de l'utilisateur envers le CEX (genre de contrat non légal) donc même si la monnaie crypto prend de la valeur, la montant en monnaie fiduciaire ne change pas .
+
+Points négatifs:
+- Le CEX peut geler ou bloquer les fonds/porte-monnaies à tout instant
+- Cible d'attaques car les CEX gèrent/conservent l'argent
+- Pas assez transparents sur le fonctionnement interne, possibilités d'arranger les prix des monnaies ou de manipuler le marché
+- Frais de transaction
+
+https://www.leewayhertz.com/exchange-vs-dex-vs-swap
+![](https://codimd.romaintestud.fr/uploads/upload_d4a2d97d6d840791336f826336f575ad.png)
+
+10 modèles simplifiés des échanges centralisés:
+https://medium.com/intotheblock/10-patterns-of-centralized-crypto-exchanges-explained-using-machine-learning-and-data-b386d913832

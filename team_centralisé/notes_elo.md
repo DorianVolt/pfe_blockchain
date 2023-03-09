@@ -75,3 +75,109 @@ https://www.leewayhertz.com/exchange-vs-dex-vs-swap
 
 10 modèles simplifiés des échanges centralisés:
 https://medium.com/intotheblock/10-patterns-of-centralized-crypto-exchanges-explained-using-machine-learning-and-data-b386d913832
+
+=============================================================================================
+
+Notes sur le bridge entre Solana et Ethereum
+
+
+
+https://github.com/wormhole-foundation/wormhole
+Github implémentation du protocol Wormhole
+
+Qu'est-ce qu'un porte-monnaie Ledger ?
+- Porte-monnaie matériel vendu par la companie Ledger
+- Conserve les clefs privées de l'utilisateur en hors-ligne
+    - Elles sont nécessaires pour les transactions de cryptomonnaie
+    - Evite les vols
+- Sur une clef USB
+
+https://docs.wormhole.com/wormhole/portal-examples/evm-to-solana
+https://docs.wormhole.com/wormhole/vaas
+Explication du "portal token bridge" Ethereum vers Solana
+- xDapps = Applications décentralisées cross chain
+    - Permet de déplacer des tokens d'une chaine vers une autre
+    
+- Procédure : 
+    - Récupérer l'adresse Solana à l'aide d'imports
+    - Envoi d'un message de transfert à Ethereum
+        - Valeurs retournées : numéro de séquence et l'adresse en bytes du token bridge de Ethereum (ces dernières seront utilisées pour la création du VAA)
+    - Création d'un Verifiable Action Approval (VAA) (preuve de consensus) signé par les "gardiens" (19 nodes avec Wormhole)
+    Entête du VAA:
+        > byte        version                  (VAA Version)
+        > u32         guardian_set_index       (Indicates which guardian set is signing)
+        > u8          len_signatures           (Number of signatures stored)
+        > [][66]byte  signatures               (Collection of ecdsa signatures)
+        
+        Corps du VAA:
+        > u32         timestamp
+        > u32         nonce
+        > u16         emitter_chain
+        > [32]byte    emitter_address
+        > u64         sequence
+        > u8          consistency_level
+        > []byte      payload 
+    - Vérifier les signatures et création d'un compte de récupération
+    - Envoi du VAA à Solana 
+    - Solana vérifie les signatures et envoie l'adresse du bridge
+    - Récupération des tokens
+    >  // Finally, redeem on Solana
+    > const transaction = await redeemOnSolana(
+    >   connection,
+    >   SOL_BRIDGE_ADDRESS,
+    >   SOL_TOKEN_BRIDGE_ADDRESS,
+    >   payerAddress,
+    >   signedVAA,
+    >   isSolanaNative,
+    >   mintAddress
+    > );
+    > const signed = await wallet.signTransaction(transaction);
+    > const txid = await connection.sendRawTransaction(signed.serialize());
+    > await connection.confirmTransaction(txid);
+
+Explications du contenu/fonction du VAA et du transfert Ethereum->Solana plus détaillées (code):
+https://medium.com/coinmonks/how-do-cross-chain-bridges-work-a-case-on-wormhole-part-1-37c8de2cf2e4
+Bridge relayers envoient les messages et récupèrent les frais
+
+Partie sur comment vérifier les VAAs:
+/!\Partie sur Solana obsolète voir attaque wormhole/!\ 
+https://medium.com/coinmonks/how-do-cross-chain-bridges-work-a-case-on-wormhole-part-2-79acc87e3c88
+
+
+https://medium.com/coinmonks/how-do-cross-chain-bridges-work-a-case-on-wormhole-part-3-9783f0c880e8
+Ether = 18 decimals alors que max Wormhole = 8 decimals donc si >8 alors montant *= 10 ** (decimal-8) lors de la normalisation/dénormalisation et les différences (poussières) sont remboursées à l'envoyeur.
+
+https://medium.com/coinmonks/how-do-cross-chain-bridges-work-a-case-on-wormhole-part-4-d68fedc03a4f
+VAA Replay (la notion d'utiliser un VAA plusieurs fois)
+Comment éviter ?
+Solara:
+Compte non initialisé "claim" relié à une PDA (Program Derived Addresses) prevenant du VAA et déterminée par l'adresse et la chaîne de l'éméteur ainsi que la séquence de la transaction
+Le compte a un drapeau comme un booléen qui pour savoir s'il est initialisé ou non
+Chaque VAA a une unique combinaison et par conséquent un compte "claim" unique à usage unique
+Ethereum:
+Map qui contient tous les hashs (hash des bytes du VAA sans les signatures et de type keccak256) des VAAs des transactions complétées
+Comment savoir ? Hash est "marqué" (true)
+
+
+Ressources sur les rollups bridges:
+https://open.harmony.one/harmony-project-highlights/trustless-ethereum-bridge-ganesha-upadhyaya
+https://github.com/yoavw/cross-rollup-bridge/blob/master/README.md
+
+
+https://docs.wormhole.com/wormhole/core-concepts/portal-payloads
+Portal Payloads
+- Les tokens du pont Wormhole sont agnostiques (cad non spécifiques à une certaine blockchain et donc compatibles avec plusieurs blockchains)
+- Constituer des deux payloads
+     1) La chaîne A verrouille les tokens et envoyer un message (message de transfert) à B pour confirmer le verrouillage
+     2) La chaîne A envoie également des métadonnées d'une addresse permettant à la chaîne B de connaitre l'adresse où se situent les tokens
+
+https://github.com/mineables/EVMBridge
+EVM Bridge utilise des contracts intelligents et un middleware centralisé pour transferer des tokens
+Explication/Démonstration du middleware ici : https://github.com/mineables/EVMBridge/blob/master/test/testBridgeable.js
+
+A développer:
+Le trilemme de l'interopérabilité (lié aux bridges Ethereum)
+https://blog.connext.network/the-interoperability-trilemma-657c2cf69f17
+Résolu grâce aux bridges optimistes:
+https://blog.connext.network/optimistic-bridges-fb800dc7b0e0
+

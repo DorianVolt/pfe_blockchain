@@ -67,7 +67,7 @@ Wormhole, le bridge de Solana, a été manipulé pour créditer 120k ETH comme a
 
 ## Wormhole
 
-### Nutshell
+### In a nutshell
 
 Protocole générique de passage de messages ("generic message passing protocol") qui connecte plusieurs chaînes (Ethereum, Solana, Binance Smart Chain, Polygon, Avalanche, Algorand, Fantom, Karura, Celo, Acala, Aptos and Arbitrum).
 
@@ -75,7 +75,9 @@ Wormhole émet des messages à partir d'une chaîne qui sont observés par un r�
 
 ### VAA (verified action approval)
 
-Primitive de messagerie de base de Wormhole, content une en-tête et un corps ("body").
+Primitive de messagerie de base de Wormhole, contient une en-tête et un corps ("body").
+
+VAA = multisig
 
 ```
 (header)
@@ -97,9 +99,30 @@ u8          consistency_level         (What finality level was reached before em
 []byte      payload                   (VAA message content)
 ```
 
+### Relayer
+
+"Un processus qui délivre un ou plusieurs VAA(s) à une destination"
+
+* Trustless
+* Sans privilèges
+
+1) Effectuer une action sur la chaîne A
+2) Récupérer le VAA résultant du "Guardian Network"
+3) Effectuer une action sur la chaîne B en utilisant le VAA
+
+### Guardian
+
+"a set of distributed nodes which monitor state on several blockchains"
+
+Rôle : observer des messages (format VAA) puis signer les charges utiles correspondantes.
+
+Depuis l'outil [Explorer](https://wormhole.com/network/), on peut voir qu'il y a 19 guardians pour Wormhole. A première vue, il semble que chaque guardian correspondant à une solution distincte de validateur de blockchain (à fouiller, protocole en commun??).
+
+Chaque guardian travaille individuellement ("isolation") puis mise en commun des signatures (=> multisig) qui forme une preuve qu'un état a été observé et validé par une majorité du réseau Wormhole (> 10 guardians?).
+
 ### Portal payloads
 
-Charges utiles spécifiques attachés à un VAA depuis une chaîne source pour indiquer à la chaîne cible comment traiter le message Wormhole après vérification.
+Charges utiles spécifiques attachées à un VAA depuis une chaîne source pour indiquer à la chaîne cible comment traiter le message Wormhole après vérification.
 
 5 charges utiles au total :
 
@@ -144,17 +167,6 @@ u8         decimals
 [32]byte   name
 ```
 
-### Relayer
-
-"Un processus qui délivre un ou plusieurs VAA(s) à une destination"
-
-* Trustless
-* Sans privilèges
-
-1) Effectuer une action sur la chaîne A
-2) Récupérer le VAA résultant du "Guardian Network"
-3) Effectuer une action sur la chaîne B en utilisant le VAA
-
 
 ![Design Wormhole](wormhole_design.png)
 
@@ -163,27 +175,58 @@ u8         decimals
 
 Exécution cross-chain (14/06/2022)
 
-Création d'une interface d'éxécution crosschain pour les blockchain basées sur EVM.
+Création d'une interface d'éxécution crosschain pour les blockchains basées sur EVM.
 
-Permet à un contrat hébergé sur une chaîne 1 d'appeler des contrats sur une chaîne 2 en envoyant un message cross-chain.
+Permet à un contrat hébergé sur une chaîne A d'appeler des contrats sur une chaîne B en envoyant un message cross-chain.
 
 2 composants :
 * Message Dispatcher : chaîne d'origine / diffuse message via une couche de transport à un ou plusieurs contrats de type "MessageExecutor"
 * Message Executor : chaîne de destination / exécute les messages "dispatchés"
 
-```
-struct Message {
-  address to;
-  bytes data;
-}
+1) Un smart contract depuis la chaîne source appelle la fonction dispatchMessage() sur le MessageDispatcher
+2) Le MessageExecutor correspondant sur la chaîne destination va éxécuter le message
+3) N'importe quel smart contract peut recevoir des messages du MessageExecutor
 
-interface MessageDispatcher {
-  event MessageBatchDispatched(
-    bytes32 indexed messageId,
-    address indexed from,
-    uint256 indexed toChainId,
-    Message[] messages
+```
+function dispatchMessage(
+  uint256 _toChainId,
+  address _to,
+  bytes calldata _data
+) external returns (bytes32) {
+  address _executorAddress = _getMessageExecutorAddress(_toChainId);
+  _checkExecutor(_executorAddress);
+
+  uint256 _nonce = _incrementNonce();
+  bytes32 _messageId = MessageLib.computeMessageId(_nonce, msg.sender, _to, _data);
+
+  _sendMessage(
+    _executorAddress,
+    MessageLib.encodeMessage(_to, _data, _messageId, block.chainid, msg.sender)
   );
+
+  emit MessageDispatched(_messageId, msg.sender, _toChainId, _to, _data);
+
+  return _messageId;
+}
+```
+
+```
+function executeMessage(
+  address _to,
+  bytes calldata _data,
+  bytes32 _messageId,
+  uint256 _fromChainId,
+  address _from
+) external {
+  IMessageDispatcher _dispatcher = dispatcher;
+  _isAuthorized(_dispatcher);
+
+  bool _executedMessageId = executed[_messageId];
+  executed[_messageId] = true;
+
+  MessageLib.executeMessage(_to, _data, _messageId, _fromChainId, _from, _executedMessageId);
+
+  emit MessageIdExecuted(_fromChainId, _messageId);
 }
 ```
 

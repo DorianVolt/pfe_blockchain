@@ -1,0 +1,49 @@
+\documentclass{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[affil-it]{authblk}
+
+\usepackage{graphicx}
+
+\newenvironment*{remerciements}{%
+  \renewcommand*{\abstractname}{Remerciements}
+  \begin{abstract}
+}{
+  \end{abstract}
+}
+
+
+\begin{document}
+
+\title{Echange de jetons inter-blockchains}
+\author{VOLPE Dorian, ROTONDO Eloïse, TESTUD Romain,\\DE CAMPOU Louis, JOLY Amaury  \\ \textbf{Encadrants :} TRAVERS Corentin, LABOUREL Arnaud \\ \includegraphics[scale=0.1]{./img/amu.png}}
+\affil{Aix-Marseille Université, M2 Fiabilité et sécurité informatique}
+\date{17 Mars 2023}
+
+\begin{titlepage}
+  \maketitle
+\end{titlepage}
+
+\begin{remerciements}
+  Merci à M. TRAVERS Corentin et M. LABOUREL Aranaud pour la proposition de ce sujet et son encadrement.
+\end{remerciements}
+\begin{abstract}
+  abstract
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+\input{introduction/index.tex}
+\section{Systèmes Centralisés}
+\input{centralisation/index.tex}
+\section{Systèmes Décentralisés}
+\input{decentralisation/index.tex}
+
+\end{document}

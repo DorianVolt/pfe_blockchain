@@ -4,7 +4,9 @@ image:
 
 build_and_deploy: 
   script:
-    - cd docs
+    - cd docs/presentation_17_03_23
+    - pdflatex main.tex
+    - cd ../rapportFinal
     - pdflatex main.tex
   only:
     refs:
@@ -18,4 +20,5 @@ build_and_deploy:
     - cat ./docs/main.log
   artifacts:
     paths:
-      - ./docs/main.pdf
+      - ./docs/presentation_17_03_23/main.pdf
+      - ./docs/rapportFinal/main.pdf

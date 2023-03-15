@@ -1,0 +1,62 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+\usecolortheme{orchid}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+\usepackage{ulem}
+\usepackage{tkz-tab}
+\setbeamertemplate{blocks}[rounded]%
+[shadow=true]
+\AtBeginSection{%
+    \begin{frame}
+        \tableofcontents[sections=\value{section}]
+    \end{frame}
+}
+
+\newenvironment*{remerciements}{%
+  \renewcommand*{\abstractname}{Remerciements}
+  \begin{abstract}
+}{
+  \end{abstract}
+}
+
+
+\title[Swap Cross-Blockchain]{Echange de jetons inter-blockchains}
+\subtitle{Projet de fin d'études: Master 2 Informatique Option Fiabilité et sécurité informatique 2022-2023}
+\author[M2 FSI]{VOLPE Dorian, ROTONDO Eloïse, TESTUD Romain,\\DE CAMPOU Louis, JOLY Amaury  \\ \textbf{Encadrants :} TRAVERS Corentin, LABOUREL Arnaud \\[2ex] \includegraphics[scale=0.1]{./img/amu.png}}
+\institute[Aix-Marseille Université]{M2 Fiabilité et sécurité informatique}
+\date{17 Mars 2023}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+  \begin{remerciements}
+    Merci à M. TRAVERS Corentin et M. LABOUREL Arnaud pour la proposition de ce sujet et son encadrement.
+  \end{remerciements}
+  \begin{abstract}
+    abstract
+  \end{abstract}
+\end{frame}
+
+\tableofcontents
+
+\section{Introduction}
+\input{introduction/index.tex}
+\section{Centralisation}
+\input{centralisation/index.tex}
+\section{Décentralisation}
+\input{decentralisation/index.tex}
+
+\end{document}

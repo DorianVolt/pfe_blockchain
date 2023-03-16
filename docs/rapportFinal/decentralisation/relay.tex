@@ -1,0 +1,42 @@
+%auteur: Amaury JOLY
+\subsubsection{Définition}
+
+Les relays sont des contrats intelligents qui existent sur la blockchain Ethereum.
+Leur but est de transmettre des informations entre des blockchains distinctes (par exemple, Bitcoin et Ethereum). 
+Les relays suivent une partie de l’état de leurs chaînes connectées afin de prouver l’existence de transactions d’une chaîne à l’autre.
+
+\subsubsection{BTCRelay}
+
+BTCRelay est un contrat intelligent qui stocke les en-têtes de blocs Bitcoin sur la blockchain Ethereum.
+BTCRelay utilise ces en-têtes de blocs pour construire une mini-version de la blockchain Bitcoin: une méthode utilisée par les portefeuilles légers Bitcoin SPV. 
+\footnote{Bitcoin SPV signifie Simplified Payment Verification et c’est un moyen pour Bitcoin de se développer et de se propager en fonctionnant sur des petits appareils, comme les téléphones portables et les ordinateurs portables.}
+BTCRelay est open source, sans confiance et décentralisé. Il permet aux contrats Ethereum de vérifier les transactions Bitcoin sans aucun intermédiaire: en d’autres termes, 
+les utilisateurs peuvent payer avec Bitcoin pour utiliser les DAPPs Ethereum. Il offre également la possibilité de relayer la transaction Bitcoin à n’importe quel contrat Ethereum et d’inspecter le dernier en-tête de bloc Bitcoin stocké dans le contrat. Ce qui offre une possibilité d'opérabilité unidirectionnelle de Bitcoin vers Ethereum.\\
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.5]{decentralisation/btcRelay.png}
+  \label{fig:btcRelay}
+  \caption{BTCRelay}
+\end{figure}
+
+\subsubsection{tBTC}
+
+Un exemple de relay est le projet tBTC, qui permet aux utilisateurs d’échanger des bitcoins contre des 
+tokens ERC-20 représentant des bitcoins sur la blockchain Ethereum. tBTC utilise un contrat intelligent 
+appelé Deposit qui interagit avec un ensemble de signataires qui détiennent les bitcoins en garantie. 
+Le contrat Deposit utilise BTCRelay pour vérifier les preuves SPV des transactions Bitcoin et émettre ou 
+brûler des tokens tBTC en conséquence. Ainsi, les utilisateurs peuvent profiter des avantages de la liquidité 
+et de la programmabilité d’Ethereum tout en conservant l’exposition au bitcoin. \\
+Bien que tBTC se présente comme une solution décentralisée et sans confiance pour échanger des bitcoins contre 
+des tokens ERC-20, il existe certains défis et limites à son fonctionnement. 
+Par exemple, tBTC repose sur un ensemble de signataires qui doivent déposer une garantie pour sécuriser les bitcoins
+verrouillés dans le contrat Deposit. Ceci expose les signataires à un risque financier permettant de limitter les risques de malveillance. 
+De plus, tBTC nécessite que les signataires soient en ligne et disponibles pour répondre aux demandes de rachat des 
+utilisateurs dans un délai donné. Si les signataires sont hors ligne ou malhonnêtes, les utilisateurs peuvent 
+perdre l’accès à leurs bitcoins ou être obligés d’attendre une longue période avant de pouvoir les récupérer. 
+Les signataires sont choisis aléatoirement par un mécanisme appelé random beacon, qui pondère la sélection en 
+fonction du montant misé par les signataires potentiels. Cela vise à éviter la collusion ou la censure entre les 
+signataires, mais cela n’exclut pas complètement la possibilité d’attaques sybil \footnote{Une attaque sybil est 
+un type d’attaque sur un réseau pair à pair dans laquelle un attaquant crée un grand nombre d’identités fausses 
+et les utilise pour gagner une influence disproportionnée sur le réseau} ou de corruption.

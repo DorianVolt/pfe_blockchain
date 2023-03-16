@@ -1,0 +1,107 @@
+% Auteur : Louis de Campou
+\begin{frame}{Wormhole}
+Protocole générique de passage de messages qui connecte 13 chaînes dont Ethereum et Solana.
+\newline
+
+Wormhole émet un message à partir d'une chaîne qui sont observés et vérifiés par un réseau de nœuds "Guardian". Après vérification, ce message est soumis à la chaîne cible pour traitement.
+\newline 
+
+\begin{itemize}
+    \item Verified Action Approval (VAA)
+    \item Gardiens
+    \item Payloads
+    \item Relayer
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Wormhole : Verified Action Approval (VAA)}
+
+Primitive de messagerie de base de Wormhole
+\newline
+
+En-tête :
+\begin{itemize}
+    \item Version VAA (version, byte)
+    \item Index de l'ensemble des gardiens (guardian\_set\_index, u32)
+    \item Nombre de signatures stockées (len\_signatures, u8)
+    \item Collection des signatures ECSDA/secp256k1 (signatures, [][66]byte)
+\end{itemize}
+
+Corps : 
+\begin{itemize}
+    \item Horadatage du bloc (timestamp, u32)
+    %\item Nombre pseudo-aléatoire (nonce, u32)
+    \item L'ID de la chaîne Wormhole du contrat émetteur (emitter\_chain, u16)
+    \item L'adresse du contrat émetteur (emitter\_address, [32]byte)
+    \item Le numéro de séquence lié à la chaîne et à l'adresse émetteur (sequence, u64)
+    %\item Le niveau de cohérence (consistency\_level, u8)
+    \item La charge utile, le contenu du message VAA (payload, []byte)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Wormhole : Gardiens}
+«Un ensemble de noeuds distribués qui surveillent l'état de plusieurs blockchains»
+\newline
+
+19 gardiens à parts égales définis comme «les sociétés de validation les plus importantes et les plus connues dans le domaine des crypto-monnaies».
+\newline
+
+«Décentralisation : le contrôle du réseau doit être réparti entre plusieurs parties»
+\end{frame}
+
+\begin{frame}{Wormhole : Gardiens}
+Rôle : observer des messages (format VAA) puis signer le corps du message contenant le payload.\newline
+
+La signature du gardien correspondant est ensuite ajouté dans l'en-tête du VAA avec incrémentation de len\_signatures\newline
+
+Chaque gardien travaille individuellement («isolation») puis mise en commun des signatures (=> multisig) qui forme une preuve qu'un état a été observé et validé par une majorité du réseau Wormhole.\newline
+
+Mécanisme de consensus : Proof of Authority (2/3 des signatures nécessaires pour parvenir au consensus)\newline
+
+1 charge utile par VAA => 13 signatures + 13 vérifications pour 1 charge utile
+\end{frame}
+
+\begin{frame}{Wormhole : Payloads}
+
+Charges utiles spécifiques attachées à un VAA depuis une chaîne source pour indiquer à la chaîne cible comment traiter le message Wormhole après vérification.\newline
+
+5 payloads au total :
+\begin{itemize}
+    \item Transfer (déclenche la libération de jetons verrouillés) 
+    \item TransferWithPayload
+    \item AssetMeta (atteste les méta-données de l'actif, obligatoire avant un premier transfert)
+    \item RegisterChain (enregistre le contrat bridge pour une chaîne étrangère)
+    \item UpgradeContract
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Wormhole : Payload - Transfer}
+
+Pour transférer des jetons des chaînes A à B, il y a verrouillage des jetons sur la chaîne A puis on frappe ("mint") sur la chaîne B.\newline
+
+\begin{itemize}
+    \item ID de la charge utile (payload\_id, u8)
+    \item Montant du transfert (amount, u256)
+    \item L'adresse sur la chaîne d'origine (token\_address, u8[32])
+    \item ID de la chaîne d'origine (token\_chain, u16)
+    \item L'adresse sur la chaîne de destination (to, u8[32])
+    \item ID de la chaîne de destination (to\_chain, u16)
+    \item Une taxe payée au relayer (fee, u256)
+\end{itemize} 
+\end{frame}
+
+\begin{frame}{Wormhole : Relayer}
+ «Un processus qui délivre un ou plusieurs VAA(s) à une destination»
+
+ \begin{itemize}
+    \item Sans confiance
+    \item Sans privilèges
+\end{itemize}
+
+\begin{enumerate}
+    \item Un VAA est émis depuis la chaîne source indiquant que tant de jetons ont été verrouillés
+    \item VAA transmis aux gardiens
+    \item Signature de 2/3 des gardiens
+    \item Transmission du VAA signé à la chaîne cible
+\end{enumerate}
+\end{frame}

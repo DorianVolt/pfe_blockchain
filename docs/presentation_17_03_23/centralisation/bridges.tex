@@ -1,0 +1,86 @@
+\begin{frame}{Les types de bridges}
+ Protocoles de communication et d'échanges entre différentes blockchains.
+ Echange de données / d'actifs \newline \newline
+ Plusieurs types de bridges :
+ \begin{itemize}
+     \item Uni-directionnel
+     \item Bi-directionnel 
+     \item Trusted
+     \item Trustless
+ \end{itemize} 
+ Différentes manières de déplacer les actifs:
+ \begin{itemize}
+     \item Lock and Mint
+     \item Burnt and Mint
+     \item Atomic Swaps
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Trusted Blockchain Bridge}
+    Basés sur une entité centrale en tant que tiers de confiance.
+Des informations clés: 
+    \begin{itemize}
+        \item Facilite les transferts.
+        \item Utilisation simple.
+        \item Échanges sécurisés.
+        \item Possible remboursement en cas de cyberattaque.
+        \item Cible facile.
+    \end{itemize}
+    $\Rightarrow$ MAIS l'utilisateur donne le contrôle de ses actifs 
+Exemple de Trusted Bridge : Binance Bridge.
+\end{frame}
+
+\begin{frame}{Trustless Blockchain Bridge}
+Basés sur un réseau décentralisé 
+Des informations clés: 
+\begin{itemize}
+    \item Aucune présence d'un tiers de confiance.
+    \item Sécurité du bridge égale à celle de la chaîne sous-jacente.
+    \item Permettent aux utilisateurs de contrôler leurs actifs.
+    \item Aucune garantie en cas de hack.
+\end{itemize}
+Exemple de trustless bridge : Polygon Bridge.
+\end{frame}
+
+\begin{frame}{Le trilemme de l’interopérabilité}
+Repose sur 3 notions: 
+\begin{itemize}
+    \item Trustless
+    \item Extensible
+    \item Generalizable
+\end{itemize}
+Protocoles intéropérables actuels respectent deux notions sur trois.
+\end{frame}
+
+\begin{frame}{Mécanisme de vérification des Trustless Bridges}
+Les mécanismes de vérification des bridges peuvent être classés en trois types:
+\begin{itemize}
+    \item Locale (ex: Hop/Connext legacy)
+    \item Extérieure (ex: Avalanche Bridge)
+    \item Native (ex: The NEAR Rainbow Bridge)
+\end{itemize}
+Respecte les notions extensible et generalizable : vérification extérieure et native. \newline
+Respecte les notions trustless et extensible : vérification locale.  
+\end{frame}
+
+\begin{frame}{Solution optimiste}
+Bridge optimiste avec de l'importance sur la sécurité plutôt que sur la vivacité.
+Déroulement : \newline
+\begin{itemize}
+    \item Envoie de données vers une fonction contrat.
+    \item Signature la racine d'un arbre de Merkle par un updater et envoie sur la chaîne d'origine. 
+    \item Envoie sur une chaîne destination. 
+    \item 30 minutes de latence pour prouver une fraude.
+    \item Les données sont passées à la chaîne destination puis traitées.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Possibles faiblesses et leurs solutions}
+\begin{itemize}
+    \item Updater DoS $\Rightarrow$ multiple updaters/fileover/slashing
+    \item Updater Fraud $\Rightarrow$ slashing 
+    \item Watcher DoS $\Rightarrow$ tax de submission/slashing
+    \item Chain Liveness Failures $\Rightarrow$ long temps d'attente/ralentissement
+\end{itemize}
+\end{frame}

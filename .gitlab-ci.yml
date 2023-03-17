@@ -5,9 +5,9 @@ image:
 build_and_deploy: 
   script:
     - cd docs/presentation_17_03_23
-    - pdflatex main.tex
+    - pdflatex main.tex && pdflatex main.tex
     - cd ../rapportFinal
-    - pdflatex main.tex
+    - pdflatex main.tex && pdflatex main.tex
   only:
     refs:
       - merge_request

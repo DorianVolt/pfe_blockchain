@@ -59,3 +59,46 @@ Revoir l'approche pour essayer de retro-ingénieuré a travers les failles.
 Documentation intéressante trouvé pour le projet Solana.
 
 Comprendre avant d'etre exhaustif.
+
+## 24 04 2022
+
+### Présents
+
+- [x] Amaury
+- [x] Dorian
+- [x] Romain
+- [x] Eloise
+- [x] Louis
+
+### General
+
+45min de pres academique et 15min de technique  
+Présentation doit draguer pour donner envie de lire le rapport  
+Le rapport doit etre plus exauhstif  
+On doit etre accessible sans perdre en contenance
+
+### Rapport
+
+15 - 20 pages ok  
+Introduction:
+
+- Definir blockchain
+  - Protocoloes de validations
+  - Compromis sécurité efficacités
+  - Mineur ?
+  - ...
+- Definir les notions.
+
+Avoir une partie "conclusive":
+
+- Essayer de classer les solutions.
+- Avoir une sorte de "tableau recapitulatif"
+
+Terme Anglais en Italique.
+
+### Présentation
+
+#### Metier
+
+- 1 Faille Décentralisé (Pool de liquidité ?)
+- 1 Faille Centralisé

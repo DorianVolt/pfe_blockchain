@@ -4,10 +4,11 @@ image:
 
 build_and_deploy: 
   script:
-    - cd docs/presentation_17_03_23
-    - pdflatex main.tex && pdflatex main.tex
-    - cd ../rapportFinal
-    - pdflatex main.tex && pdflatex main.tex
+    - cd ./docs/rapportFinal
+    - pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder main.tex && biber "main.bcf" && pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder main.tex && pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder main.tex
+    - cd ../presentation_17_03_23
+    - pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder main.tex && pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder main.tex
+    
   only:
     refs:
       - merge_request
@@ -16,8 +17,6 @@ build_and_deploy:
     changes:
       - docs/**/*
       - .gitlab-ci.yml
-  after_script:
-    - cat ./docs/main.log
   artifacts:
     paths:
       - ./docs/presentation_17_03_23/main.pdf

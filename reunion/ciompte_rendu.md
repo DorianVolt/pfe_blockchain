@@ -98,7 +98,39 @@ Terme Anglais en Italique.
 
 ### Présentation
 
+
 #### Metier
 
 - 1 Faille Décentralisé (Pool de liquidité ?)
 - 1 Faille Centralisé
+
+## 24 31 23
+
+### Présents
+
+- [x] Amaury
+- [x] Dorian
+- [x] Romain
+- [x] Eloise
+- [x] Louis
+
+### General
+
+### Rapport
+
+Orthographe +++++
+Manque de graphiques dans la permière partie (6 premires pages)
+Redites techniques à éviter
+
+Parler des limites en début de document: meh
+
+Présenter le terme de DApp
+
+Plan de la partie 2 pas ouf.
+
+On raconte sa vie seulement dans l'intro ou conclu
+
+Glossaire avant l'introduction
+
+### Definition décentralisé
+Pas d'intermediaire qui peut etre représenté par Une seule ou Un groupe fermé de personne. Pas de hierarchie entre les pairs.

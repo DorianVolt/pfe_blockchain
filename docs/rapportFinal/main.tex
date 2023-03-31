@@ -6,6 +6,7 @@
 \usepackage[affil-it]{authblk}
 \usepackage{fullpage}
 \usepackage{graphicx}
+\usepackage{biblatex}
 
 \newenvironment*{remerciements}{%
   \renewcommand*{\abstractname}{Remerciements}
@@ -13,6 +14,11 @@
 }{
   \end{abstract}
 }
+
+\bibliography{introduction/sources}
+\bibliography{centralisation/sources}
+\bibliography{decentralisation/sources}
+
 
 \begin{document}
 
@@ -40,12 +46,19 @@
 
 \section{Introduction}
 \input{introduction/index.tex}
+
 \section{Systèmes Centralisés}
 \input{centralisation/index.tex}
+
 \section{Systèmes Décentralisés}
 \input{decentralisation/index.tex}
+
 \section{Conclusion}
 \input{conclusion/index.tex}
+
 \section{Glossaire}
 \input{glossaire/index.tex}
+
+\printbibliography
+
 \end{document}

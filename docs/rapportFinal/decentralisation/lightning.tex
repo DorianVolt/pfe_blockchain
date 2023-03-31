@@ -4,7 +4,8 @@ Les échanges \textit{off-chain} sont des transactions de crypto-actif dont on d
 Ils sont des échanges d’actifs internes au réseau et ont donc leurs propres grands livres, authentification et coûts qui ont lieu parmi la \textit{blockchain}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.3]{decentralisation/offchain.png}
+    \stackunder{\includegraphics[scale=0.3]{decentralisation/offchain.png}}
+    {\scriptsize Source: \url{https://www.cryptoencyclopedie.com/single-post/blockchain-comprendre-distinction-on-chain-off-chain}}
     \caption{Architecture \textit{off-chain}}
     \label{fig:offchain}
 \end{figure}
@@ -15,7 +16,7 @@ Afin d'illustrer comment fonctionne les échanges \textit{off-chain} nous allons
 \subsubsection{Le réseau lightning}
 
 Le réseau lightning (provenant de l'anglais \textit{Lightning Network} et abrégé par LN) fait partie des processus d'échanges que l'on qualifie d'\textit{off-chain} car il se déroule en dehors de leur \textit{blockchains} principale, ce protocole est un cas concret de cette famille.
-Ce réseau est une couche de protocole de paiement construite au-dessus de la \textit{blockchain} Bitcoin qui vise à accélérer les transactions  Bitcoin, à réduire les coûts et à améliorer la mise a l'échelle.
+Ce réseau est une couche de protocole de paiement construite au-dessus de la \textit{blockchain} Bitcoin qui vise à accélérer les transactions  Bitcoin, à réduire les coûts et à améliorer la mise a l'échelle \cite{poon2016bitcoin}.
 Il permet aux utilisateurs de créer des canaux de paiement peer-to-peer bidirectionnels  pour effectuer des transactions en dehors de la \textit{blockchain} principale (voir Figure \ref{fig:lightningCouche}), permettant des transactions plus rapides, moins chères et plus privées.\\
 Les transactions sur le réseau lightning sont effectuées avec des smart contracts qui permettent aux utilisateurs de transférer des fonds à des tiers sans l'approbation de la \textit{blockchain} principale ou bien d'un tiers de confiance. 
 Les canaux de paiement flash sont créés en verrouillant temporairement des fonds sur une adresse multi-signature (voir Figure \ref{fig:lightningNetwork}), qui est ensuite utilisée pour envoyer des transactions à d'autres participants du réseau.\\ 
@@ -23,14 +24,18 @@ Le réseau lightning utilise un système de routage pour acheminer les paiements
 Les frais d'utilisation de ce réseau sont généralement bien inférieurs aux frais de transaction sur la \textit{blockchain} principale, ce qui en fait une option plus attrayante pour les  petites et moyennes transactions.
 
 \begin{figure}[h!]  
-    \includegraphics[scale = 0.3 ]{decentralisation/lightningCouche.png}    \centering
+  
+    \centering
+    \stackunder{    \includegraphics[scale = 0.3 ]{decentralisation/lightningCouche.png}  }
+    {\scriptsize Source: \url{https://www.bitpanda.com/academy/fr/lecons/quel-est-le-role-du-lightning-network-pour-bitcoin/}}
         \caption{Le réseau Lightning par rapport a la \textit{blockchain} Bitcoin principale}
         \label{fig:lightningCouche}
     \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.3]{decentralisation/Procedures-of-Lightning-network.png}
+    \stackunder{\includegraphics[scale=0.3]{decentralisation/Procedures-of-Lightning-network.png}}
+    {\scriptsize Source: \url{https://issam.ma/jekyll/update/2022/03/01/bitcoin-must-die-5.html}}
     \caption{Déroulement d'un échange sur le réseau Lightning}
     \label{fig:lightningNetwork}
 \end{figure}
@@ -48,9 +53,9 @@ Cette propriété permet de mettre en place une transitivité entre les parties 
 
 \subsubsection{Amélioration du réseau lightning par le MIT}
 
-Même si le réseau Lightning permet déjà de faire des échanges \textit{cross-chains}, il est de la responsabilité des blockchains de s'adapter au réseau afin de pouvoir échanger sur ce dernier.
-Le MIT a donc proposé un ouvrage scientifique (voir Références) afin de proposer une interface plus simple à la fois pour les blockchains mises en cause et les utilisateurs souhaitant utiliser le réseau.
-Leur \textit{Proof of Concept} se base sur un fork du réseau Lightning appelé "lit" leur but est de contrer le problème de mise à l'échelle du réseau lightning grace à leurs améliorations.
+Même si le réseau Lightning permet déjà de faire des échanges \textit{cross-chains}\cite{lightningCrossChain}, il est de la responsabilité des blockchains de s'adapter au réseau afin de pouvoir échanger sur ce dernier.
+Le MIT a donc proposé un ouvrage scientifique\cite{mathus2018lightning} afin de proposer une interface plus simple à la fois pour les blockchains mises en cause et les utilisateurs souhaitant utiliser le réseau.
+Leur \textit{Proof of Concept}\cite{pocMIT} se base sur un fork du réseau Lightning appelé "lit" leur but est de contrer le problème de mise à l'échelle du réseau lightning grace à leurs améliorations.
 De même ils cherchent à inclure dans le réseau lightning des blockchains qui n'ont pas de valeurs monétaires (informations, NFT,etc.).
 
 Leur programme rajoute 4 commandes au réseau Lightning mentionné précédemment, ce qui va permettre d'avoir une interface plus simple pour les acteurs des échanges :

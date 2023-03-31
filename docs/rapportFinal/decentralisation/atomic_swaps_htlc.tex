@@ -1,7 +1,7 @@
 %author: Dorian VOLPE
 \subsubsection{HTLC}
 
-Un HTLC est un type de \textit{smart contract} utilisé dans les applications \textit{blockchain} qui réduit le risque de contrepartie en créant une garantie basée sur le temps et une autre sur un verrou cryptographique.
+Un HTLC est un type de \textit{smart contract} utilisé dans les applications \textit{blockchain} qui réduit le risque de contrepartie en créant une garantie basée sur le temps et une autre sur un verrou cryptographique\cite{narayanam2022generalized}.
 Ils reposent sur deux primitives fondamentales: le verrou de hachage et le verrou temporel.\\
 Premièrement le verrou de hachage (ou bien \textit{hashlock}): Ce dernier va fonctionner comme une assurance qui va couvrir les parties participantes à la transaction, en leur garantissant que chaque modification de l'échange soit réalisée d'un commun accord de toutes les parties.
 Cela est mis en place grâce à un partage du hachage de la clef privée de la transaction, ce partage va donc impliquer que le canal de paiement mis en place ne puisse être ouvert ou fermé qu'avec l'accord de tous les participants.\\
@@ -11,12 +11,16 @@ L’intérêt principal de ce type de contrat est qu'il permet d'effectuer facil
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.35]{decentralisation/Timed-HashLocks-Diagram-Image.png}
+
+\stackunder{
+\includegraphics[scale=0.35]{decentralisation/Timed-HashLocks-Diagram-Image.png}}
+    {\scriptsize
+            Source: \url{https://blog.scottlogic.com/2016/06/16/bitcoin-redeem-scripts.html}}
     \caption{Utilisation basique d'un HTLC}
     \label{fig:HTLC}
 \end{figure}
 \subsubsection{Atomic swaps}
-Les \textit{atomics swaps} ou bien échanges atomiques sont des échanges effectués entre deux \textit{blockchains}. On les appelle "atomiques" car il respecte une primitive essentielle à leur fonctionnement et à leur principe d'utilisation: 
+Les \textit{atomics swaps} ou bien échanges atomiques sont des échanges effectués entre deux \textit{blockchains}\cite{herlihy2018atomic}. On les appelle "atomiques" car il respecte une primitive essentielle à leur fonctionnement et à leur principe d'utilisation: 
 l'échange est insécable, c'est-à-dire qu'a son issue, soit il s'est pleinement exécuté, soit l'état antérieur à l'échange est préservé.
 Cette primitive permet de garantir que les participants ne seront jamais dans des états jugés "inacceptables". \\
 En effet les échanges atomiques partent du postulat que si une partie suit le protocole à la lettre alors, 

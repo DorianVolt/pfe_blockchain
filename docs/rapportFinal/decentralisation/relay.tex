@@ -1,14 +1,14 @@
 %auteur: Amaury JOLY
 \subsubsection{Définition}
 
-Les relays sont des contrats intelligents qui existent sur la blockchain Ethereum.
-Leur but est de transmettre des informations entre des blockchains distinctes (par exemple, Bitcoin et Ethereum). 
+Les relays sont des contrats intelligents qui existent sur la \textit{blockchain} Ethereum.
+Leur but est de transmettre des informations entre des \textit{blockchains} distinctes (par exemple, Bitcoin et Ethereum). 
 Les relays suivent une partie de l’état de leurs chaînes connectées afin de prouver l’existence de transactions d’une chaîne à l’autre.
 
 \subsubsection{BTCRelay}
 
-BTCRelay est un contrat intelligent qui stocke les en-têtes de blocs Bitcoin sur la blockchain Ethereum.
-BTCRelay utilise ces en-têtes de blocs pour construire une mini-version de la blockchain Bitcoin: une méthode utilisée par les portefeuilles légers Bitcoin SPV. 
+BTCRelay est un contrat intelligent qui stocke les en-têtes de blocs Bitcoin sur la \textit{blockchain} Ethereum.
+BTCRelay utilise ces en-têtes de blocs pour construire une mini-version de la \textit{blockchain} Bitcoin: une méthode utilisée par les portefeuilles légers Bitcoin SPV. 
 \footnote{Bitcoin SPV signifie Simplified Payment Verification et c’est un moyen pour Bitcoin de se développer et de se propager en fonctionnant sur des petits appareils, comme les téléphones portables et les ordinateurs portables.}
 BTCRelay est open source, sans confiance et décentralisé. Il permet aux contrats Ethereum de vérifier les transactions Bitcoin sans aucun intermédiaire: en d’autres termes, 
 les utilisateurs peuvent payer avec Bitcoin pour utiliser les DAPPs Ethereum. Il offre également la possibilité de relayer la transaction Bitcoin à n’importe quel contrat Ethereum et d’inspecter le dernier en-tête de bloc Bitcoin stocké dans le contrat. Ce qui offre une possibilité d'opérabilité unidirectionnelle de Bitcoin vers Ethereum.\\
@@ -23,7 +23,7 @@ les utilisateurs peuvent payer avec Bitcoin pour utiliser les DAPPs Ethereum. Il
 \subsubsection{tBTC}
 
 Un exemple de relay est le projet tBTC, qui permet aux utilisateurs d’échanger des bitcoins contre des 
-tokens ERC-20 représentant des bitcoins sur la blockchain Ethereum. tBTC utilise un contrat intelligent 
+tokens ERC-20 représentant des bitcoins sur la \textit{blockchain} Ethereum. tBTC utilise un contrat intelligent 
 appelé Deposit qui interagit avec un ensemble de signataires qui détiennent les bitcoins en garantie. 
 Le contrat Deposit utilise BTCRelay pour vérifier les preuves SPV des transactions Bitcoin et émettre ou 
 brûler des tokens tBTC en conséquence. Ainsi, les utilisateurs peuvent profiter des avantages de la liquidité 

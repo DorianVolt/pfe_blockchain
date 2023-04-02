@@ -1,6 +1,6 @@
 % Auteur : Louis de Campou
 \begin{frame}{Wormhole}
-Protocole de passage de messages qui connecte 13 chaînes dont Ethereum et Solana.
+Protocole de passage de messages qui connecte 22 blockchains dont Ethereum et Solana.
 \newline
 
 \begin{itemize}
@@ -14,12 +14,13 @@ Protocole de passage de messages qui connecte 13 chaînes dont Ethereum et Solan
 
 Un gardien est une autorité de confiance qui a comme rôle d'observer et de signer un message.\newline
 
-    \begin{block}{Fonctionnement du réseau de gardiens}
+    \begin{block}{Caractéristiques du réseau de gardiens}
         \begin{itemize}
-            \item Un message est émis depuis une chaîne source
-            \item Chaque gardien observe individuellement ce message, vérifie sa validité puis le signe
-            \item Lorsque 2/3 des gardiens ont signé le message, le consensus est atteint
-            \item Le message signé est transmis à la chaîne cible pour traitement
+            \item Sans leader
+            \item 19 gardiens à parts égales
+            \item Preuve d'autorité (PoA)
+            \item Multisignature (m/n)
+            \item Le consensus est atteint lorsque 2/3 des gardiens ont signé le message
         \end{itemize}
     \end{block}
 \end{frame}

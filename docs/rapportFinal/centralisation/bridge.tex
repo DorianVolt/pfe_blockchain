@@ -23,59 +23,48 @@ Les \textit{Trustless Bridges} sont désignés comme \textit{trustless} car ils 
 
  Les \textit{bridges} peuvent également être distingués en fonction de leur type de vérification. Les plus connus sont la vérification native, externe et locale.\cite{InteroperabilityBhuptani} \\
 
- \begin{figure}[h!]
-    \centering
-
-\stackunder{
-\includegraphics[scale=0.70]{centralisation/imagesBridges/NativeVerification.png}}
-    {\scriptsize
-            Source: \url{https://blog.connext.network/the-interoperability-trilemma-657c2cf69f17}}
-    \caption{Représentation de la vérification native.}
-    \label{fig:NativeVerif}
-\end{figure}
-
- La vérification native commence par l’utilisation d’un \textit{light client}\cite{NomadDocsNative}. Un client léger est un logiciel permettant de connecter les noeuds des \textit{blockchains} entre elles. Il est codé comme un \textit{smart contract} puis est employé de la chaîne de l'expéditeur vers la machine virtuelle de la chaîne destinataire. Si les vérificateurs de données de la chaîne de l'expéditeur sont honnêtes (c’est-à-dire qu’ils n’agissent pas de manière malveillant en laissant passer une quelconque erreur ou fraude) alors le client léger est vu comme véridique par la chaîne réceptionnant les actifs ou données et peut être utilisé de manière bilatérale.
+La vérification native commence par l’utilisation d’un \textit{light client}\cite{NomadDocsNative}. Un client léger est un logiciel permettant de connecter les noeuds des \textit{blockchains} entre elles. Il est codé comme un \textit{smart contract} puis est employé de la chaîne de l'expéditeur vers la machine virtuelle de la chaîne destinataire. Si les vérificateurs de données de la chaîne de l'expéditeur sont honnêtes (c’est-à-dire qu’ils n’agissent pas de manière malveillant en laissant passer une quelconque erreur ou fraude) alors le client léger est vu comme véridique par la chaîne réceptionnant les actifs ou données et peut être utilisé de manière bilatérale.
  Un avantage de cette solution est qu’elle est reconnue comme étant celle reposant le moins sur la confiance parmi celles existantes car les chaînes ne se fient qu’à leurs propres vérificateurs pour effectuer le \textit{bridge}. Un autre bénéfice de ce mécanisme est le fait qu’il n’utilise pas de vérificateurs tiers entre les deux \textit{blockchains} et donc la sécurité dépend de la sécurité des \textit{blockchains} elles-même (ce qui est avantageux si elles sont forcément sécurisées comme la chaîne d’Ethereum par exemple).
  Un désavantage de cette méthode est que le client léger doit être adapté aux consensus des chaînes auquelles il est attaché ce qui le rend inutilisable avec des chaînes différentes. Le client léger nécessite également de la maintenance en cas de changement des règles consensus (utilisées pour valider les transactions). Un autre inconvénient découlant du fait que le client léger est programmé de manière spécifique est que ce dernier n’est donc pas réutilisable. \\
-
  \begin{figure}[h!]
     \centering
+\includegraphics[scale=0.70]{centralisation/imagesBridges/DiagrammeVerifNative.png}
+\caption{Représentation de la vérification native.}
+\label{fig:NativeVerif}
+\end{figure}
 
+\pagebreak
+
+La vérification externe consiste en un ensemble de vérificateurs n’appartenant pas aux \textit{blockchains} relayant les données entre les deux extrémités du \textit{bridge}. Pour se faire, un certains nombre de vérificateurs doivent signer un message provenant de la chaîne d’envoi pour que le chaîne destinataire le reconnaisse comme valide. Par exemple, pour le \textit{bridge} Wormhole 13 vérificateurs sur 19 doivent avoir signé\cite{NomadDocsExternal}. Ce concept est une primitive cryptographique (algorithme cryptographique de bas niveau servant de base à un système de sécurité informatique) nommée le système de signature à seuil (désignée par TSS pour \textit{Threshold Signature Scheme})\cite{BinanceTSS}. 
+Contrairement à la vérifications native, les \textit{bridges} vérifiés de manière externe sont faciles à développer, peuvent être réutilisés sans problèmes et leur maintenance coûte peu. Le désavantage conséquent de cette méthode est que la sécurité dépend des vérificateurs tiers du pont ce qui peut fragiliser le système car ils sont généralement moins sécurisés que ceux des \textit{blockchains}. \\
+\begin{figure}[h!]
+    \centering
+\includegraphics[scale=0.50]{centralisation/imagesBridges/DiagrammeVerifExterne.png}
+\caption{Représentation de la vérification externe.}
+\label{fig:ExternalVerif}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
 \stackunder{
-\includegraphics[scale=0.70]{centralisation/imagesBridges/LightClient.png}}
+\includegraphics[scale=0.60]{centralisation/imagesBridges/LightClient.png}}
     {\scriptsize
             Source: \url{https://docs.nomad.xyz/the-nomad-protocol/verification-mechanisms/native-verification}}
     \caption{Mécanisme utilisant un Light Client.}
     \label{fig:LightClient}
 \end{figure}
 
- La vérification externe consiste en un ensemble de vérificateurs n’appartenant pas aux \textit{blockchains} relayant les données entre les deux extrémités du \textit{bridge}. Pour se faire, un certains nombre de vérificateurs doivent signer un message provenant de la chaîne d’envoi pour que le chaîne destinataire le reconnaisse comme valide. Par exemple, pour le \textit{bridge} Wormhole 13 vérificateurs sur 19 doivent avoir signé\cite{NomadDocsExternal}. Ce concept est une primitive cryptographique (algorithme cryptographique de bas niveau servant de base à un système de sécurité informatique) nommée le système de signature à seuil (désignée par TSS pour \textit{Threshold Signature Scheme})\cite{BinanceTSS}. 
-Contrairement à la vérifications native, les \textit{bridges} vérifiés de manière externe sont faciles à développer, peuvent être réutilisés sans problèmes et leur maintenance coûte peu. Le désavantage conséquent de cette méthode est que la sécurité dépend des vérificateurs tiers du pont ce qui peut fragiliser le système car ils sont généralement moins sécurisés que ceux des \textit{blockchains}. \\
-
-\begin{figure}[h!]
-    \centering
-
-\stackunder{
-\includegraphics[scale=0.70]{centralisation/imagesBridges/ExternalVerification.png}}
-    {\scriptsize
-            Source: \url{https://blog.connext.network/the-interoperability-trilemma-657c2cf69f17}}
-    \caption{Représentation de la vérification externe.}
-    \label{fig:ExternalVerif}
-\end{figure}
-
+\pagebreak
 Il est intéressant de noter que les \textit{blockchains} ont également leur propre ensemble de vérificateurs sous la forme de vérificateur de données. Ces derniers sont utilisés lors de la vérification locale. Lors de la vérification locale, les chaînes se vérifient entre elles en envoyant un vérificateur en tant que représentant.
 
-\subsubsection{Les risques liés aux Bridges}
-
-\begin{figure}[h!]
+\begin{figure}[h]
     \centering
-
-\includegraphics[scale=0.30]{centralisation/imagesBridges/GraphLossesBridges.png}
-    {\scriptsize
-            Source: \url{https://www.treehouse.finance/insights/blockchain-and-interoperability-globalization-3-0}}
-    \caption{Pertes en millions de dollars des bridges les plus connus.}
-    \label{fig:GraphBridges}
+\includegraphics[scale=0.70]{centralisation/imagesBridges/DiagrammeVerifLocale.png}
+\caption{Représentation de la vérification locale.}
+\label{fig:LocaleVerif}
 \end{figure}
+
+\subsubsection{Les risques liés aux Bridges}
 
 La popularité des \textit{Blockchain Bridges} pour les échanges centralisés ne cesse d’augmenter au fils du temps mais il est important de comprendre que comme tout outil, ces derniers ne sont pas sans risques. \\
 
@@ -91,6 +80,14 @@ Les \textit{Blockchain Bridges} sont devenus un outil indispensable des échange
 
 Un autre facteur portant atteinte à la sécurité des \textit{bridges} est le fait que certains ont leur code en \textit{open source} dans une démarche de transparence et d’envie d’instaurer une relation de confiance avec les utilisateurs. Malheureusement cela donne l’occasion aux personnes malveillantes de mieux comprendre le fonctionnement du \textit{bridge} et donc de pouvoir l’attaquer. L’attaque Wormhole est un exemple connu d’attaque exploitant cette faiblesse.
 
+\begin{figure}[h!]
+    \centering
+\includegraphics[scale=0.30]{centralisation/imagesBridges/GraphLossesBridges.png}
+    {\scriptsize
+            Source: \url{https://www.treehouse.finance/insights/blockchain-and-interoperability-globalization-3-0}}
+    \caption{Pertes en millions de dollars des bridges les plus connus.}
+    \label{fig:GraphBridges}
+\end{figure}
 
 \subsection{Le trilemme de l’interopérabilité}
 

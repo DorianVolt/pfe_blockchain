@@ -1,12 +1,12 @@
 %auteur: Amaury JOLY
 \subsubsection{Définition}
-Les relays décentralisés sont des applications décentralisés permettant une intéropérabilités entre les \textit{blockchains} \cite{qin2018overview, westerkamp2022verilay,belchior2022survey}.
-Leur but est de transmettre des informations entre des \textit{blockchains} distinctes (par exemple, Bitcoin et Ethereum). 
+Les relays décentralisés sont des applications décentralisés permettant une intéropérabilités entre les \textit{\gls{blockchain}s} \cite{qin2018overview, westerkamp2022verilay,belchior2022survey}.
+Leur but est de transmettre des informations entre des \textit{\gls{blockchain}s} distinctes (par exemple, Bitcoin et Ethereum). 
 Les relays suivent une partie de l’état de leurs chaînes connectées afin de prouver l’existence de transactions d’une chaîne à l’autre.
 
 \subsubsection{BTCRelay}
-BTCRelay est un \textit{smart contract} qui stocke les en-têtes de blocs Bitcoin sur la \textit{blockchain} Ethereum. \cite{qin2018overview,belchior2022survey,btcrelay2022web,btcrelay2022git}
-BTCRelay utilise ces en-têtes de blocs pour construire une mini-version de la \textit{blockchain} Bitcoin: une méthode utilisée par les 
+BTCRelay est un \textit{smart contract} qui stocke les en-têtes de blocs Bitcoin sur la \textit{\gls{blockchain}} Ethereum. \cite{qin2018overview,belchior2022survey,btcrelay2022web,btcrelay2022git}
+BTCRelay utilise ces en-têtes de blocs pour construire une mini-version de la \textit{\gls{blockchain}} Bitcoin: une méthode utilisée par les 
 portefeuilles légers Bitcoin SPV. \footnote{Bitcoin SPV signifie Simplified Payment Verification et c’est un moyen pour Bitcoin de se 
 développer et de se propager en fonctionnant sur des petits appareils, comme les téléphones portables et les ordinateurs portables.}
 BTCRelay est open source, sans confiance et décentralisé. Il permet aux contrats Ethereum de vérifier les transactions Bitcoin sans aucun 
@@ -22,9 +22,8 @@ dans le contrat. Ce qui offre une possibilité d'opérabilité unidirectionnelle
 \end{figure}
 
 \subsubsection{tBTC}
-Un exemple d'application de ce relay pour de l'échange \textit{cross-blockchain} est le projet tBTC, 
-qui permet aux utilisateurs d’échanger des bitcoins contre des 
-tokens ERC-20 représentant des bitcoins sur la \textit{blockchain} Ethereum. \cite{hildebrandt2020tokenization,lan2021horizon} tBTC utilise un contrat intelligent 
+Un exemple de relay est le projet tBTC, qui permet aux utilisateurs d’échanger des bitcoins contre des 
+tokens ERC-20 représentant des bitcoins sur la \textit{\gls{blockchain}} Ethereum \cite{hildebrandt2020tokenization,lan2021horizon}. tBTC utilise un contrat intelligent 
 appelé Deposit qui interagit avec un ensemble de signataires qui détiennent les bitcoins en garantie. 
 Le contrat Deposit utilise BTCRelay pour vérifier les preuves SPV des transactions Bitcoin et émettre ou 
 brûler des tokens tBTC en conséquence. Ainsi, les utilisateurs peuvent profiter des avantages de la liquidité 

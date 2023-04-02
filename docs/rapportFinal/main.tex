@@ -9,6 +9,8 @@
 \usepackage{biblatex}
 \usepackage{stackengine}
 \usepackage{listings}
+\usepackage{glossaries}
+\makeglossaries
 
 \newenvironment*{remerciements}{%
   \renewcommand*{\abstractname}{Remerciements}
@@ -50,6 +52,10 @@
 \input{introduction/index.tex}
 
 \newpage
+
+\input{glossaire/glossaire.tex}
+
+\newpage
 \section{Systèmes Centralisés}
 \input{centralisation/index.tex}
 
@@ -58,6 +64,12 @@
 \input{decentralisation/index.tex}
 
 \newpage
+
+\section{Conclusion}
+\input{conclusion/index.tex}
+
+\newpage
+
 \printbibliography
 
 \end{document}

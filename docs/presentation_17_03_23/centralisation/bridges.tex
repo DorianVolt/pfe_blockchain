@@ -3,12 +3,10 @@
  Echange de données / d'actifs \newline \newline
  Plusieurs types de bridges :
  \begin{itemize}
-     \item Uni-directionnel
-     \item Bi-directionnel 
      \item Trusted
      \item Trustless
  \end{itemize} 
- Différentes manières de déplacer les actifs:
+ Différentes manières d'échanger les actifs:
  \begin{itemize}
      \item Lock and Mint
      \item Burnt and Mint
@@ -26,7 +24,7 @@ Des informations clés:
         \item Possible remboursement en cas de cyberattaque.
         \item Cible facile.
     \end{itemize}
-    $\Rightarrow$ MAIS l'utilisateur donne le contrôle de ses actifs 
+    $\Rightarrow$ MAIS l'utilisateur donne le contrôle de ses actifs.\\ 
 Exemple de Trusted Bridge : Binance Bridge.
 \end{frame}
 
@@ -42,45 +40,80 @@ Des informations clés:
 Exemple de trustless bridge : Polygon Bridge.
 \end{frame}
 
-\begin{frame}{Le trilemme de l’interopérabilité}
-Repose sur 3 notions: 
-\begin{itemize}
-    \item Trustless
-    \item Extensible
-    \item Generalizable
-\end{itemize}
-Protocoles intéropérables actuels respectent deux notions sur trois.
-\end{frame}
-
-\begin{frame}{Mécanisme de vérification des Trustless Bridges}
+\begin{frame}{Mécanisme de vérification}
 Les mécanismes de vérification des bridges peuvent être classés en trois types:
 \begin{itemize}
     \item Locale (ex: Hop/Connext legacy)
     \item Extérieure (ex: Avalanche Bridge)
     \item Native (ex: The NEAR Rainbow Bridge)
 \end{itemize}
-Respecte les notions extensible et generalizable : vérification extérieure et native. \newline
-Respecte les notions trustless et extensible : vérification locale.  
 \end{frame}
+
+
+\begin{frame}{Vérification Externe}
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 0.5]{img/DiagrammeVerifExterne.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Vérification Native}
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 0.5]{img/DiagrammeVerifNative.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Vérification Locale}
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 0.5]{img/DiagrammeVerifLocale.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Le trilemme de l’interopérabilité}
+    Repose sur 3 notions: 
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 0.7]{img/3notions.png}
+    \end{figure}
+    \end{frame}
 
 \begin{frame}{Solution optimiste}
 Bridge optimiste avec de l'importance sur la sécurité plutôt que sur la vivacité.
 Déroulement : \newline
 \begin{itemize}
     \item Envoie de données vers une fonction contrat.
-    \item Signature la racine d'un arbre de Merkle par un updater et envoie sur la chaîne d'origine. 
-    \item Envoie sur une chaîne destination. 
+    \item Validation de la transaction par un vérificateur. 
+    \item Ajout d'un collatéral de la part du vérificateur. 
+    \item Envoie sur une chaîne destination par un \textit{relayer}. 
     \item 30 minutes de latence pour prouver une fraude.
     \item Les données sont passées à la chaîne destination puis traitées.
 \end{itemize}
-    
 \end{frame}
 
 \begin{frame}{Possibles faiblesses et leurs solutions}
 \begin{itemize}
-    \item Updater DoS $\Rightarrow$ multiple updaters/fileover/slashing
-    \item Updater Fraud $\Rightarrow$ slashing 
-    \item Watcher DoS $\Rightarrow$ tax de submission/slashing
-    \item Chain Liveness Failures $\Rightarrow$ long temps d'attente/ralentissement
+    \item \textit{Updater DoS}
+        \begin{itemize}
+            \item Mécanisme de substitution.
+            \item Perte du collatéral.
+        \end{itemize}
+    \item \textit{Updater Fraud} \begin{itemize} \item Perte du collatéral. \end{itemize}
+    \item \textit{Watcher DoS} 
+        \begin{itemize}
+            \item Signalement de fraude payant.
+            \item Perte du collatéral.
+            \item Vérificateurs approuvés.
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Les faiblesses des bridges}
+\begin{itemize}
+    \item \textit{Trustless Bridges} : Les \textit{smart contracts} et l'erreur humaine.
+    \item \textit{Trusted Bridges} : Les fraudes \textit{rug pull}.
+    \item Une technologie récente.
+    \item L'\textit{open source}.
 \end{itemize}
 \end{frame}

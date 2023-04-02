@@ -5,7 +5,7 @@ image:
 build_and_deploy: 
   script:
     - cd ./docs/rapportFinal
-    - pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder main.tex && biber "main.bcf" && pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder main.tex && pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder main.tex
+    - pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder main.tex && biber "main.bcf" && makeglossaries main && pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder main.tex && pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder main.tex
     - cd ../presentation_17_03_23
     - pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder main.tex && pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder main.tex
     

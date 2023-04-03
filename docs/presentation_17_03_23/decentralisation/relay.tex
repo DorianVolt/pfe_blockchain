@@ -2,35 +2,49 @@
 \begin{frame} 
   \frametitle{Qu’est-ce qu’un relay ?} 
   \begin{itemize} 
-    \item Une dApp \footnote{Decentralized Application} 
-    \item Un transmetteur d’informations entre blockchains 
-    \item Un suiveur d’état de chaînes connectées 
-    \item Un prouveur de transactions cross-chain 
-  \end{itemize} 
-\end{frame}
-
-\begin{frame} 
-  \frametitle{Qu’est-ce que BTCRelay ?} 
-  \begin{itemize} 
-    \item Un contrat intelligent qui stocke les en-têtes de blocs Bitcoin 
-    \item Un constructeur d’une mini-version de la blockchain Bitcoin 
-    \item Un outil open source, sans confiance et décentralisé 
-    \item Un vérificateur de transactions Bitcoin pour les contrats Ethereum 
+    \item Une Application décentralisée jouant le rôle de: 
+    \begin{itemize}
+      \item suiveur d’état de chaînes connectées.
+      \item transmetteur d’informations entre blockchains.
+      \item prouveur de transactions cross-chain.
+    \end{itemize}
   \end{itemize} 
 \end{frame}
 
 \begin{frame}
   \frametitle{Qu’est-ce que BTCRelay ?}
-  \centering
-  \includegraphics[scale = 0.5]{decentralisation/btcRelay.png}
+  \begin{figure}
+    \centering
+    \includegraphics[scale = 0.22]{decentralisation/btcRelay.png}
+    \caption{BTCRelay}
+  \end{figure}
 \end{frame}
 
-\begin{frame} 
-  \frametitle{Qu’est-ce que tBTC ?} 
-  \begin{itemize} 
-    \item Un projet de relay entre Bitcoin et Ethereum 
-    \item Un échangeur de bitcoins contre des tokens ERC-20 
-    \item Un contrat Deposit qui interagit avec des signataires 
-    \item Un utilisateur de BTCRelay pour vérifier les transactions Bitcoin 
+
+\begin{frame}
+  \frametitle{Qu’est-ce que tBTC ?}
+  \begin{figure}
+    \centering
+    \includegraphics[scale = 0.22]{decentralisation/tBTC.png}
+    \caption{tBTC}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Limitations des relays}
+  \begin{itemize}
+    \item Avantages:
+    \begin{itemize}
+      \item N'importe qui peut participer aux réseaux.
+      \item Peu de risques pour l'utilisateur.
+    \end{itemize}
+    \item Désavantages:
+    \begin{itemize}
+      \item Disponibilité du services dependant des signataires.
+      \item Réseau de relayers sur du PoS.
+      \begin{itemize}
+        \item Si le réseau est trop petit, le coût pour une attaque est 51\% est faible.
+      \end{itemize}
+    \end{itemize}  
   \end{itemize}
 \end{frame}

@@ -2,7 +2,7 @@
 
 \subsubsection{Fonctionnement}
 
-Comme son nom l’indique, un \textit{\gls{blockchain} Bridge} également appelé \textit{\gls{Cross-chain} Bridge} est un protocole reliant deux \textit{\gls{blockchain}s} entre elles de manière unilatérale ou bilatérale dans une optique d’interopérabilité.\\
+Comme son nom l’indique, un \textit{\gls{blockchain} bridge} également appelé \textit{\gls{cross-chain} bridge} est un protocole reliant deux \textit{\gls{blockchain}s} entre elles de manière unilatérale ou bilatérale dans une optique d’interopérabilité.\\
 
 Dans la but de comprendre la popularité des \textit{bridges} en tant que protocole d’interopéralité, il faut en premier lieu s’intéresser au marché de la cryptomonnaie. Actuellement Bitcoin domine en représentant 40,5\% de ce dernier, suivie ensuite par Ethereum avec 19,5\%. Cela laisse donc 40\% du \textit{cryptomarket} formé de nombreuses crytomonnaies plus petites et plus indépendantes. C’est donc naturellement, qu’une forte demande de possibilité d’échanges entre les \textit{\gls{blockchain}s} ait vu le jour de la part des utilisateurs ayant plusieurs cryptomonnaies\cite{NgraveNumbers}.\\
 
@@ -28,20 +28,9 @@ La vérification native commence par l’utilisation d’un \textit{light client
  Un désavantage de cette méthode est que le client léger doit être adapté aux consensus des chaînes auquelles il est attaché ce qui le rend inutilisable avec des chaînes différentes. Le client léger nécessite également de la maintenance en cas de changement des règles consensus (utilisées pour valider les transactions). Un autre inconvénient découlant du fait que le client léger est programmé de manière spécifique est que ce dernier n’est donc pas réutilisable. \\
  \begin{figure}[h!]
     \centering
-\includegraphics[scale=0.70]{centralisation/imagesBridges/DiagrammeVerifNative.png}
+\includegraphics[scale=0.50]{centralisation/imagesBridges/DiagrammeVerifNative.png}
 \caption{Représentation de la vérification native.}
 \label{fig:NativeVerif}
-\end{figure}
-
-\pagebreak
-
-La vérification externe consiste en un ensemble de vérificateurs n’appartenant pas aux \textit{\gls{blockchain}s} relayant les données entre les deux extrémités du \textit{bridge}. Pour se faire, un certains nombre de vérificateurs doivent signer un message provenant de la chaîne d’envoi pour que le chaîne destinataire le reconnaisse comme valide. Par exemple, pour le \textit{bridge} Wormhole 13 vérificateurs sur 19 doivent avoir signé\cite{NomadDocsExternal}. Ce concept est une primitive cryptographique (algorithme cryptographique de bas niveau servant de base à un système de sécurité informatique) nommée le système de signature à seuil (désignée par TSS pour \textit{Threshold Signature Scheme})\cite{BinanceTSS}. 
-Contrairement à la vérifications native, les \textit{bridges} vérifiés de manière externe sont faciles à développer, peuvent être réutilisés sans problèmes et leur maintenance coûte peu. Le désavantage conséquent de cette méthode est que la sécurité dépend des vérificateurs tiers du pont ce qui peut fragiliser le système car ils sont généralement moins sécurisés que ceux des \textit{\gls{blockchain}s}. \\
-\begin{figure}[h!]
-    \centering
-\includegraphics[scale=0.50]{centralisation/imagesBridges/DiagrammeVerifExterne.png}
-\caption{Représentation de la vérification externe.}
-\label{fig:ExternalVerif}
 \end{figure}
 
 \begin{figure}[h!]
@@ -52,6 +41,17 @@ Contrairement à la vérifications native, les \textit{bridges} vérifiés de ma
             Source: \url{https://docs.nomad.xyz/the-nomad-protocol/verification-mechanisms/native-verification}}
     \caption{Mécanisme utilisant un Light Client.}
     \label{fig:LightClient}
+\end{figure}
+
+\pagebreak
+
+La vérification externe consiste en un ensemble de vérificateurs n’appartenant pas aux \textit{\gls{blockchain}s} relayant les données entre les deux extrémités du \textit{bridge}. Pour se faire, un certains nombre de vérificateurs doivent signer un message provenant de la chaîne d’envoi pour que le chaîne destinataire le reconnaisse comme valide. Par exemple, pour le \textit{bridge} Wormhole 13 vérificateurs sur 19 doivent avoir signé\cite{NomadDocsExternal}. Ce concept est une primitive cryptographique (algorithme cryptographique de bas niveau servant de base à un système de sécurité informatique) nommée le système de signature à seuil (désignée par TSS pour \textit{Threshold Signature Scheme})\cite{BinanceTSS}. 
+Contrairement à la vérifications native, les \textit{bridges} vérifiés de manière externe sont faciles à développer, peuvent être réutilisés sans problèmes et leur maintenance coûte peu. Le désavantage conséquent de cette méthode est que la sécurité dépend des vérificateurs tiers du pont ce qui peut fragiliser le système car ils sont généralement moins sécurisés que ceux des \textit{\gls{blockchain}s}. \\
+\begin{figure}[h!]
+    \centering
+\includegraphics[scale=0.70]{centralisation/imagesBridges/DiagrammeVerifExterne.png}
+\caption{Représentation de la vérification externe.}
+\label{fig:ExternalVerif}
 \end{figure}
 
 \pagebreak

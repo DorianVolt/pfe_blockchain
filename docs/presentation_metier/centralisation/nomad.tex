@@ -1,0 +1,71 @@
+\begin{frame}{Le protocole Nomad}
+    \begin{block}{Mise en contexte}
+        \begin{itemize}
+            \item Protocole d'échange inter-blockchains.
+            \item Utilisation de \textit{smart contracts}.
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{block}{Les \textit{smart contracts}}
+        \begin{itemize}
+            \item \textit{Home} : "Boite d'envoi", déployé sur les blockchain source.
+            \item \textit{Replica} : "Boite de réception", déployé sur les blockchains de destination.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Le protocole Nomad}
+    \begin{block}{Fonctionnement d'une transaction}
+        \begin{itemize}
+            \item Création de la transaction.
+            \item Vérification du message par sa racine.
+            \item Accepte la racine.
+            \item Envoi.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{L'attaque}
+    \begin{block}{L'attaque}
+        \begin{itemize}
+            \item Premier Août 2022.
+            \item Apparu après mise a jour utilisant la fonction \textit{process} pour vérifier la racine.
+            \item 190 000 000 de dollars de liquidité volé.
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{block}{L'erreur d'implémentation}
+        \begin{itemize}
+            \item Erreur d'implémentation sur \textit{Réplica}.
+            \item Problème de vérification de racine.
+            \item Possibilité de valider n'importe quel message.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{L'attaque}
+    \begin{block}{Erreur d'initialisation}
+        \begin{itemize}
+            \item Racine initialisée à $0$, fonctionnement normal.
+            \item Mais, racine $0$ pré-approuvée.
+            \item Tout message non vérifié sera valide.
+        \end{itemize}
+    \end{block}
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 0.3]{centralisation/img/nomad_hack.png}
+        \caption{Contrat Réplica erroné}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{L'attaque}
+    \begin{itemize}
+        \item Correction le 3 septembre 2022
+        \item La racine nulle n'est plus pré-approuvée.
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 0.3]{centralisation/img/nomad_fixed.png}
+        \caption{Contrat Réplica corrigé}
+    \end{figure}
+\end{frame}

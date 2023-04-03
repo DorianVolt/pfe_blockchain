@@ -134,3 +134,51 @@ Glossaire avant l'introduction
 
 ### Definition décentralisé
 Pas d'intermediaire qui peut etre représenté par Une seule ou Un groupe fermé de personne. Pas de hierarchie entre les pairs.
+
+## Reunion 03 04 2023
+
+11/60 precise KYC ?
+expliquer frapper
+16/60 légende
+open source = faiblesse ?
+Animation caca
+43/60 points itemize
+
+Manque de schéma
+
+Intro pas ouf ? Mise en contexte
+Même porbleme dans le rapport
+Partir de ce qu'on connait pour aller vers les différences de la blockchain (economie autour, distribué, imuable, réseau noeuds)
+
+Arbre de merkle c'est ciao
+
+Schémas bridge manques d'explicitation
+
+spécificité/fonctionnalité =/ implémentation
+
+etoffer le glossaire
+CEX
+DEX
+HTLCA
+VAA
+
+Relay
+Sidechains
+Light Client
+Bridge
+Bitcoin
+Verificateur
+Gardiens
+Atomic Swaps
+off-chain
+hot-wallet
+Ethereum
+Nomad Wormhole
+
+sécurisé ca veut rien dire
+
+equivalent USD lors de failles
+
+18/19 grâce
+conclusion pres métier
+manque schéma

@@ -1,24 +1,24 @@
-En 2017, une cryptomonnaie adossée à la \textit{blockchain} Solana a émergée avec des caractéristiques
-similaires à Ethereum : \textit{blockchain} publique, \textit{smart contracts}.\\
-Solana est devenue de facto une \textit{blockchain} concurrente à Ethereum et est aujourd'hui 
-la onzième \textit{blockchain} en terme de capitalisation selon l'aggrégateur de marché Coinmarketcap.\\
-Un besoin d'échanger des actifs entre les \textit{blockchains} Ethereum et Solana est apparu, 
+En 2017, une cryptomonnaie adossée à la \textit{\gls{blockchain}} Solana a émergée avec des caractéristiques
+similaires à Ethereum : \textit{\gls{blockchain}} publique, \textit{\gls{smart contract}s}.\\
+Solana est devenue de facto une \textit{\gls{blockchain}} concurrente à Ethereum et est aujourd'hui 
+la onzième \textit{\gls{blockchain}} en terme de capitalisation selon l'aggrégateur de marché Coinmarketcap.\\
+Un besoin d'échanger des \gls{actif}s entre les \textit{\gls{blockchain}s} Ethereum et Solana est apparu, 
 d'où l'introduction en 2020 de la première version de Wormhole.
 Initialement, Wormhole v1 a été concu comme un \textit{bridge} entre Ethereum et Solana.
 Depuis, Wormhole s'est développé au-delà de Solana avec le lancement d'une deuxième version en 2021 
 en tant que protocole générique de passage de messages.\\
-À l'écriture de ce rapport, 22 \cite{wormholeNetwork} \textit{blockchains} sont compatibles avec Wormhole 
+À l'écriture de ce rapport, 22 \cite{wormholeNetwork} \textit{\gls{blockchain}s} sont compatibles avec Wormhole 
 dont : BNBChain, Ethereum, Moonbeam, Polygon, Solana...\\
-Le protocole émet un message à partir d'une \textit{blockchain} source qui est validé par un réseau de 
+Le protocole émet un message à partir d'une \textit{\gls{blockchain}} source qui est validé par un réseau de 
 gardiens.\\ 
-Le message est ensuite envoyé à la \textit{blockchain} cible pour être traité.
+Le message est ensuite envoyé à la \textit{\gls{blockchain}} cible pour être traité.
 
 \subsubsection{VAA (\textit{Verified action approval})}
 
-Lorsqu'un \textit{smart contract} envoie un message \textit{crosschain} comme un verrouillage
-de jetons sur une \textit{blockchain} source et une demande de frappe de jetons sur une 
-\textit{blockchain} cible, celui-ci interargit avec un \textit{core contract} \cite{wormholeCoreContract}.
-Un \textit{core contract} est déployé sur toutes les \textit{blockchains} compatibles avec le protocole 
+Lorsqu'un \textit{\gls{smart contract}} envoie un message \textit{crosschain} comme un verrouillage
+de jetons sur une \textit{\gls{blockchain}} source et une demande de frappe de jetons sur une 
+\textit{\gls{blockchain}} cible, celui-ci interargit avec un \textit{core contract} \cite{wormholeCoreContract}.
+Un \textit{core contract} est déployé sur toutes les \textit{\gls{blockchain}s} compatibles avec le protocole 
 Wormhole. Tout \textit{core contract} est observé par le réseau de gardiens.
 Un message Wormhole est émis grâce à la fonction \textit{publishMessage()} prenant en entrée le \textit{payload}.
 La sortie de cette fonction est un \textit{sequence number}, un numéro d'index unique pour le message.
@@ -37,16 +37,16 @@ et le \textit{payload}.\\ 5 \textit{payloads} peuvent être utilisés dont \text
 \textit{AssetMeta}, attestant les méta-données du jeton.\\
 Le \textit{payload AssetMeta} est obligatoire avant un premier transfert.
 En effet, le \textit{payload Transfer} n'informe pas la chaîne B des meta-données du jeton verrouillé.
-En l'absence de connaissance de ces informations, il n'est pas possible pour la \textit{blockchain} B 
+En l'absence de connaissance de ces informations, il n'est pas possible pour la \textit{\gls{blockchain}} B 
 de frapper la quantité correcte de jetons.\\
-Si l'on souhaite ensuite transférer des jetons depuis une \textit{blockchain} A vers une 
-\textit{blockchain} B, il faut verrouiller les jetons sur A et les frapper sur B.
+Si l'on souhaite ensuite transférer des jetons depuis une \textit{\gls{blockchain}} A vers une 
+\textit{\gls{blockchain}} B, il faut verrouiller les jetons sur A et les frapper sur B.
 D'où l'utilisation du \textit{payload Transfer} contenant des informations comme la 
 quantité de jetons transférés, l'adresse de la chaîne d'origine et de destination, 
 le numéro d'identification de la chaîne d'origine et de destination..
 Une preuve doit être fournie que les jetons sur A sont verrouillés avant que la frappe puisse 
 avoir lieu sur B. La signature des gardiens sur le VAA correspondant est la preuve apportée à 
-la \textit{blockchain} B que le verrouillage a bien été effectué et que la frappe de jetons sur 
+la \textit{\gls{blockchain}} B que le verrouillage a bien été effectué et que la frappe de jetons sur 
 B est légitime.
 
 \subsubsection{Gardiens}
@@ -59,11 +59,11 @@ Le réseau de gardiens est composé de 19 gardiens à parts égales sans chef (\
 Il est conçu pour servir d'oracle à Wormhole et est l'élement le plus critique de l'écosystème.
 Si une majorité de deux tiers ou plus des gardiens signent le même VAA, alors le consensus est atteint : 
 le VAA est automatiquement considéré valide par  tous les contrats Wormhole sur toutes les 
-\textit{blockchains} et le \textit{payload} est actionné. 
+\textit{\gls{blockchain}s} et le \textit{payload} est actionné. 
 Chaque gardien utilise un algorithme de signature à courbe elliptique : ECSDA pour 
 \textit{Elliptic Curve Signature Digital Algorithm}.
 Plus précisément, chaque gardien se réfère à «secp256k1» comme paramètres de la courbe elliptique, 
-aussi utilisé par les \textit{blockchains} Bitcoin et Ethereum.\\
+aussi utilisé par les \textit{\gls{blockchain}s} Bitcoin et Ethereum.\\
 Le modèle de consensus utilisé est une \textit{Proof of Authority} (PoA) avec un système de 
 \textit{multisignature} M/N \cite{wormholeChainswap}, c'est à dire que M clefs parmi N sont nécessaires 
 pour signer un VAA. Ce modèle permet un traitement rapide des transactions et une dispense de participation monétaire, par rapport à la preuve de travail (PoW) et la preuve 

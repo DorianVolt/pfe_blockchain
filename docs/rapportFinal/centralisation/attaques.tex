@@ -1,15 +1,15 @@
 % Auteur Romain TESTUD
 \subsubsection{Mise en contexte}
-Les \textit{blockchains} et leurs protocoles d'échanges ne sont pas exemptes d'attaques informatiques ou bien de défaillances.
+Les \textit{\gls{blockchain}s} et leurs protocoles d'échanges ne sont pas exemptes d'attaques informatiques ou bien de défaillances.
 Ces attaques peuvent cibler des portefeuilles (attaques sur des \textit{hot wallets}\footnote{portefeuille de cryptomonnaies en ligne, à différencier des \textit{Cold Wallets}, des portefeuilles hors lignes}) ou encore des \textit{bridges}. 
-Ce sont ces dernières qui nous ont intéressées dans le cadre de ce projet de recherche sur les échanges inter-blockchains. 
-Les bridges, comme explicité dans la partie dédiée du rapport, sont des protocoles permettant la circulation de données entre deux \textit{blockchains} différentes.\\
-Nous avons, au cours de nos recherches, trouvés de nombreux cas d'attaques sur des protocoles d'échanges inter-blockchains. 
+Ce sont ces dernières qui nous ont intéressées dans le cadre de ce projet de recherche sur les échanges inter-\gls{blockchain}s. 
+Les bridges, comme explicité dans la partie dédiée du rapport, sont des protocoles permettant la circulation de données entre deux \textit{\gls{blockchain}s} différentes.\\
+Nous avons, au cours de nos recherches, trouvés de nombreux cas d'attaques sur des protocoles d'échanges inter-\gls{blockchain}s. 
 De manière à illustrer les types d'attaques possibles et les points critiques de ces systèmes nous allons décrire deux attaques parmi les plus importantes : \textit{Wormhole} et \textit{Nomad}.
 
 \subsubsection{Le cas Wormhole}
 Nous vous avons présenté le protocole \textit{Wormhole} dans la partie précédente. 
-Le 2 Février 2022, une attaque exploite une erreur d'implémentation dans une \textit{Dapp} sur la chaîne Solana \cite{SolMed} \cite{SolRekt}. 
+Le 2 Février 2022, une attaque exploite une erreur d'implémentation dans une \textit{\gls{dApp}} sur la chaîne Solana \cite{SolMed} \cite{SolRekt}. 
 Pour se faire l'attaquant à réussi à contourner la vérification des signatures des gardiens en exploitant
 une correction de bug ayant été publié sur le code source du projet mais n'étant pas encore effective en production.
 Ainsi il à réussi à récupérer l'équivalent de 120 000 \textit{ETH} en \textit{whETH} (\textit{Wormhole ETH}). 
@@ -17,7 +17,7 @@ Lors d'un transfert de jetons d'une chaîne à une autre, plusieurs étapes sont
 Après la formulation de la transaction, une fonction va se charger de récupérer les signatures des gardiens dans un \textit{SignatureSet}\footnote{Ensemble de signatures de gardiens}, ces dernières sont ensuite vérifiées. 
 Pour cela, une fonction nommée \texttt{verify\_signature} va appeler un programme de vérification de Solana permettant l'analyse du \textit{SignatureSet}. 
 L'appel à ce programme se fait de la manière suivante, en utilisant le nom \texttt{sysvarinstruction} \cite{SolGitError} dans la transaction. 
-Dès lors que les signatures sont validées, un \textit{VAA} peut être émis et transmis vers la \textit{blockchain} souhaitée. \\
+Dès lors que les signatures sont validées, un \textit{VAA} peut être émis et transmis vers la \textit{\gls{blockchain}} souhaitée. \\
 La transaction de l'attaquant étant frauduleuse, il n'aurait donc pas pu obtenir de signatures des gardiens. 
 Pour contourner cette étape de récupération des signatures la transaction de l'attaquant était dotée d'un \textit{SignatureSet} correspondant à une transaction antérieure. 
 Seulement, n'étant pas pour la bonne opération cet ensemble ne peut pas être approuvé par \texttt{verify\_signature}. 
@@ -28,10 +28,10 @@ Avec le  \texttt{SignatureSet} ainsi validé, l'attaquant a pu générer un \tex
 La correction de cette faille était contenue dans la mise à jour évoquée en début de paragraphe\cite{SolGitFixed}, permettant la vérification du programme appelé pour la vérification. 
 
 \subsubsection{Le cas Nomad}
-Nomad est un protocole d'interopérabilité entre chaînes permettant de passer des actifs entre deux \textit{blockchains} différentes. 
+Nomad est un protocole d'interopérabilité entre chaînes permettant de passer des \gls{actif}s entre deux \textit{\gls{blockchain}s} différentes. 
 Pour fonctionner, ce protocole fait appel à des applications décentralisées opérant sur les chaînes du réseau. 
-Une première \textit{Dapp} appelée \textit{réplica} est déployée sur les \textit{blockchains} recevant les messages, elle fait office de "boite de réception". 
-Une seconde \textit{Dapp} appelée \textit{home} est déployé sur les \textit{blockchains} émettrices de message. \\
+Une première \textit{\gls{dApp}} appelée \textit{réplica} est déployée sur les \textit{\gls{blockchain}s} recevant les messages, elle fait office de "boite de réception". 
+Une seconde \textit{\gls{dApp}} appelée \textit{home} est déployé sur les \textit{\gls{blockchain}s} émettrices de message. \\
 Le 1\textsuperscript{er} août 2022 une attaque exploitant une erreur d'implémentation sur l'application \textit{Réplica} a engendré une perte de 190 millions de dollars en liquidité \cite{NomadMedium} \cite{NomadRekt}.
 Cette attaque s'est déroulée après le déploiement d'une mise à jour, un moyen de contourner la vérification des signatures du message étant apparu. 
 En analysant l'application \textit{Réplica} après la mise à jour, nous pouvons voir que lors d'une initialisation, la racine des messages, appelée \texttt{\_commitedRoot}, est initialisée à $0$, ce signifiant que le message n'a pas encore été validé. 
@@ -54,7 +54,7 @@ En analysant l'application \textit{Réplica} après la mise à jour, nous pouvon
 \end{lstlisting}
 
 Dans les lignes précédentes nous observons cette affectation : \texttt{confirmAt[\_commitedRoot] = 1}, le rôle de cette ligne est de pré-approuver la racine d'un message. 
-Cette fonction est utilisée pour approuver le premier message lors du déploiement du contrat sur une \textit{blockchain}. 
+Cette fonction est utilisée pour approuver le premier message lors du déploiement du contrat sur une \textit{\gls{blockchain}}. 
 Or ici, la valeur de la racine à été initialisée a $0$, donc cette racine devient une racine valide pour la fonction de vérification des messages. 
 Seulement comme nous l'avons énoncé précédemment, $0$ est la valeur par défaut pour un message n'ayant pas encore été vérifié. 
 Ainsi, lors de l'émission d'un message par la fonction \texttt{process}, tout message non vérifié sera envoyé. 
@@ -81,19 +81,19 @@ Le contrat à été corrigé, dans une mise en ligne datant du 3 Septembre 2022,
 
 
 %\subsubsection{DeFi hacklabs}
-%Lors de nos recherches sur des attaques sur des protocoles inter-blockchains, nous avons découvert \textit{Web3sec}, un groupe de recherche centré sur la sécurité du web3. 
+%Lors de nos recherches sur des attaques sur des protocoles inter-\gls{blockchain}s, nous avons découvert \textit{Web3sec}, un groupe de recherche centré sur la sécurité du web3. 
 %Le groupe met à disposition des ressources indexés sur une page notion (en annexe) :
 %\begin{itemize}
 %    \item Plusieurs dépots \textit{Github} pour étudier les attaques et apprendre les vulnérabilités sur ces types de programmes.
-%    \item \textit{DeFi Hacks Analysis - Root Cause} : Une base de données d'analyses d'attaques sur des solutions et organismes traitant sur des blockchains, les analyses sont sourcées et redirigent vers le dépot \textit{GitHub} de reproduction des attaques.
+%    \item \textit{DeFi Hacks Analysis - Root Cause} : Une base de données d'analyses d'attaques sur des solutions et organismes traitant sur des \gls{blockchain}s, les analyses sont sourcées et redirigent vers le dépot \textit{GitHub} de reproduction des attaques.
 %    \item Un ensemble d'outils utilitaires tels que des outils de debug de transaction, des dashboards ou encore des newletters.
 %\end{itemize}
-%Ces outils nous ont permis d'explorer de nombreuses sources concernant les attaques sur les protocoles interblockchains.
+%Ces outils nous ont permis d'explorer de nombreuses sources concernant les attaques sur les protocoles inter\gls{blockchain}s.
 
 \subsubsection{Contre-mesures et solutions envisageables}
 Comme nous avons pu le voir, de nombreux cas d'attaques sont observables sur des protocoles d'échanges centralisés. 
 Dans la plupart des cas, elles résultent de problèmes d'implémentations et autres oublis dans les codes sources des protocoles utilisés. 
-Cela peut être expliqué par le fait que la \textit{blockchain} est un domaine qui évolue très vite et chaque innovation technique peut rapporter des parts de marché importantes au premier arrivé. 
+Cela peut être expliqué par le fait que la \textit{\gls{blockchain}} est un domaine qui évolue très vite et chaque innovation technique peut rapporter des parts de marché importantes au premier arrivé. 
 De plus, de nombreux acteurs se spécialisent dans ce domaine sans nécessairement avoir une grande culture de la cybersécurité.
 Il se peut donc que des erreurs d'implémentations paraissant évidentes ne soient pas relevés lors de la mise en production. \\ 
 Des moyens de limiter le plus possible l'apparition de tels événements sont néanmoins possibles. 
@@ -101,4 +101,4 @@ Tout d'abord des standards de sécurité pourraient être mis en place afin de d
 Des audits et des analyses de sécurité peuvent être mis en place pendant la production ou après la publication des protocoles, en respectant un cycle de développement "classique".
 %Nous pouvons aussi nous questionner quant à l'implication du tier de confiance dans l'apparition de ces failles. 
 %En effet, les attaques les plus importantes ont comme point d'entrée une faille dans la structure de l'intermédiaire. 
-%Cette menace constante d'attaques a mené à des recherches visant à soutirer ce tiers des échanges inter-blockchain. Ce menant aux échanges décentralisés.
+%Cette menace constante d'attaques a mené à des recherches visant à soutirer ce tiers des échanges inter-\gls{blockchain}. Ce menant aux échanges décentralisés.

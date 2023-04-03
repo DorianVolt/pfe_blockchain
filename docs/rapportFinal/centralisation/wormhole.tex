@@ -26,7 +26,6 @@ Combiné à l'adresse du contrat de l'émetteur et à l'identifiant de la chaîn
 correspondant peut être récupéré auprès d'un nœud du réseau de gardiens.\\
 Un message Wormhole est vérifié grâce à la fonction \textit{parseAndVerifyVAA()} prenant en entrée le message.
 Selon la validité de l'entrée, la fonction retourne en sortie le \textit{payload} ou une exception.
-\newpage
 
 VAA \cite{wormholeVAA} est la primitive de messagerie de base de Wormhole. Un VAA contient une en-tête 
 ainsi qu'un \textit{body}. L'en-tête contient l'index des gardiens ayant signés le message et la collection des signatures.
@@ -51,7 +50,7 @@ B est légitime.
 
 \subsubsection{Gardiens}
 
-Un gardien \cite{wormholeGuardian} est une autorité de confiance qui a comme de rôle valider 
+Un gardien \cite{wormholeGuardian} est une autorité de confiance qui a comme rôle de valider 
 (par une signature) le \textit{payload} contenu dans un VAA.
 Comme évoqué précédemment, le réseau de gardiens observe tous les messages \textit{crosschain} via la 
 surveillance des \textit{core contracts}.
@@ -74,11 +73,10 @@ devenu populaire grâce à l'absence de tels autorités. Wormhole justifie la d�
 système \cite{wormholeGuardian} par la présence de plusieurs parties (et non d'un seul) dans le contrôle du réseau.
 Selon notre analyse, la décentralisation résulte de l'absence d'un ou plusieurs tier(s) de confiance lorsque deux parties 
 souhaitent réaliser une transaction.
-\newpage
 
 \subsubsection{Relais}
 
-Un relai \cite{wormholeRelayer} est un processus qui délivre un ou plusieurs VAA(s) à une destination.
+Un relai \cite{wormholeRelayer} est un processus qui délivre un VAA vers une destination.
 Les relais ne sont ni de confiance, ni privilégiés, ils écoutent directement le réseau de gardiens 
 via l'intermédiaire d'un processus espion. Ces relais ne peuvent pas compromettre l'intégrité d'un VAA 
 car une altération serait détectée lors du processus de vérification des signatures. Cependant, il n'est 

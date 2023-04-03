@@ -10,7 +10,7 @@ Ils sont des échanges d’\gls{actif}s internes au réseau et ont donc leurs pr
     \label{fig:offchain}
 \end{figure}
 Les transactions \textit{off-chain} sont confirmées en dehors du réseau principal de la \textit{\gls{blockchain}}, ce qui entraîne souvent un processus moins cher et plus rapide pour l’utilisateur. 
-Tout cela se fait dans un objectif bien précis qui est de garder le maximum de sécurité/fiabilité de la \textit{\gls{blockchain}} mère tout en essayant d'améliorer la vitesse d'échange et les frais de transaction.
+Tout cela se fait dans un objectif bien précis qui est de garder le maximum de sécurité et de fiabilité de la \textit{\gls{blockchain}} mère tout en essayant d'améliorer la vitesse d'échange et les frais de transaction.
 Afin d'illustrer comment fonctionne les échanges \textit{off-chain} nous allons nous concentrer sur une implémentation en particulier: le réseau Lightning. 
 
 \subsubsection{Le réseau lightning}
@@ -45,7 +45,7 @@ Alice va donc ouvrir un portefeuille multi-signature\footnote{Portefeuille qui n
 Ensuite ils vont effectuer leurs transactions dans ce portefeuille qui va être mis à jour à chaque transaction.\\ \\ 
 Il est fondamental de noter que chaque transaction invalide les précédentes (à l'exception de la toute première). Lorsque l'un des participants souhaite terminer l'échange il va publier sur la \textit{\gls{blockchain}} Bitcoin la dernière transaction effectuée.
 Ce mécanisme de transaction intermédiaire est mis en place afin d'éviter qu'un des deux acteurs de l'échange ne puisse "s'échapper" de l'échange, car chacune des parties va signer avec sa clef privée la dernière transaction. \\
-Aussi tous ces échanges se passent à l'intérieur du réseau Lightning, la \textit{\gls{blockchain}} principale n'a donc aucune idée du nombre exact de transactions intermédiaires effectuées puisque seule une transaction sera envoyer sur la \textit{\gls{blockchain}} principale. 
+Aussi tous ces échanges se passent à l'intérieur du réseau Lightning, la \textit{\gls{blockchain}} principale n'a donc aucune idée du nombre exact de transactions intermédiaires effectuées puisque seule une transaction sera envoyée sur la \textit{\gls{blockchain}} principale. 
 Cela permet d'éviter d'engendrer des frais de transactions inutiles ou bien de congestionner la \textit{\gls{blockchain}} principale.\\ \\
  Enfin il existe aussi une autre caractéristique intéressante du réseau Lightning: le \textit{channel hopping}. 
 Cette propriété permet de mettre en place une transitivité entre les parties du réseau. Par exemple si Alice a déjà échangé avec Bob et Bob à déjà échangé avec Carol alors Alice pourra échanger avec Carol et vice-versa. 

@@ -1,79 +1,82 @@
 % Auteur : Louis de Campou
 \begin{frame}{Wormhole}
-Protocole de passage de messages qui connecte 22 blockchains dont Ethereum et Solana.
-\newline
-
-\begin{itemize}
-    \item Gardiens
-    \item Verified Action Approval (VAA)
-    \item Payloads
-\end{itemize}
+    Version 1 : \textit{Bridge} entre Ethereum et Solana
+    \newline 
+    \newline
+    Version 2 : Protocole générique de passage de messages qui connecte 22 \textit{blockchains}.
+    \newline
+    
+    \begin{itemize}
+        \item Gardiens
+        \item VAA (\textit{verified action approval})
+        \item \textit{Payloads}
+    \end{itemize}
 \end{frame}
-
+    
 \begin{frame}{Wormhole : Gardiens}
-
-Un gardien est une autorité de confiance qui a comme rôle d'observer et de signer un message.\newline
-
-    \begin{block}{Caractéristiques du réseau de gardiens}
-        \begin{itemize}
-            \item Sans leader
-            \item 19 gardiens à parts égales
-            \item Preuve d'autorité (PoA)
-            \item Multisignature (m/n)
-            \item Le consensus est atteint lorsque 2/3 des gardiens ont signé le message
-        \end{itemize}
-    \end{block}
+    
+    Un gardien est une autorité de confiance qui a comme rôle de valider un message.\newline
+    
+        \begin{block}{Caractéristiques du réseau de gardiens}
+            \begin{itemize}
+                \item Sans leader
+                \item 19 gardiens à parts égales
+                \item Preuve d'autorité (PoA)
+                \item \textit{Multisignature} (M/N)
+                \item Le consensus est atteint lorsque 2/3 des gardiens ont signé le message
+            \end{itemize}
+        \end{block}
 \end{frame}
-
-\begin{frame}{Wormhole : Verified Action Approval (VAA)}
-
-Primitive de messagerie de base de Wormhole
-\newline
-
-En-tête :
-\begin{itemize}
-    \item Index de l'ensemble des gardiens
-    \item Nombre de signatures stockées
-    \item Collection des signatures ECSDA (secp256k1)
-\end{itemize}
-
-Corps : 
-\begin{itemize}
-    \item L'ID de la chaîne Wormhole du contrat émetteur
-    \item L'adresse du contrat émetteur
-    \item Le payload
-\end{itemize}
+    
+\begin{frame}{Wormhole : VAA}
+    
+    Primitive de messagerie de base de Wormhole
+    \newline
+    
+    En-tête :
+    \begin{itemize}
+        \item Index de l'ensemble des gardiens
+        \item Nombre de signatures stockées
+        \item Collection des signatures ECSDA (secp256k1)
+    \end{itemize}
+    
+    Corps : 
+    \begin{itemize}
+        \item L'ID de la chaîne Wormhole du contrat émetteur
+        \item L'adresse du contrat émetteur
+        \item Le \textit{payload}
+    \end{itemize}
 \end{frame}
-
-\begin{frame}{Wormhole : Payloads}
-
-Charges utiles spécifiques attachées à un VAA depuis une chaîne source pour indiquer à la chaîne cible comment traiter le message Wormhole après vérification.\newline
-
-5 payloads au total dont :
-\begin{itemize}
-    \item Transfer (déclenche la libération de jetons verrouillés) 
-    \item AssetMeta (atteste les méta-données de l'actif, obligatoire avant un premier transfert)
-\end{itemize}
+    
+\begin{frame}{Wormhole : \textit{Payloads}}
+    
+    Charges utiles spécifiques attachées à un VAA depuis une chaîne source pour indiquer à la chaîne cible comment traiter le message Wormhole après vérification.\newline
+    
+    5 payloads au total dont :
+    \begin{itemize}
+        \item \textit{AssetMeta} : informe des méta-données de l'actif verrouillé, obligatoire avant un premier transfert
+        \item \textit{Transfer} : déclenche la libération de jetons verrouillés
+    \end{itemize}
 \end{frame}
-
-\begin{frame}{Wormhole : Payload - Transfer}
-
-Pour transférer des jetons des chaînes A à B, il y a verrouillage des jetons sur la chaîne A puis on frappe ("mint") sur la chaîne B.\newline
-
-\begin{itemize}
-    \item ID de la charge utile
-    \item Montant du transfert
-    \item L'adresse sur la chaîne d'origine 
-    \item ID de la chaîne d'origine
-    \item L'adresse sur la chaîne de destination
-    \item ID de la chaîne de destination
-\end{itemize} 
+    
+\begin{frame}{Wormhole : \textit{Payload} - \textit{Transfer}}
+    
+    Pour transférer des jetons des chaînes A à B, il y a verrouillage des jetons sur la chaîne A puis on frappe les jetons sur la chaîne B.\newline
+    
+    \begin{itemize}
+        \item ID du \textit{payload}
+        \item Montant du transfert
+        \item L'adresse sur la chaîne d'origine 
+        \item ID de la chaîne d'origine
+        \item L'adresse sur la chaîne de destination
+        \item ID de la chaîne de destination
+    \end{itemize} 
 \end{frame}
-
+    
 \begin{frame}{Wormhole : Conclusion}
-
-\begin{itemize}
-    \item Le réseau de gardiens est l'élement le plus critique de l'écosystème mais aussi le plus opaque
-    \item Wormhole se dit décentralisé mais ne l'est pas selon notre définition
-\end{itemize}
+    
+    \begin{itemize}
+        \item Le réseau de gardiens est l'élement le plus critique de l'écosystème mais aussi le plus opaque
+        \item Wormhole justifie sa décentralisation par la présence de plusieurs parties dans le contrôle du réseau
+    \end{itemize}
 \end{frame}

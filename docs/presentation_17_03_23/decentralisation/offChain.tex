@@ -1,0 +1,93 @@
+\begin{frame}
+	\frametitle{Les échanges \textit{off chain}}
+	\begin{itemize}
+		\item Ils s'effectuent en dehors de la blockchain principale $\Rightarrow$ \textit{layer 2}
+		\item Permettent d'avoir un compromis avec la blockchain principale
+		\item Les chaines ne sont pas voués à être fusionner avec la blockchain mère
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Les échanges \textit{off chain}: Visualisation}
+	\begin{figure}[h!]
+		\centering
+		\stackunder{\includegraphics[scale=0.35]{decentralisation/offchain.png}}
+		{\scriptsize Source: \url{www.cryptoencyclopedie.com}}
+		\caption{Architecture \textit{off-chain}}
+		\label{fig:offchain}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Exemple d'échange \textit{off chain}: Le réseau Lightning}
+	\begin{itemize}
+		\item Couche secondaire de la blockchain Bitcoin \newline
+		\item Permet de faire des transactions en dehors de la blockchain principale $\Rightarrow$ off-chain \newline
+		\item Échanges par canaux bidirectionnel
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Le réseau Lightning (Lightning Network) - Fonctionnement 2/2}
+	\begin{figure}[h!]
+		\stackunder{
+			\includegraphics[scale = 0.3 ]{decentralisation/Procedures-of-Lightning-network.png}  }
+		{\scriptsize Source: \url{https://issam.ma/jekyll/update/2022/03/01/bitcoin-must-die-5.html}}
+
+		\caption{Le réseau Lightning par rapport a la \textit{blockchain} Bitcoin principale}
+
+	\end{figure}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Le réseau Lightning (Lightning Network) - Avantages}
+	\begin{itemize}
+		\item Aucune limite sur le nombre de transactions par seconde sur le réseau
+		      \newline
+		\item Des transactions instantanées. Plus d’attente de confirmation par les mineurs
+		      \newline
+		\item Des frais de transaction extrêmement faibles ouvrant la voie aux micro-transactions
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Implémentation du MIT}
+	Implémentaion des swaps atomiques sur le réseau Lightning par le MIT. Les objectifs sont :
+	\newline
+	\begin{itemize}
+		\item Permettre d'utiliser le réseau Lightning sur des blockchains différentes.
+		\item Permettre des échanges sur des blockchains non monétaires \footnote{blockchains d'informations, de données,etc...}.
+		\item Proposer une interface pour des échanges cross-chain.
+	\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Implémentation du MIT - Nouvelles commandes}
+	Dans le but de faciliter les échanges des commandes ont été crée:
+	\newline
+	\begin{itemize}
+		\item \textit{Price}
+		\item \textit{Compare}
+		\item \textit{Exchange}
+		\item \textit{Respond}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Implémentation du MIT - Limitations}
+
+
+	\begin{itemize}
+		\item Il n'y a pas de support de channel hopping \footnote{Transitivité des échanges entres plusieurs participants.} malgré l'utilisation du réseau Lightning.
+		      \begin{itemize}
+			      \item Cela implique des problème de mise a l'échelle.
+		      \end{itemize}
+		\item Il n'y a pas de vérification sur les valeurs inscrites sur les chaines non monétaires.
+	\end{itemize}
+\end{frame}

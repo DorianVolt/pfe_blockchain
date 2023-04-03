@@ -1,12 +1,21 @@
 % Auteur : Romain TESTUD
-\begin{frame}{Plate-formes d'échanges Centralisés}
-    \begin{block}{Plate-formes privées d'échanges de données sur blockchain}
+\begin{frame}{Les plate-formes d'échanges centralisés}
+    \begin{block}{La solution la plus répandue}
         \begin{itemize}
-            \item Possibilité d'échanges inter-blockchains par l'utilisation de bridges.
-            \item Présence d'un intermédiaire entre les utilisateurs.
+            \item Achat / Vente / Échange de crypto-actifs.
+            \item Intermédiaire entre les utilisateurs.
         \end{itemize}
     \end{block}
-\pause
+    \pause
+    \begin{block}{Interopérabilité ?}
+        \begin{itemize}
+            \item Utilisation de bridges inter-blockchains.
+            \item Possibilité d'échanges entre tokens.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Fonctionnement}    
     \begin{block}{Méthode de l'Order Book}
         \begin{itemize}
             \item Dépôt des fonds dans un porte monnaie de la plate-forme. 
@@ -14,38 +23,42 @@
             \item Échange des IOU contre les token demandés.
         \end{itemize}
     \end{block}
-    \footnotetext{IOU (I Owe You) : Reconnaissance de dette de la plate-forme envers l'utilisateur}
-    %L'utilisateur place un ordre d'achat, la plateforme trouve un vendeur, l'échange s'effectue
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 0.45]{centralisation/img_plateformes/achat-vente.png}
+        \label{fig:Order}
+        \caption{Modélisation d'un Achat-Vente}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Avantages et inconvénients}
     \begin{block}{Avantages}
         \begin{itemize}
-            \item Facile d'utilisation
-            \item Fiable
+            \item Diverses fonctionnalités.
+            \item Utilisation simplifiée.
         \end{itemize}
     \end{block}
-\pause
-\begin{block}{Inconvénients}
-    \begin{itemize}
-        \item Sécurité de la plate-forme.
-        \item L'utilisateur cède la gestion de ses données.
-        \item Fonctionnement interne opaque.
-    \end{itemize}
-    $\Rightarrow$ Confiance utilisateur/plate-forme.
-\end{block}
+    \pause
+    \begin{block}{Inconvénients}
+        \begin{itemize}
+            \item Sécurité et fiabilité relative au tiers.
+            \item Gestion des données utilisateurs par le tiers.
+            \item Fonctionnement interne opaque.
+        \end{itemize}
+        $\Rightarrow$ Confiance utilisateur/plate-forme.
+    \end{block}
 \end{frame}
 
-\begin{frame}{Fonctionnement opaque}
-    \begin{itemize}
-        \item Pas ou peu de documentation technique.
-        \item Code inaccessible.
-    \end{itemize}
-    \pause
-    \begin{block}{Ce que l'on sait}
-        \begin{itemize}
-            \item Fonctionnement en Order Book.
-            \item utilisation de bridges inter-blockchains.
-        \end{itemize}
-    \end{block}
-\end{frame}
+%\begin{frame}{Fonctionnement opaque}
+%    \begin{itemize}
+%        \item Pas ou peu de documentation technique.
+%        \item Code inaccessible.
+%    \end{itemize}
+%    \pause
+%    \begin{block}{Ce que l'on sait}
+%        \begin{itemize}
+%            \item Fonctionnement en Order Book.
+%            \item utilisation de bridges inter-blockchains.
+%        \end{itemize}
+%    \end{block}
+%\end{frame}

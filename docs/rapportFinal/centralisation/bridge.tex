@@ -10,40 +10,28 @@ Il existe trois différentes manières de déplacer les \gls{actif}s en tant que
 
 \subsubsection{Mécanisme de vérification}
 
-Comme évoqué précédemment, deux \textit{\gls{blockchain}s} ne peuvent pas communiquer directement entre elles, par conséquent lors de l’utilisation d’un \textit{bridge} les deux chaînes ne se connaissent pas et ont seulement connaissance des évènements se produisant sur leur chaîne respectives. Il est donc nécessaire d’établir une relation de confiance entre les deux chaînes pour qu’elles puissent accepter de communiquer. Pour cela, les \textit{bridges} emploient un mécanisme utilisant des vérificateurs. Un vérificateur est une autorité de confiance qui vérifie et valide les transactions sur une \textit{\gls{blockchain}}. \\
+Comme évoqué précédemment, deux \textit{\gls{blockchain}s} ne peuvent pas communiquer directement entre elles, par conséquent lors de l’utilisation d’un \textit{bridge} les deux chaînes ne se connaissent pas et ont seulement connaissance des évènements se produisant sur leur chaîne respectives. Il est donc nécessaire d’établir une relation de confiance entre les deux chaînes pour qu’elles puissent accepter de communiquer. Pour cela, les \textit{bridges} emploient un mécanisme utilisant des vérificateurs. Un vérificateur est une entité connectée en tant que noeud au réseau de la \textit{blockchain}. Ce dernier agit comme autorité de confiance, vérifiant et validant les transactions sur cette dernière. Un noeud d'une \textit{blockchain} est un ordinateur connecté au réseau de cette dernière. Un \textit{client} est un logiciel permettant de transformer un ordinateur en noeud. \cite{EthereumNodeClient} \\
 
 
 Il existe un grand nombre de \textit{bridges}, chacun avec leurs propres spécificités mais ils peuvent généralement être séparés en deux catégories les \textit{Trusted \gls{blockchain} Bridge} et les \textit{Trustless \gls{blockchain} Bridge}. \\
 
 
-Les \textit{Trusted Bridges} sont vérifiés de manière externe car ils utilisent un ensemble de vérificateurs tiers pour transmettre des données entre les chaînes. Ils ont pour avantage leur rapidité, leur moindre coût et la facilité d'échange avec tous les types de données acceptés par les \textit{\gls{blockchain}s}. Cependant cela est au détriment de la sécurité puisqu'elle dépend ici des vérificateurs du \textit{bridge} en perdant la meilleure sécurisation des vérificateurs de la chaîne.\cite{EthereumBridges}
-% Les \textit{Trusted Bridges} sont vérifiés de manière externe car ils utilisent un ensemble de vérificateurs tiers pour transmettre des données entre les chaînes. Ils ont pour avantage leur rapidité, leur moindre coût et la facilité d'échange avec tous les types de données acceptés par les \textit{blockchains}. Cependant cela est au détriment de la sécurité puisqu'elle dépend ici des vérificateurs du \textit{bridge} en perdant la meilleure sécurisation de la chaîne source.\cite{EthereumBridges}
+Les \textit{Trusted Bridges} sont vérifiés de manière externe car ils utilisent un ensemble de vérificateurs tiers pour transmettre des données entre les chaînes. Ils ont pour avantage leur rapidité, leur moindre coût et la facilité d'échange avec tous les types de données acceptés par les \textit{\gls{blockchain}s}. Cependant les vérificateurs externes sont moins fiables que ceux de la chaîne.\cite{EthereumBridges}
 
-Les \textit{Trustless Bridges} sont désignés comme \textit{trustless} car ils dépendent des chaînes dont ils font l’intermédiaire pour transférer des données ou des \gls{actif}s. Par conséquent leur niveau de sécurité est égal à celui des \textit{\gls{blockchain}s} et il n’est pas nécessaire de faire confiance à un ensemble de vérificateurs tiers (contrairement aux autres \textit{bridges}). Pour cette raison, ils sont reconnus comme étant plus fiables que les \textit{trusted bridges}.\cite{EthereumBridges}\\
+Les \textit{Trustless Bridges} sont désignés comme \textit{trustless} car ils dépendent des chaînes dont ils font l’intermédiaire pour transférer des données ou des \gls{actif}s. Par conséquent leur niveau de fiabilité est égal à celui des \textit{\gls{blockchain}s} et il n’est pas nécessaire de faire confiance à un ensemble de vérificateurs tiers (contrairement aux autres \textit{bridges}). Pour cette raison, ils sont reconnus comme étant plus fiables que les \textit{trusted bridges}.\cite{EthereumBridges}\\
 
 
  Les \textit{bridges} peuvent également être distingués en fonction de leur type de vérification. Les plus connus sont la vérification native, externe et locale.\cite{InteroperabilityBhuptani} \\
 
-La vérification native commence par l’utilisation d’un \textit{light client}\cite{NomadDocsNative}. Un client léger est un logiciel permettant de connecter les noeuds des \textit{\gls{blockchain}s} entre elles. Il est codé comme un \textit{\gls{smart contract}} puis est employé de la chaîne de l'expéditeur vers la machine virtuelle de la chaîne destinataire. Si les vérificateurs de données de la chaîne de l'expéditeur sont honnêtes (c’est-à-dire qu’ils n’agissent pas de manière malveillant) alors le client léger est vu comme véridique par la chaîne réceptionnant les \gls{actif}s ou données et peut être utilisé de manière bilatérale.
- Un avantage de cette solution est qu’elle est reconnue comme étant celle reposant le moins sur la confiance parmi celles existantes car les chaînes ne se fient qu’à leurs propres vérificateurs pour effectuer le \textit{bridge}. Un autre bénéfice de ce mécanisme est le fait qu’il n’utilise pas de vérificateurs tiers entre les deux \textit{\gls{blockchain}s} et donc la sécurité dépend de la sécurité des \textit{\gls{blockchain}s} elles-même (ce qui est avantageux si elles sont forcément sécurisées comme la chaîne d’\gls{Ethereum} par exemple).
- Un désavantage de cette méthode est que le client léger doit être adapté aux consensus des chaînes auquelles il est attaché ce qui le rend inutilisable avec des chaînes différentes. Le client léger nécessite également de la maintenance en cas de changement des règles consensus (utilisées pour valider les transactions). Un autre inconvénient découlant du fait que le client léger est programmé de manière spécifique est que ce dernier n’est donc pas réutilisable. \\
- \begin{figure}[h!]
-    \centering
-\includegraphics[scale=0.50]{centralisation/imagesBridges/DiagrammeVerifNative.png}
-\caption{Représentation de la vérification native.}
-\label{fig:NativeVerif}
-\end{figure}
+La vérification native commence par l’utilisation d’un noeud léger. \cite{NomadDocsNative} Un noeud léger aussi connu sous le nom de client léger est un logiciel permettant de connecter les noeuds des \textit{\gls{blockchain}s} entre elles. Il est codé comme un \textit{\gls{smart contract}} puis est employé de la chaîne de l'expéditeur vers la machine virtuelle de la chaîne destinataire. Si les vérificateurs de données de la chaîne de l'expéditeur agissent de manière correcte alors le noeud léger est vu comme véridique par la chaîne réceptionnant les \gls{actif}s ou données et peut être utilisé de manière bilatérale.
+ Un avantage de cette solution est qu’elle est reconnue comme étant celle reposant le moins sur la confiance parmi celles existantes car les chaînes ne se fient qu’à leurs propres vérificateurs pour effectuer le \textit{bridge}. Un autre bénéfice de ce mécanisme est le fait qu’il n’utilise pas de vérificateurs tiers entre les deux \textit{\gls{blockchain}s} et donc la sécuté du réseau dépend des \textit{\gls{blockchain}s} elles-même (ce qui est avantageux car elles sont robutes et préparées aux attaques comme la chaîne d’Ethereum par exemple).
+ Un désavantage de cette méthode est que le noeud léger doit être adapté aux consensus des chaînes auquelles il est attaché ce qui le rend inutilisable avec des chaînes différentes. Le noeud léger nécessite également de la maintenance en cas de changement des règles consensus (utilisées pour valider les transactions). Un autre inconvénient découlant du fait que le noeud léger est programmé de manière spécifique est que ce dernier n’est donc pas réutilisable. \\
 
 \pagebreak
 
 La vérification externe consiste en un ensemble de vérificateurs n’appartenant pas aux \textit{\gls{blockchain}s} relayant les données entre les deux extrémités du \textit{bridge}. Pour se faire, un certains nombre de vérificateurs doivent signer un message provenant de la chaîne d’envoi pour que le chaîne destinataire le reconnaisse comme valide. Par exemple, pour le \textit{bridge} \gls{Wormhole} 13 vérificateurs sur 19 doivent avoir signé\cite{NomadDocsExternal}. Ce concept est une primitive cryptographique (algorithme cryptographique de bas niveau servant de base à un système de sécurité informatique) nommée le système de signature à seuil (désignée par TSS pour \textit{Threshold Signature Scheme})\cite{BinanceTSS}. 
 Contrairement à la vérifications native, les \textit{bridges} vérifiés de manière externe sont faciles à développer, peuvent être réutilisés sans problèmes et leur maintenance coûte peu. Le désavantage conséquent de cette méthode est que la sécurité dépend des vérificateurs tiers du pont ce qui peut fragiliser le système car ils sont généralement moins sécurisés que ceux des \textit{\gls{blockchain}s}. \\
-\begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.50]{centralisation/imagesBridges/DiagrammeVerifExterne.png}
-    \caption{Représentation de la vérification externe.}
-    \label{fig:ExternalVerif}
-\end{figure}
+
 
 \begin{figure}[h!]
     \centering
@@ -51,28 +39,21 @@ Contrairement à la vérifications native, les \textit{bridges} vérifiés de ma
 \includegraphics[scale=0.60]{centralisation/imagesBridges/LightClient.png}}
     {\scriptsize
             Source: \url{https://docs.nomad.xyz/the-nomad-protocol/verification-mechanisms/native-verification}}
-    \caption{Mécanisme utilisant un Light Client.}
+    \caption{Mécanisme utilisant un noeud léger.}
     \label{fig:LightClient}
 \end{figure}
 
 \pagebreak
 
 La vérification externe consiste en un ensemble de vérificateurs n’appartenant pas aux \textit{\gls{blockchain}s} relayant les données entre les deux extrémités du \textit{bridge}. Pour se faire, un certains nombre de vérificateurs doivent signer un message provenant de la chaîne d’envoi pour que le chaîne destinataire le reconnaisse comme valide. Par exemple, pour le \textit{bridge} Wormhole 13 vérificateurs sur 19 doivent avoir signé\cite{NomadDocsExternal}. Ce concept est une primitive cryptographique (algorithme cryptographique de bas niveau servant de base à un système de sécurité informatique) nommée le système de signature à seuil (désignée par TSS pour \textit{Threshold Signature Scheme})\cite{BinanceTSS}. 
-Contrairement à la vérifications native, les \textit{bridges} vérifiés de manière externe sont faciles à développer, peuvent être réutilisés sans problèmes et leur maintenance coûte peu. Le désavantage conséquent de cette méthode est que la sécurité dépend des vérificateurs tiers du pont ce qui peut fragiliser le système car ils sont généralement moins sécurisés que ceux des \textit{\gls{blockchain}s}. \\
-\begin{figure}[h!]
-    \centering
-\includegraphics[scale=0.70]{centralisation/imagesBridges/DiagrammeVerifExterne.png}
-\caption{Représentation de la vérification externe.}
-\label{fig:ExternalVerif}
-\end{figure}
+Contrairement à la vérifications native, les \textit{bridges} vérifiés de manière externe sont faciles à développer, peuvent être réutilisés sans problèmes et leur maintenance coûte peu. Le désavantage conséquent de cette méthode est que le bon fonctionnement du système dépend des vérificateurs tiers ce qui peut le fragiliser car ils sont généralement moins fiables que ceux des \textit{\gls{blockchain}s}. \\
 
-\pagebreak
-Il est intéressant de noter que les \textit{\gls{blockchain}s} ont également leur propre ensemble de vérificateurs sous la forme de vérificateur de données. Ces derniers sont utilisés lors de la vérification locale. Lors de la vérification locale, les chaînes se vérifient entre elles en envoyant un vérificateur en tant que représentant.
+Il est intéressant de noter que les \textit{\gls{blockchain}s} ont également leur propre ensemble de vérificateurs sous la forme de vérificateur de données. Ces derniers sont utilisés lors de la vérification locale. Lors de la vérification locale, les chaînes se vérifient entre elles en utilisant un vérificateur en tant que représentant.
 
 \begin{figure}[h]
     \centering
-\includegraphics[scale=0.70]{centralisation/imagesBridges/DiagrammeVerifLocale.png}
-\caption{Représentation de la vérification locale.}
+\includegraphics[scale=0.60]{centralisation/imagesBridges/DiagrammeResumeVerif.png}
+\caption{Résumé des types de vérification. (locale, native et externe)}
 \label{fig:LocaleVerif}
 \end{figure}
 
@@ -90,13 +71,11 @@ Comme vu dans la section présentant les différentes méthodes d’échange des
 
 Les \textit{\gls{blockchain} Bridges} sont devenus un outil indispensable des échanges centralisés très rapidement, mais il ne faut pas oublier que ces protocoles sont relativement récents. Créés par de petites \gls{blockchain}s comme Syscoin et NEAR Protocol dans le but de rentre leurs chaînes interopérables avec les applications décentralisées d’\gls{Ethereum}, les premiers bridges datent de 2020\cite{Bitstamp}. Par conséquent, nous ne connaissons pas encore le comportement des \textit{bridges} lorsqu’ils font face à des scénarios sortants de la norme comme des attaques réseaux, un retour en arrière sur les transactions d’une \gls{blockchain} (souvent désigné par le terme \textit{rollback}) ou bien pendant une congestion du réseau. Ces zones d’incertitudes peuvent donc être une source de risques. \\
 
-Un autre facteur portant atteinte à la sécurité des \textit{bridges} est le fait que certains ont leur code en \textit{open source} dans une démarche de transparence et d’envie d’instaurer une relation de confiance avec les utilisateurs. Malheureusement cela donne l’occasion aux personnes malveillantes de mieux comprendre le fonctionnement du \textit{bridge} et donc de pouvoir l’attaquer. L’attaque \gls{Wormhole} est un exemple connu d’attaque exploitant cette faiblesse.
-
 \begin{figure}[h!]
     \centering
 \includegraphics[scale=0.30]{centralisation/imagesBridges/GraphLossesBridges.png}
     {\scriptsize
-            Source: \url{https://www.treehouse.finance/insights/\gls{blockchain}-and-interoperability-globalization-3-0}}
+            Source: \url{https://www.treehouse.finance/insights/blockchain-and-interoperability-globalization-3-0}}
     \caption{Pertes en millions de dollars des bridges les plus connus.}
     \label{fig:GraphBridges}
 \end{figure}
@@ -105,12 +84,12 @@ Un autre facteur portant atteinte à la sécurité des \textit{bridges} est le f
 
 Malgré l’existence de plus d’une centaine de \textit{bridges} différents, les développeurs et les utilisateurs voulant utiliser un \textit{bridge} doivent faire des concessions lors de leur choix vis-à-vis des trois notions de \textit{trustless}, d’extensibilité (\textit{extensible}) et de généralisation (\textit{generalizable}).\\
 
-Le mot trustless peut être traduit par «sans confiance» faisant allusion à la sécurité. Si un \textit{bridge} est caractérisé comme \textit{trustless}, cela signifie que celui-ci possède un niveau équivalent à celui d’une ou des chaînes sous-jacentes.  La notion  d’extensibilité signifie que le \textit{bridge} est compatible avec un grand nombre de chaînes.
+Le mot trustless peut être traduit par «sans confiance». Si un \textit{bridge} est caractérisé comme \textit{trustless}, cela signifie que celui-ci possède un niveau équivalent à celui d’une ou des chaînes sous-jacentes, il est donc pas nécessaire de faire confiance à une entité externe aux \textit{blockchains}.  La notion  d’extensibilité signifie que le \textit{bridge} est compatible un grand nombre de chaînes.
 Un \textit{bridge} respecte la notion de généralisation s’il est capable d'échanger n’importe quel type de données accepté par les deux chaînes.\\
 
-Pour illustrer ces termes, il est possible de les appliquer aux types de vérification appartenant aux \textit{bridges}. La vérification locale respecte les notions d’extensibilité et de \textit{trustless} puisque qu'elle est applicable sur tous les \textit{bridges} peu importe les chaînes reliées et la sécurité dépend de la chaîne la plus faible donc la sécurité du \textit{bridge} est bien équivalente à l’une des chaînes.
-La vérification native ne respecte pas la notion d’extensibilité car le \textit{bridge} n’est pas réutilisable. Néanmoins elle respecte la notion de généralisation parce qu’elle est codée de manière spécifique aux \textit{\gls{blockchain}s} reliées au \textit{bridge}. Le critère basé sur la notion \textit{trustless} est également rempli étant donné que le niveau de sécurité dépend des vérificateurs des chaînes.
-La vérification externe ne respecte pas la notion de \textit{trustless} cependant elle est fortement extensible et générale vis-à-vis des données. \cite{NgraveVerif}
+Pour illustrer ces termes, il est possible de les appliquer aux types de vérification appartenant aux \textit{bridges}. La vérification locale respecte les notions d’extensibilité et de \textit{trustless} puisque qu'elle est applicable sur tous les \textit{bridges} peu importe les chaînes reliées et le niveau de fiabilité dépend de la chaîne la plus faible.
+La vérification native ne respecte pas la notion d’extensibilité car le \textit{bridge} n’est pas réutilisable. Néanmoins elle respecte la notion de généralisation parce qu’elle est codée de manière spécifique aux \textit{\gls{blockchain}s} reliées au \textit{bridge}. Le critère basé sur la notion \textit{trustless} est également rempli étant donné que le niveau de fiabilité dépend des vérificateurs des chaînes.
+La vérification externe ne respecte pas la notion de \textit{trustless} cependant elle est fortement extensible et générale vis-à-vis des données. \cite{Ngrave}
 
  Suite au paragraphe précédent, il est possible de constater que les \textit{bridges} interopérables ne respectent que deux des trois notions énoncées. Ce problème est connu sous le nom de trilemme de l’interopérabilité. 
 
@@ -119,26 +98,26 @@ La vérification externe ne respecte pas la notion de \textit{trustless} cependa
 Une solution proposée pour résoudre ce trilemme est un \textit{optimistic bridge}(\textit{bridge} optimiste) nommé vis-à-vis de sa vérification portant le même nom\cite{OptimisticBhuptani}. En effet, contrairement aux \textit{bridges} vérifiés de manière native, locale ou externe, la vérification optimiste dépend de l’utilisation d’une latence lors de la confirmation du transfert des \gls{actif}s entre les \textit{\gls{blockchain}s}. Cela priorise donc la sécurité au détriment de la vivacité, puisque les transactions sont par conséquent plus lentes mais sécurisées car le \textit{bridge} est \textit{trustless}. \\
 
 Voici plus en détails le déroulement du processus de vérification optimiste d’un \textit{bridge}.
-Ceci commence par l’envoi de données de la part d’un utilisateur ou d’une application décentralisée vers la \textit{\gls{blockchain}} native par le biais d’une fonction contrat.
-Ensuite un agent (une node) appelé \textit{updater} (vérificateur en français) a pour rôle de vérifier la transaction puis de l’inscrire dans la \textit{\gls{blockchain}} initiale. Pour cela, le vérificateur signe la racine d’un arbre de Merkle contenant les données envoyées précédemment et l’intègre à la chaîne. Il relie également son collatéral (fonds servant de garantie en cas de fraude) à cette dernière.
-Suite à cela, n’importe quel système de relais peut lire la racine signée sur la chaîne originelle et l’inscrire sur une ou plusieurs chaînes destinataire. Cette action déclenche alors une latence de trente minutes pendant laquelle un observateur peut signaler et prouver une fraude effectuée par la chaîne native ce qui déconnectera la communication avec la chaîne destinataire. 
+Ceci commence par l’envoi d'une demande de transaction de la part d’un utilisateur ou d’une application décentralisée vers la \textit{\gls{blockchain}} native par le biais d’une fonction contrat. Cette demande est ensuite acceptée par un validateur (une entité équivalente à un vérificateur, la seule différence étant leur rôle) puis inscrite sur un \textit{block} de la chaîne.\cite{NomadDocsVerification}
+Ensuite un vérificateur a pour rôle de vérifier la transaction. Pour cela, le vérificateur signe le haché des données envoyées précédemment. 
+Suite à cela, n’importe quel système de relais peut lire le haché signé sur la chaîne originelle et l’inscrire sur une ou plusieurs chaînes destinataire. Les validateurs de la chaîne destinataire valide et l'inscrivent sur leur chaîne. Cette action déclenche alors une latence de trente minutes pendant laquelle un observateur peut signaler et prouver une fraude effectuée par la chaîne native ce qui déconnectera la communication avec la chaîne destinataire. 
 
-Deux scénarios sont alors possibles. Premier cas, si aucun observateur ne se manifeste, les données de la transaction sont finalisées et alors traitées par une application. Cela est généralement réalisé par un fournisseur de services (ayant le rôle de processeur) inscrivant une preuve de Merkle des données dans le \textit{bridge}. Puis les données sont appelées dans une fonction contrat sur la chaîne destinataire. Deuxième cas, un observateur prouve une fraude pendant les trente minutes accordées. Le vérificateur ayant fraudé est pénalisé par la perte de son collatéral et l’observateur le reçoit.
+Deux scénarios sont alors possibles. Premier cas, si aucun observateur ne se manifeste, les données de la transaction sont finalisées puis traitées par la chaîne destinataire. Les validateurs sont récompensés pour leur travail avec une partie des frais de transaction. \cite{Fees} Deuxième cas, un observateur prouve une fraude pendant les trente minutes accordées. Le vérificateur ayant fraudé est pénalisé par la perte de sa récompense (qui sera obtenu par l'observateur) et son exclusion du réseau.\cite{EthereumSlashing}
 
 \subsubsection{Possibles faiblesses de l’optimisme et leurs solutions}
 
-La sécurité des \textit{bridges} optimistes dépend de celle de la chaîne auquel il est rattaché donc tant que cette dernière est protégée correctement la seule conséquence d’une faille du \textit{bridge} est l’arrêt système plutôt qu’une perte de fonds comme cela peut être le cas avec les autres types de \textit{bridge}.
+Le bon fonctionnement des \textit{bridges} optimistes dépend des chaînes auquelles il est rattaché donc tant que ces dernières sont protégées correctement la seule conséquence d’une faille du \textit{bridge} est l’arrêt système plutôt qu’une perte de fonds comme cela peut être le cas avec les autres types de \textit{bridge}.
 
 Les deux acteurs principaux ayant les moyens de nuire au bon fonctionnement du \textit{bridge} ainsi que de la transaction est l’agent vérificateur ainsi que l’observateur car ces deux rôles ont de l’influence sur cette dernière. \\
 
-Le premier cas impliquant le vérificateur se nommant \textit{Updater Fraud} (Fraude du vérificateur)  fut déjà mentionné lors de la présentation du fonctionnement du \textit{bridge} optimiste. Ce dernier repose sur le fait que toute transaction doit passer par le vérificateur et que par conséquent toute fraude est originaire de ce dernier. Sinon si cela venait d’un autre participant, le vérificateur n’aurait alors pas accepté la transaction. C’est pourquoi, lors de l’intervention d’un observateur prouvant une fraude, le vérificateur est sanctionné par la perte de son collatéral. \\
+Le premier cas impliquant le vérificateur se nommant \textit{Updater Fraud} (fraude du vérificateur)  fut déjà mentionné lors de la présentation du fonctionnement du \textit{bridge} optimiste. Ce dernier repose sur le fait que toute transaction doit passer par le vérificateur et que par conséquent toute fraude est originaire de ce dernier. Sinon si cela venait d’un autre participant, le vérificateur n’aurait alors pas accepté la transaction. C’est pourquoi, lors de l’intervention d’un observateur prouvant une fraude, le vérificateur est sanctionné par le retrait sur son solde d'un montant équivalent à la récompense promise et par son exclusion du réseau de la \textit{blockchain}. \\
 
-La seconde faiblesse liée aux vérificateurs est un \textit{Updater DoS} ou déni de services de la part du vérificateur. En effet, il est possible que le processus soit interrompu si un validateur arrête de signer les racines des arbres de Merkle empêchant l'échange inter-chaînes de se produire.
-Une solution a été implémentée pour palier à cela comme la mise en place d’un système de basculement (failover) avec la présence de plusieurs vérificateurs sur une même chaîne afin de pouvoir prendre le relai en cas de manque de réponse de la part de celui étant rattaché au transfert.  Pour éviter que ce scénario se reproduise fréquemment le vérificateur ayant manqué son tour lors de la signature (que cela soit accidentel ou voulu) est pénalisé par le retrait de son collatéral. \\
+La seconde faiblesse liée aux vérificateurs est un \textit{Updater DoS} ou déni de services de la part du vérificateur. En effet, il est possible que le processus soit interrompu si un validateur arrête de signer empêchant l'échange inter-chaînes de se produire.
+Une solution a été implémentée pour palier à cela comme la mise en place d’un système de substitution avec la présence de plusieurs vérificateurs sur une même chaîne afin de pouvoir prendre le relai en cas de manque de réponse de la part de celui étant rattaché au transfert.  Pour éviter que ce scénario se produise fréquemment le vérificateur ayant manqué son tour lors de la signature (que cela soit accidentel ou voulu) est pénalisé de la même manière que le cas précédent. \\
 
 Maintenant que les possibles obstacles au bon fonctionnement du \textit{bridge} liés au vérificateur ont été mis en lumière, il est également possible que l’observateur ait un comportement malveillant.  Effectivement, malgré l’absence de tromperie (puisque le vérificateur remplit son rôle), l’observateur peut abuser du mécanisme de déclaration de fraude pour impacter le bon déroulement du procédé. \\
 
-La faculté de l’observateur à pouvoir couper la connexion s’il conteste la transaction lui permet d’effectuer un déni de service appelé \textit{Watcher DoS}. C’est pourquoi il lui ait possible de fermer définitivement la connexion d’une transaction si ce dernier continue sans cesse de couper le processus sans raison valable. Heureusement, la fermeture ne concerne que la connexion et n’impacte en aucun cas le système du \textit{bridge}. Cependant cette attaque semble irrationnelle en terme de ressources et de temps car l’observateur effectuant le déni de service ne gagne rien financièrement contrairement au processus habituel. En effet, si un observateur prouve une fraude correctement, ce dernier peut récupérer le collatéral du vérificateur. Mais ici puisqu’aucune fraude n’est prouvée les données se trouvant sur la chaîne d’origine sont conservées et sécurisés. Cela cause seulement une perte de temps pour l’utilisateur ou l’application décentralisée voulant effectuer l'échange d’une \textit{\gls{blockchain}} à une autre.
+La faculté de l’observateur à pouvoir couper la connexion s’il conteste la transaction lui permet d’effectuer un déni de service appelé \textit{Watcher DoS}. C’est pourquoi il lui ait possible de fermer définitivement la connexion d’une transaction si ce dernier continue sans cesse de couper le processus sans raison valable. Heureusement, la fermeture ne concerne que la connexion et n’impacte en aucun cas le système du \textit{bridge}. Cependant cette attaque semble irrationnelle en terme de ressources et de temps car l’observateur effectuant le déni de service ne gagne rien financièrement contrairement au processus habituel. En effet, si un observateur prouve une fraude correctement, ce dernier peut récupérer la récompense du vérificateur. Mais ici puisqu’aucune fraude n’est prouvée les données se trouvant sur la chaîne d’origine sont conservées et sécurisés. Cela cause seulement une perte de temps pour l’utilisateur ou l’application décentralisée voulant effectuer l'échange d’une \textit{\gls{blockchain}} à une autre.
 
 Une réponse à ce problème actuellement mise en œuvre par le \textit{bridge} de \gls{Nomad} est la présence d’un groupe restreint d’observateurs autorisés à contester, de cette manière il est facile de connaître les observateurs malveillants. Chaque observateur possède une clé permettant de signer une attestation confirmant la présence d’une fraude dans la transaction, chaque \textit{bridge} stocke un ensemble contenant les adresses des attestations appartenant aux observateurs autorisés. Si l’attestation reçue par le \textit{bridge} est présente dans l’ensemble alors la connexion est rompue\cite{NomadDocsWatcher}.
 Sur le long terme, une proposition consistant à la mise en place de frais si l’on souhaite contester est en train d’être étudiée. Le montant doit répondre à deux contraintes: ce dernier doit être assez haut pour dissuader les observateurs malhonnêtes mais assez bas pour que ceux ayant réellement l’envie de prouver de manière valide une fraude existante puissent le faire. Dans la continuité de cette solution, il serait également possible de récupérer la signature de la déconnexion générée par l’observateur sur la chaîne originale et de le pénaliser en lui retirant les frais qu’il a payé tel une garantie\cite{OptimisticBhuptani}.

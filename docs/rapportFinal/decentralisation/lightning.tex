@@ -9,7 +9,7 @@ Ils sont des échanges d’\gls{actif}s internes au réseau et ont donc leurs pr
     \caption{Architecture \textit{\gls{off chain}}}
     \label{fig:offchain}
 \end{figure}
-Les transactions \textit{\gls{off chain}} sont confirmées en dehors du réseau principal de la \textit{\gls{blockchain}}, ce qui entraîne souvent un processus moins cher et plus rapide pour l’utilisateur. 
+Les transactions \textit{\gls{off chain}} sont effectués en dehors du réseau principal de la \textit{\gls{blockchain}}, ce qui entraîne souvent un processus moins cher et plus rapide pour l’utilisateur. 
 Tout cela se fait dans un objectif bien précis qui est de garder le maximum de sécurité et de fiabilité de la \textit{\gls{blockchain}} mère tout en essayant d'améliorer la vitesse d'échange et les frais de transaction.
 Afin d'illustrer comment fonctionne les échanges \textit{\gls{off chain}} nous allons nous concentrer sur une implémentation en particulier: le réseau Lightning. 
 
@@ -17,7 +17,7 @@ Afin d'illustrer comment fonctionne les échanges \textit{\gls{off chain}} nous 
 
 Le réseau lightning (provenant de l'anglais \textit{Lightning Network} et abrégé par LN) fait partie des processus d'échanges que l'on qualifie d'\textit{\gls{off chain}} car il se déroule en dehors de leur \textit{\gls{blockchain}s} principale, ce protocole est un cas concret de cette famille.
 Ce réseau est une couche de protocole de paiement construite au-dessus de la \textit{\gls{blockchain}} \gls{Bitcoin} qui vise à accélérer les transactions  \gls{Bitcoin}, à réduire les coûts et à améliorer la mise a l'échelle \cite{poon2016bitcoin}.
-Il permet aux utilisateurs de créer des canaux de paiement peer-to-peer bidirectionnels  pour effectuer des transactions en dehors de la \textit{\gls{blockchain}} principale (voir Figure \ref{fig:lightningCouche}), permettant des transactions plus rapides, moins chères et plus privées.\\
+Il permet aux utilisateurs de créer des canaux de paiement \textit{peer-to-peer} bidirectionnels  pour effectuer des transactions en dehors de la \textit{\gls{blockchain}} principale (voir Figure \ref{fig:lightningCouche}), permettant des transactions plus rapides, moins chères et plus privées.\\
 Les transactions sur le réseau lightning sont effectuées avec des \gls{smart contract}s qui permettent aux utilisateurs de transférer des fonds à des tiers sans l'approbation de la \textit{\gls{blockchain}} principale ou bien d'un tiers de confiance. 
 Les canaux de paiement flash sont créés en verrouillant temporairement des fonds sur une adresse multi-signature (voir Figure \ref{fig:lightningNetwork}), qui est ensuite utilisée pour envoyer des transactions à d'autres participants du réseau.\\ 
 Le réseau lightning utilise un système de routage pour acheminer les paiements entre les participants, en utilisant les canaux de paiement existant pour créer des itinéraires optimaux entre les participants. 
@@ -57,7 +57,7 @@ Même si le réseau Lightning permet déjà de faire des échanges \textit{\gls{
 Le MIT a donc proposé un ouvrage scientifique\cite{mathus2018lightning} afin de proposer une interface plus simple à la fois pour les \gls{blockchain}s mises en cause et les utilisateurs souhaitant utiliser le réseau.
 Leur \textit{Proof of Concept}\cite{pocMIT} se base sur un fork du réseau Lightning appelé "lit" leur but est de contrer le problème de mise à l'échelle du réseau lightning grace à leurs améliorations.
 De même ils cherchent à inclure dans le réseau lightning des \gls{blockchain}s qui n'ont pas de valeurs monétaires (informations, NFT,etc.).
-
+\\
 Leur programme rajoute 4 commandes au réseau Lightning mentionné précédemment, ce qui va permettre d'avoir une interface plus simple pour les acteurs des échanges :
 \begin{itemize}
     \item \textit{Price}: Commande qui permet aux utilisateurs de rechercher la valeur marchande actuelle en USD de toute crypto-monnaie disponible sur le site \textit{coinranking.com}.\\

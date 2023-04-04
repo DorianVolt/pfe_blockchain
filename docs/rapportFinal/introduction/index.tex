@@ -1,32 +1,53 @@
-L'échange d’\gls{actif}s entre différentes \textit{\gls{blockchain}s} est une propriété fortement recherchée dans le secteur de la
-\textit{\gls{blockchain}} et des échanges de crypto-\gls{actif}s. En effet, dans un contexte où l’adoption de la technologie est
-grandissante \cite{evolutionCrypto2022} il est largement souhaité et utile de mettre en place des solutions d’échanges entre chaines,
-permettant ainsi aux utilisateurs de transférer des \gls{actif}s d’une \textit{\gls{blockchain}} à une autre sans avoir à passer par
-un échange centralisé. Cela peut être très utile pour les utilisateurs qui souhaitent échanger des \gls{actif}s qui
-ne sont pas disponibles sur leur \textit{\gls{blockchain}} d’origine ou qui souhaitent simplement utiliser une \textit{\gls{blockchain}}
-différente pour des raisons de sécurité ou de confidentialité. Cependant, les échanges d’\gls{actif}s entre différentes
-\textit{\gls{blockchain}s} posent des problèmes de sécurité et de confiance car il est difficile de garantir que les \gls{actif}s soient
-transférés en toute sécurité et que les utilisateurs ne seront pas victimes d’une fraude ou d’une arnaque. Il est
-donc important de mettre en place des solutions sécurisées et fiables pour les échanges d’\gls{actif}s entre différentes
-\textit{\gls{blockchain}s}.
+% propos introductif
+Les échanges financiers sur Internet reposent presque exclusivement via les institutions financières, qui
+agissent comme tiers de confiance pour le traitement des paiements électroniques.
+En 2008, le \textit{whitepaper Bitcoin} a partagé une solution permettant à deux parties d'échanger de
+la monnaie électronique. La particularité de cette solution est la suppression de ce modèle de confiance par
+l'ajout d'une preuve cryptographique. Cela permet de s'émanciper de la centralisation exercée par ces 
+institutions et de tendre vers la décentralisation.
 
-\subsection{La \gls{blockchain}}
-La \textit{\gls{blockchain}} est une technologie de stockage et de transmission d’informations sans autorité centrale. Elle 
-permet de stocker des données de manière transparente et sécurisée en utilisant des algorithmes de cryptographie. 
-La \textit{\gls{blockchain}} permet de réaliser des échanges entre utilisateurs de manière sécurisé et confidentielle, 
-le tout sans utiliser d'intermédiaires. Les arbres de Merkle sont une structure de données fondamentale 
-dans la technologie \textit{\gls{blockchain}} qui permettent de vérifier et de sécuriser les données en utilisant des 
-fonctions de hachage. Ils sont utilisés pour stocker les transactions dans 
-chaque bloc d’une \textit{\gls{blockchain}} et pour vérifier si une transaction est incluse dans un bloc ou non.
+% \textit{\gls{blockchain}}, fonction de hachage cryptographique, immuable
+La structure de donnée sous-jacente est la \textit{\gls{blockchain}}, une base de données distribuée constituée 
+d’une chaîne de blocs liés et sécurisés par des hachés cryptographiques. Une des propriétés des fonctions de hachage 
+est qu'une modification de l'entrée modifie la sortie, le haché.
+D'où le fait qu'une \textit{\gls{blockchain}} est considérée comme immuable , chaque bloc (sauf le premier) 
+est lié au bloc précédent car il contient le haché de ce dernier. Toute tentative de modifier un bloc antérieur 
+affecterait tous les blocs suivants, créant ainsi une incohérence dans la chaîne.
 
-\subsection{Décentralisation/Centralisation}
-Actuellement, rare sont les \textit{\gls{blockchain}s} supportant de manière native le transfert d'\gls{actif}s entre elles. Ainsi les solutions
-de \textit{Swapping} actuels passent par des applications tierces. Bien que la \textit{\gls{blockchain}} soit une technologie que nous 
-pouvons considérer comme décentralisée, il est néanmoins possible de venir y connecter des interfaces tierces plus ou 
-moins centralisées dans le but d'y ajouter des fonctionnalités. Ce sont ces solutions que nous allons présenter durant ce rapport. \\
-Il devient donc nécessaire de définir ce que nous entendons par centralisé et décentralisé. Ainsi nous allons considérer comme
-centralisé tout système où une autorité centrale contrôle les décisions et les actions. 
-Il y a une hiérarchie entre les pairs, et un groupe fermé d’individus ou une seule entité représente l’intermédiaire. \\
-Nous considérons comme décentralisé tout système où il n’y a pas d’autorité centrale et où les décisions sont prises 
-par un groupe de pairs. Dans ce système, il n’y a pas de hiérarchie entre les pairs et n'importe qui peut faire partie
-du réseau.
+%distribué, réseau de noeuds
+Dans un système centralisé, toutes les transactions sont enregistrées dans une base de données unique gérée 
+par une entité centrale telle qu'une banque. Cette entité est responsable de l'intégrité des données
+et les usagers font confiance que toute modification involontaire ou malveillante sera détectée. 
+Dans notre cas, une \textit{\gls{blockchain}} est distribuée, un réseau de noeuds connectés travaillent ensemble pour valider et enregistrer les blocs. 
+Un noeud est un périphérique connecté à un réseau pair à pair qui stocke une copie de la \textit{\gls{blockchain}} et participe à la validation 
+et à la propagation des blocs. En raison de sa nature distribuée, les noeuds peuvent valider et ajouter un bloc sans avoir 
+recours à un tiers de confiance, ce qui accrût son caractère décentralisé.
+
+% l'économie de la \textit{\gls{blockchain}}
+ Depuis, la \textit{\gls{blockchain}} a grandi en popularité et de nombreuses \textit{\gls{blockchain}}s sont apparus.
+On peut dénoter la \textit{\gls{blockchain}} Ethereum qui a introduit la notion de \textit{\gls{smart contract}} et de jetons.
+Un besoin d'échange d'actifs entre \textit{\gls{blockchain}}s est apparu, d'où l'implémentation de protocoles 
+d'échanges de jetons. L'objectif de ce rapport est de dresser un état de l'art de ces protocoles 
+en deux temps : les protocoles d'échanges sur les plateformes centralisées puis les protoles d'échanges 
+décentralisés.
+
+% Le besoin d'implémenter des protocoles d'échanges de jetons inter-blockchain a ajouté un maillon supplémentaire à sécuriser
+% vulnérable et pouvant compromettre la sûreté et la sécurité des blockchains à ces bridges / protocoles
+
+% Une problématique est l’échange de jetons entre deux ou plusieurs block-
+% chain. Des attaques spectaculaires sur des blockchains ces dernières années ex-
+% ploitent des faiblesses dans l’implémentation ou la conception des protocoles
+% d’échange [3, 4, 5]
+% L’objectif de ce ter est de dresser un panorama des protocoles d’échange de
+% jetons entre entre blockchains ainsi que de leurs différentes faiblesses
+
+% Il s’agit de produire un état l’art sur les protocoles d’échanges de jetons entre
+% blockchains.
+% — On pourra dans un premier temps s’intéresser aux systèmes centralisés,
+% qui nécessitent une plateforme tiers pour réaliser l’échange. Pour en ap-
+% préhender les principes, on pourra commencer par étudier les analyses
+% d’attaques sur les plateformes [3, 4, 5].
+% — Ensuite, avec comme point de départ les articles [1, 2] on s’intéressera aux
+% protocoles d’échange centralisés. En fonction du temps restant, le groupe
+% pourra implémenter un ou plusiers protocoles proposés dans [1, 2] ou
+% d’autres découverts au cours de l’étude.

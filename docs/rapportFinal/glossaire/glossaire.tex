@@ -27,11 +27,91 @@
 }
 
 \newglossaryentry{fonction de hachage cryptographique}{
-    name = fonction de hachage cryptographique, 
-    description = {Une fonction de hachage cryptographique est une primitive cryptographique qui transforme un message de taille arbitraire en un 
-    message de taille fixe, appelé un haché. Une fonction de hachage cryptographique robuste doit être rapide à calculer et difficile à inverser, il doit être 
-    facile pour une fonction de hachage f de calculer une image f(x) à partir de x mais il doit être difficile de calculer une pré-image f\^-1(y) 
-    à partir de y. Cette fonction doit aussi être déterministe et résistante aux collisions, deux messages différents ne doivent pas produire le même haché.}
+    name = fonction de hachage cryptographique,
+    description = {Une fonction de hachage cryptographique est une primitive cryptographique qui transforme un message de taille arbitraire en un
+            message de taille fixe, appelé un haché. Une fonction de hachage cryptographique robuste doit être rapide à calculer et difficile à inverser, il doit être
+            facile pour une fonction de hachage f de calculer une image $f(x)$ à partir de $x$ mais il doit être difficile de calculer une pré-image $f^{-1}(y)$
+            à partir de $y$. Cette fonction doit aussi être déterministe et résistante aux collisions, deux messages différents ne doivent pas produire le même haché.}
 }
+
+\newglossaryentry{off chain}{
+    name = off chain,
+    description= {On déclare qu'une blockchain est \textit{off chain} lorsqu'elle est une surcouche de la blockchain principale (on parle de blockchain de niveau supérieur).
+            La blockchain fille n'est pas vouée à être fusionner avec la blockchain mère mais juste à stocker temporairement les transactions avant de les envoyer sur la blockchain principale.}
+}
+
+\newglossaryentry{Nomad}{
+    name = Nomad,
+    description= {Nomad est un protocole de communication inter-chaines qui permet aux utilisateurs de transférer des actifs numériques en toute sécurité entre différentes blockchains.}
+}
+
+\newglossaryentry{Wormhole}{
+    name = Wormhole,
+    description= {Wormhole est un protocole de communication inter-chaines basé sur les bridges et utilisant de la vérification par un réseau de guardien.}
+}
+
+\newglossaryentry{Ethereum}{
+    name = Ethereum,
+    description= {Ethereum est un protocole d’échanges décentralisés permettant la création par les utilisateurs de contrats intelligents. Il fourni des transactions beaucoup plus rapide que Bitcoin ce qui lui donne un intérêt particulier pour la finance décentralisée.}
+}
+\newglossaryentry{Solana}{
+    name = Solana,
+    description = {Solana est une blockchain avec des fonctionnalités de contrats intelligents qui vise à augmenter le débit au-delà de ce qui est couramment réalisé par les blockchains populaires tout en maintenant des coûts bas.}
+}
+\newglossaryentry{Bitcoin}{
+    name = Bitcoin,
+    description= {Le Bitcoin est considéré comme la première preuve de concept de la blockchain. 
+    C'est un système décentralisé de paiement et d’échange de valeur basé sur cette technologie. }
+}
+
+\newglossaryentry{atomic swap}{
+    name = échange atomique,
+    description= {Les atomic swaps (échanges atomiques) sont des transactions entre deux parties qui permettent l’échange sur deux blockchains différentes sans avoir besoin d’un tiers de confiance. 
+    Ils sont considérés comme une méthode sûre et rapide pour échanger des cryptomonnaies. }
+}
+
+\newglossaryentry{validateur}{
+    name = vérificateur,
+    description= {Un vérificateur est une entité connectée en tant que noeud au réseau de la \textit{blockchain}. Ce dernier agit comme autorité de confiance, vérifiant et validant les transactions sur cette dernière.  }
+}
+
+\newglossaryentry{bridge}{
+    name = bridge,
+    description= { Un \textit{blockchain bridge} également appelé \textit{cross-chain bridge} est un protocole reliant deux \textit{blockchains} entre elles de manière unilatérale ou bilatérale dans une optique d’interopérabilité. }
+}
+
+\newglossaryentry{noeud}{
+    name = noeud,
+    description= {Un noeud d'une \textit{blockchain} est un ordinateur connecté au réseau de cette dernière.  }
+}
+
+
+\newglossaryentry{client}{
+    name = client,
+    description= { Un \textit{client} est un logiciel permettant de transformer un ordinateur en noeud.}
+}
+
+\newglossaryentry{noeud léger}{
+    name = noeud léger,
+    description= {Un noeud léger est un logiciel permettant de connecter les noeuds des \textit{blockchains} entre elles. }
+}
+
+\newglossaryentry{sidechain}{
+    name = sidechain,
+    description= {Une sidechain est une blockchain secondaire qui fonctionne en parallèle d'une blockchain principale.
+    Elles permettent de réaliser des opérations en marge de la chaîne principale, apportant ainsi plus de scalabilité et de fonctionnalités. }
+}
+
+\newglossaryentry{relay}{
+    name = relay,
+    description= {Les relays sont des applications décentralisées qui permettent la transmission d'informations de manière unilatéral entre deux blockchains distinctes }
+}
+
+\newacronym{htlc}{HTLC}{Hashed Time Locked Contract}
+\newacronym{cex}{CEX}{Centralized EXchange}
+\newacronym{dex}{DEX}{Decentralized EXchange}
+\newacronym{iou}{IOU}{I Owe You}
+\newacronym{vaa}{VAA}{Verified Action Approval}
+
 
 \printglossaries

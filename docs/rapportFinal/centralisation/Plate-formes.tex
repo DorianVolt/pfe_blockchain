@@ -18,18 +18,19 @@ Ce point signifie aussi que les \gls{actif}s de l'utilisateurs sont traçables p
 
 
 \subsubsection{Fonctionnement}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.2]{centralisation/Achat-Vente.png}
+    \label{fig:simplifiedcex}
+    \caption{Échange d'un jeton en Euros}
+\end{figure}
 Ces plate-formes fonctionnent sur le principe de l'\textit{order book method} (méthode du carnet d'ordre\cite{orderBook}), une modélisation des ordres d'achats et de vente des jetons.
 Un ordre étant une demande d'un utilisateur visant à réaliser une opération à un prix et une quantité donnée. 
 Cette méthode comprend deux parties: l'offre et la demande. L'offre regroupe les ordres d'achats émis par des utilisateurs sur la plate-forme et la demande, les ordres de vente.
 Lors d'un dépôt, l'utilisateur s'étant au préalable enregistré sur la plate-forme, il va déposer les fonds souhaités dans un porte monnaie. 
 La plate-forme va ensuite crée un \textit{IOU}\footnote{I Owe You, c'est la dette de la plate-forme envers l'utilisateur permettant de bloquer la valeur de la monnaie déposée par l'utilisateur\cite{IOU}} 
 ce dernier sera échangé contre le crypto-\gls{actif} souhaité lors d'un échange ou d'une vente. \\ 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.5]{centralisation/echange.png}
-    \label{fig:simplifiedcex}
-    \caption{Échange d'un jeton en Euros}
-\end{figure}
+
 Dans le cadre des échanges inter-\gls{blockchain}s, les plate-formes d'échanges utilisent des \textit{bridges} reliant les différentes \textit{\gls{blockchain}s}. 
 Ces protocoles seront explicités dans la partie suivante.
 Cependant, nous n'avons pas pu trouver de plus amples explications quant aux fonctionnements des plate-formes, notamment les protocoles précis utilisés lors des échanges. 

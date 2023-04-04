@@ -1,10 +1,10 @@
-En 2017, une cryptomonnaie adossée à la \textit{\gls{blockchain}} Solana a émergée avec des caractéristiques
+En 2017, une cryptomonnaie adossée à la \textit{\gls{blockchain}} \gls{Solana} a émergée avec des caractéristiques
 similaires à \gls{Ethereum} : \textit{\gls{blockchain}} publique, \textit{\gls{smart contract}s}.\\
 Solana est devenue de facto une \textit{\gls{blockchain}} concurrente à \gls{Ethereum} et est aujourd'hui 
 la onzième \textit{\gls{blockchain}} en terme de capitalisation selon l'aggrégateur de marché Coinmarketcap.\\
 Un besoin d'échanger des \gls{actif}s entre les \textit{\gls{blockchain}s} \gls{Ethereum} et Solana est apparu, 
 d'où l'introduction en 2020 de la première version de \gls{Wormhole}.
-Initialement, \gls{Wormhole} v1 a été concu comme un \textit{bridge} entre \gls{Ethereum} et Solana.
+Initialement, \gls{Wormhole} v1 a été concu comme un \textit{\gls{bridge}} entre \gls{Ethereum} et Solana.
 Depuis, \gls{Wormhole} s'est développé au-delà de Solana avec le lancement d'une deuxième version en 2021 
 en tant que protocole générique de passage de messages.\\
 À l'écriture de ce rapport, 22 \cite{wormholeNetwork} \textit{\gls{blockchain}s} sont compatibles avec \gls{Wormhole} 
@@ -15,7 +15,7 @@ Le message est ensuite envoyé à la \textit{\gls{blockchain}} cible pour être 
 
 \subsubsection{VAA (\textit{Verified action approval})}
 
-Lorsqu'un \textit{\gls{smart contract}} envoie un message \textit{crosschain} comme un verrouillage
+Lorsqu'un \textit{\gls{smart contract}} envoie un message \textit{\gls{cross-chain}} comme un verrouillage
 de jetons sur une \textit{\gls{blockchain}} source et une demande de frappe de jetons sur une 
 \textit{\gls{blockchain}} cible, celui-ci interargit avec un \textit{core contract} \cite{wormholeCoreContract}.
 Un \textit{core contract} est déployé sur toutes les \textit{\gls{blockchain}s} compatibles avec le protocole 
@@ -59,14 +59,12 @@ Il est conçu pour servir d'oracle à \gls{Wormhole} et est l'élement le plus c
 Si une majorité de deux tiers ou plus des gardiens signent le même VAA, alors le consensus est atteint : 
 le VAA est automatiquement considéré valide par  tous les contrats \gls{Wormhole} sur toutes les 
 \textit{\gls{blockchain}s} et le \textit{payload} est actionné. 
-Chaque gardien utilise un algorithme de signature à courbe elliptique : ECSDA pour 
-\textit{Elliptic Curve Signature Digital Algorithm}.
+Chaque gardien utilise un algorithme de signature à courbe elliptique (\acrshort{ecsda}).
 Plus précisément, chaque gardien se réfère à «secp256k1» comme paramètres de la courbe elliptique, 
 aussi utilisé par les \textit{\gls{blockchain}s} \gls{Bitcoin} et \gls{Ethereum}.\\
-Le modèle de consensus utilisé est une \textit{Proof of Authority} (PoA) avec un système de 
+Le modèle de consensus utilisé est une \acrshort{poa} avec un système de 
 \textit{multisignature} M/N \cite{wormholeChainswap}, c'est à dire que M clefs parmi N sont nécessaires 
-pour signer un VAA. Ce modèle permet un traitement rapide des transactions et une dispense de participation monétaire, par rapport à la preuve de travail (PoW) et la preuve 
-de participation (PoS). Cependant, il présente également des désavantages : le système est par 
+pour signer un VAA. Ce modèle permet un traitement rapide des transactions et une dispense de participation monétaire, par rapport \acrshort{pow} ou \acrshort{pos}. Cependant, il présente également des désavantages : le système est par 
 \textit{design} centralisé et dépend d'un petit groupe de nœuds pouvant créer un point de 
 défaillance unique par l'utilisation commune d'une fonction vulnérable. Il est questionnable de restaurer des tiers de confiance dans le cadre d'un système 
 devenu populaire grâce à l'absence de tels autorités. \gls{Wormhole} justifie la décentralisation de leur 
@@ -120,5 +118,3 @@ d'héberger soi-même ces relais pour supporter son application.
 
 % r7 -> r8 : parseAndVerifyVAA()
 % @enduml
-
-

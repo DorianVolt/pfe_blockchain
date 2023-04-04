@@ -3,17 +3,17 @@
 Les \textit{\gls{blockchain}s} et leurs protocoles d'échanges ne sont pas exemptes d'attaques informatiques ou bien de défaillances.
 Ces attaques peuvent cibler des portefeuilles (attaques sur des \textit{hot wallets}\footnote{portefeuille de cryptomonnaies en ligne, à différencier des \textit{Cold Wallets}, des portefeuilles hors lignes}) ou encore des \textit{bridges}. 
 Ce sont ces dernières qui nous ont intéressées dans le cadre de ce projet de recherche sur les échanges inter-\gls{blockchain}s. 
-Les bridges, comme explicité dans la partie dédiée du rapport, sont des protocoles permettant la circulation de données entre deux \textit{\gls{blockchain}s} différentes.\\
+Les \gls{bridge}s, comme explicité dans la partie dédiée du rapport, sont des protocoles permettant la circulation de données entre deux \textit{\gls{blockchain}s} différentes.\\
 Nous avons, au cours de nos recherches, trouvés de nombreux cas d'attaques sur des protocoles d'échanges inter-\gls{blockchain}s. 
-De manière à illustrer les types d'attaques possibles et les points critiques de ces systèmes nous allons décrire deux attaques parmi les plus importantes : \textit{Wormhole} et \textit{Nomad}.
+De manière à illustrer les types d'attaques possibles et les points critiques de ces systèmes nous allons décrire deux attaques parmi les plus importantes : \gls{Wormhole} et \gls{Nomad}.
 
-\subsubsection{Le cas Wormhole}
-Nous vous avons présenté le protocole \textit{Wormhole} dans la partie précédente. 
-Le 2 Février 2022, une attaque exploite une erreur d'implémentation dans une \textit{\gls{dApp}} sur la chaîne Solana \cite{SolMed} \cite{SolRekt}. 
+\subsubsection{Le cas \gls{Wormhole}}
+Nous vous avons présenté le protocole \textit{\gls{Wormhole}} dans la partie précédente. 
+Le 2 Février 2022, une attaque exploite une erreur d'implémentation dans une \textit{\gls{dApp}} sur la chaîne \gls{Solana} \cite{SolMed} \cite{SolRekt}. 
 Pour se faire l'attaquant à réussi à contourner la vérification des signatures des gardiens en exploitant
 une correction de bug ayant été publié sur le code source du projet mais n'étant pas encore effective en production.
-Ainsi il à réussi à récupérer l'équivalent de 120 000 \textit{ETH} en \textit{whETH} (\textit{Wormhole ETH}). 
-Lors d'un transfert de jetons d'une chaîne à une autre, plusieurs étapes sont réalisées par différentes fonctions.
+Ainsi il à réussi à récupérer l'équivalent de 120 000 \textit{ETH} en \textit{whETH} (\textit{\gls{Wormhole} ETH}). 
+Lors d'un transfert d'\gls{actif} d'une chaîne à une autre, plusieurs étapes sont réalisées par différentes fonctions.
 Après la formulation de la transaction, une fonction va se charger de récupérer les signatures des gardiens dans un \textit{SignatureSet}\footnote{Ensemble de signatures de gardiens}, ces dernières sont ensuite vérifiées. 
 Pour cela, une fonction nommée \texttt{verify\_signature} va appeler un programme de vérification de Solana permettant l'analyse du \textit{SignatureSet}. 
 L'appel à ce programme se fait de la manière suivante, en utilisant le nom \texttt{sysvarinstruction} \cite{SolGitError} dans la transaction. 
@@ -24,11 +24,11 @@ Seulement, n'étant pas pour la bonne opération cet ensemble ne peut pas être 
 C'est ici que l'attaquant à utilisé un défaut d'implémentation pour valider son \textit{SignatureSet}. 
 Comme décrit précédemment, la fonction \texttt{verify\_signature} appelle un programme pour effectuer la vérification des signatures. 
 Cependant il n'y à pas de vérification faites sur le programme appelé, l'attaquant à pu donc utiliser une adresse différente lui permettant de valider sa transaction. 
-Avec le  \texttt{SignatureSet} ainsi validé, l'attaquant a pu générer un \textit{VAA} valide et pu déclencher une frappe de jeton vers son propre compte sans en avoir déposé au préalable. 
+Avec le  \texttt{SignatureSet} ainsi validé, l'attaquant a pu générer un \textit{VAA} valide et pu déclencher une création d'\gls{actif} vers son propre compte sans en avoir déposé au préalable. 
 La correction de cette faille était contenue dans la mise à jour évoquée en début de paragraphe\cite{SolGitFixed}, permettant la vérification du programme appelé pour la vérification. 
 
 \subsubsection{Le cas Nomad}
-Nomad est un protocole d'interopérabilité entre chaînes permettant de passer des \gls{actif}s entre deux \textit{\gls{blockchain}s} différentes. 
+\gls{Nomad} est un protocole d'interopérabilité entre chaînes permettant de passer des \gls{actif}s entre deux \textit{\gls{blockchain}s} différentes. 
 Pour fonctionner, ce protocole fait appel à des applications décentralisées opérant sur les chaînes du réseau. 
 Une première \textit{\gls{dApp}} appelée \textit{réplica} est déployée sur les \textit{\gls{blockchain}s} recevant les messages, elle fait office de "boite de réception". 
 Une seconde \textit{\gls{dApp}} appelée \textit{home} est déployé sur les \textit{\gls{blockchain}s} émettrices de message. \\
@@ -58,7 +58,7 @@ Cette fonction est utilisée pour approuver le premier message lors du déploiem
 Or ici, la valeur de la racine à été initialisée a $0$, donc cette racine devient une racine valide pour la fonction de vérification des messages. 
 Seulement comme nous l'avons énoncé précédemment, $0$ est la valeur par défaut pour un message n'ayant pas encore été vérifié. 
 Ainsi, lors de l'émission d'un message par la fonction \texttt{process}, tout message non vérifié sera envoyé. 
-Cette erreur d'implémentation a permis à des pirates d'effectuer plusieurs transactions frauduleuses et de retirer l'équivalent de 190 Millions de dollars dans la réserve de liquidité du bridge de Nomad. 
+Cette erreur d'implémentation a permis à des pirates d'effectuer plusieurs transactions frauduleuses et de retirer l'équivalent de 190 Millions de dollars dans la réserve de liquidité du bridge de \gls{Nomad}. 
 Le contrat à été corrigé, dans une mise en ligne datant du 3 Septembre 2022, tel que la racine $0$ n'est plus pré-approuvée. 
 
 \begin{lstlisting}[caption={Fonction corrigée de l'application \textit{Réplica} \cite{NomadGitFixed}}]

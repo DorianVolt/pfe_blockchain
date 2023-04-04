@@ -1,14 +1,14 @@
 En 2017, une cryptomonnaie adossée à la \textit{\gls{blockchain}} Solana a émergée avec des caractéristiques
-similaires à Ethereum : \textit{\gls{blockchain}} publique, \textit{\gls{smart contract}s}.\\
-Solana est devenue de facto une \textit{\gls{blockchain}} concurrente à Ethereum et est aujourd'hui 
+similaires à \gls{Ethereum} : \textit{\gls{blockchain}} publique, \textit{\gls{smart contract}s}.\\
+Solana est devenue de facto une \textit{\gls{blockchain}} concurrente à \gls{Ethereum} et est aujourd'hui 
 la onzième \textit{\gls{blockchain}} en terme de capitalisation selon l'aggrégateur de marché Coinmarketcap.\\
-Un besoin d'échanger des \gls{actif}s entre les \textit{\gls{blockchain}s} Ethereum et Solana est apparu, 
-d'où l'introduction en 2020 de la première version de Wormhole.
-Initialement, Wormhole v1 a été concu comme un \textit{bridge} entre Ethereum et Solana.
-Depuis, Wormhole s'est développé au-delà de Solana avec le lancement d'une deuxième version en 2021 
+Un besoin d'échanger des \gls{actif}s entre les \textit{\gls{blockchain}s} \gls{Ethereum} et Solana est apparu, 
+d'où l'introduction en 2020 de la première version de \gls{Wormhole}.
+Initialement, \gls{Wormhole} v1 a été concu comme un \textit{bridge} entre \gls{Ethereum} et Solana.
+Depuis, \gls{Wormhole} s'est développé au-delà de Solana avec le lancement d'une deuxième version en 2021 
 en tant que protocole générique de passage de messages.\\
-À l'écriture de ce rapport, 22 \cite{wormholeNetwork} \textit{\gls{blockchain}s} sont compatibles avec Wormhole 
-dont : BNBChain, Ethereum, Moonbeam, Polygon, Solana...\\
+À l'écriture de ce rapport, 22 \cite{wormholeNetwork} \textit{\gls{blockchain}s} sont compatibles avec \gls{Wormhole} 
+dont : BNBChain, \gls{Ethereum}, Moonbeam, Polygon, Solana...\\
 Le protocole émet un message à partir d'une \textit{\gls{blockchain}} source qui est validé par un réseau de 
 gardiens.\\ 
 Le message est ensuite envoyé à la \textit{\gls{blockchain}} cible pour être traité.
@@ -19,19 +19,19 @@ Lorsqu'un \textit{\gls{smart contract}} envoie un message \textit{crosschain} co
 de jetons sur une \textit{\gls{blockchain}} source et une demande de frappe de jetons sur une 
 \textit{\gls{blockchain}} cible, celui-ci interargit avec un \textit{core contract} \cite{wormholeCoreContract}.
 Un \textit{core contract} est déployé sur toutes les \textit{\gls{blockchain}s} compatibles avec le protocole 
-Wormhole. Tout \textit{core contract} est observé par le réseau de gardiens.
-Un message Wormhole est émis grâce à la fonction \textit{publishMessage()} prenant en entrée le \textit{payload}.
+\gls{Wormhole}. Tout \textit{core contract} est observé par le réseau de gardiens.
+Un message \gls{Wormhole} est émis grâce à la fonction \textit{publishMessage()} prenant en entrée le \textit{payload}.
 La sortie de cette fonction est un \textit{sequence number}, un numéro d'index unique pour le message.
 Combiné à l'adresse du contrat de l'émetteur et à l'identifiant de la chaîne de l'émetteur, le message 
 correspondant peut être récupéré auprès d'un nœud du réseau de gardiens.\\
-Un message Wormhole est vérifié grâce à la fonction \textit{parseAndVerifyVAA()} prenant en entrée le message.
+Un message \gls{Wormhole} est vérifié grâce à la fonction \textit{parseAndVerifyVAA()} prenant en entrée le message.
 Selon la validité de l'entrée, la fonction retourne en sortie le \textit{payload} ou une exception.
 
-VAA \cite{wormholeVAA} est la primitive de messagerie de base de Wormhole. Un VAA contient une en-tête 
+\acrshort{vaa} \cite{wormholeVAA} est la primitive de messagerie de base de \gls{Wormhole}. Un VAA contient une en-tête 
 ainsi qu'un \textit{body}. L'en-tête contient l'index des gardiens ayant signés le message et la collection des signatures.
 L'en-tête permet au \textit{core contract} de vérifier l'authenticité du VAA.
 Quant au \textit{body}, il contient des informations comme le numéro d'identification de la chaîne 
-Wormhole du contrat émetteur, l'adresse du contrat émetteur, le \textit{sequence number} 
+\gls{Wormhole} du contrat émetteur, l'adresse du contrat émetteur, le \textit{sequence number} 
 et le \textit{payload}.\\ 5 \textit{payloads} peuvent être utilisés dont \textit{Transfer} et 
 \textit{AssetMeta}, attestant les méta-données du jeton.\\
 Le \textit{payload AssetMeta} est obligatoire avant un premier transfert.
@@ -55,21 +55,21 @@ Un gardien \cite{wormholeGuardian} est une autorité de confiance qui a comme r�
 Comme évoqué précédemment, le réseau de gardiens observe tous les messages \textit{crosschain} via la 
 surveillance des \textit{core contracts}.
 Le réseau de gardiens est composé de 19 gardiens à parts égales sans chef (\textit{leaderless}).
-Il est conçu pour servir d'oracle à Wormhole et est l'élement le plus critique de l'écosystème.
+Il est conçu pour servir d'oracle à \gls{Wormhole} et est l'élement le plus critique de l'écosystème.
 Si une majorité de deux tiers ou plus des gardiens signent le même VAA, alors le consensus est atteint : 
-le VAA est automatiquement considéré valide par  tous les contrats Wormhole sur toutes les 
+le VAA est automatiquement considéré valide par  tous les contrats \gls{Wormhole} sur toutes les 
 \textit{\gls{blockchain}s} et le \textit{payload} est actionné. 
 Chaque gardien utilise un algorithme de signature à courbe elliptique : ECSDA pour 
 \textit{Elliptic Curve Signature Digital Algorithm}.
 Plus précisément, chaque gardien se réfère à «secp256k1» comme paramètres de la courbe elliptique, 
-aussi utilisé par les \textit{\gls{blockchain}s} Bitcoin et Ethereum.\\
+aussi utilisé par les \textit{\gls{blockchain}s} \gls{Bitcoin} et \gls{Ethereum}.\\
 Le modèle de consensus utilisé est une \textit{Proof of Authority} (PoA) avec un système de 
 \textit{multisignature} M/N \cite{wormholeChainswap}, c'est à dire que M clefs parmi N sont nécessaires 
 pour signer un VAA. Ce modèle permet un traitement rapide des transactions et une dispense de participation monétaire, par rapport à la preuve de travail (PoW) et la preuve 
 de participation (PoS). Cependant, il présente également des désavantages : le système est par 
 \textit{design} centralisé et dépend d'un petit groupe de nœuds pouvant créer un point de 
 défaillance unique par l'utilisation commune d'une fonction vulnérable. Il est questionnable de restaurer des tiers de confiance dans le cadre d'un système 
-devenu populaire grâce à l'absence de tels autorités. Wormhole justifie la décentralisation de leur 
+devenu populaire grâce à l'absence de tels autorités. \gls{Wormhole} justifie la décentralisation de leur 
 système \cite{wormholeGuardian} par la présence de plusieurs parties (et non d'un seul) dans le contrôle du réseau.
 Selon notre analyse, la décentralisation résulte de l'absence d'un ou plusieurs tier(s) de confiance lorsque deux parties 
 souhaitent réaliser une transaction.
@@ -87,7 +87,7 @@ d'héberger soi-même ces relais pour supporter son application.
     \centering
     \includegraphics[scale=0.5]{centralisation/uml_design_v2.png}
     \label{fig:wormholeDesign}
-    \caption{Architecture Wormhole \cite{wormholeArch}}
+    \caption{Architecture \gls{Wormhole} \cite{wormholeArch}}
   \end{figure}
 
 % @startuml

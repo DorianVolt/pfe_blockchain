@@ -47,18 +47,16 @@ important, et beaucoup d'acteurs remanient la définition de décentralisé pour
 % \end{table}
 
 
-\begin{table}[h!]
-    \centering
-    \caption{Tableau Récapitulatif}
-    \begin{tabular}{|l|l|c|c|}
-        \hline
-                                   &                        & \multicolumn{1}{l}{Décentralisation}                   & \multicolumn{1}{l|}{Accessibilité}                  \\  \hline
-                                   & Plateformes d'échanges & \cellcolor[HTML]{FD6864}$---$                          & \cellcolor[HTML]{9AFF99}$+++$      \\ \cline{2-4}
-    \multirow{-2}{*}{Centralisé}   & Blockchains Bridges    & \cellcolor[HTML]{FD6864}$-$                            & \cellcolor[HTML]{9AFF99}$++$      \\ \hline
-                                   & Relay                  & \cellcolor[HTML]{9AFF99}$+$                            & \cellcolor[HTML]{FD6864}$--$                              \\ \cline{2-4}
-                                   & Sidechains             & \cellcolor[HTML]{9AFF99}$++$                           & \cellcolor[HTML]{FD6864}$--$                              \\ \cline{2-4}
-                                   & Reserves de Liquidités & \cellcolor[HTML]{9AFF99}$+++$                          & \cellcolor[HTML]{9AFF99}$+++$      \\  \cline{2-4}
-                                   & HTLC                   & \cellcolor[HTML]{9AFF99}$+++$                          & \cellcolor[HTML]{FD6864}$---$                             \\ \cline{2-4}
-    \multirow{-5}{*}{Décentralisé} & Off-chain              & \cellcolor[HTML]{9AFF99}$++$                           & \cellcolor[HTML]{9AFF99}$+$       \\ \hline
+\begin{table}[]
+    \begin{tabular}{l|c|c|c|}
+    \cline{2-4}
+                                                 & Décentralisation                                                                                                                                      & \multicolumn{1}{l|}{Accessibilité}                                                                     & Fiabilité                                                                                                                         \\ \hline
+    \multicolumn{1}{|l|}{Plateformes d'échanges} & \cellcolor[HTML]{FD6864}Gestion totale par un tiers                                                                                                   & \cellcolor[HTML]{9AFF99}{\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Grand\\ public.\end{tabular}} & \cellcolor[HTML]{FD6864}\begin{tabular}[c]{@{}c@{}}Depend de la santé de\\ l'entreprise.\end{tabular}                             \\ \hline
+    \multicolumn{1}{|l|}{Blockchains Bridges}    & \cellcolor[HTML]{FD6864}\begin{tabular}[c]{@{}c@{}}Validations des \\ transactions par un tiers\end{tabular}                                          & \cellcolor[HTML]{FFCE93}{\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Public\\ avisé.\end{tabular}} & \cellcolor[HTML]{9AFF99}\begin{tabular}[c]{@{}c@{}}Transactions garanties\\ ou remboursées.\end{tabular}                          \\ \hline
+    \multicolumn{1}{|l|}{Relay}                  & \cellcolor[HTML]{9AFF99}{\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Réseau de signataires\\ ouvert avec engagement\\ du collatéral\end{tabular}} & \cellcolor[HTML]{FD6864}Développeur                                                                    & \cellcolor[HTML]{FD6864}Fraude possible.                                                                                          \\ \hline
+    \multicolumn{1}{|l|}{Sidechains}             & \cellcolor[HTML]{9AFF99}{\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Une chaîne centrale\\ interconnecte des \\ applications\end{tabular}}        & \cellcolor[HTML]{FD6864}Développeur                                                                    & \cellcolor[HTML]{FFCE93}\begin{tabular}[c]{@{}c@{}}Depend des\\ écosystèmes.\end{tabular}                                         \\ \hline
+    \multicolumn{1}{|l|}{Reserves de Liquidités} & \cellcolor[HTML]{9AFF99}{\color[HTML]{000000} Aucune autorité centrale}                                                                               & \cellcolor[HTML]{FFCE93}{\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Public\\ avisé.\end{tabular}} & \cellcolor[HTML]{9AFF99}Echange garantis.                                                                                         \\ \hline
+    \multicolumn{1}{|l|}{HTLC/échange atomique}  & \cellcolor[HTML]{9AFF99}{\color[HTML]{000000} Aucune autorité centrale}                                                                               & \cellcolor[HTML]{FD6864}\begin{tabular}[c]{@{}c@{}}Mise en\\ oeuvre\\ difficile\end{tabular}           & \cellcolor[HTML]{9AFF99}\begin{tabular}[c]{@{}c@{}}Echange garantis,\\ sous reserve de \\ conformité au\\ protocole.\end{tabular} \\ \hline
+    \multicolumn{1}{|l|}{Réseau Lightning}       & \cellcolor[HTML]{9AFF99}{\color[HTML]{000000} Aucune autorité centrale}                                                                               & \cellcolor[HTML]{FFCE93}{\color[HTML]{000000} \begin{tabular}[c]{@{}c@{}}Public\\ avisé.\end{tabular}} & \cellcolor[HTML]{9AFF99}\begin{tabular}[c]{@{}c@{}}Echange garantis,\\ sous reserve de\\ conformité au\\ protocole.\end{tabular}  \\ \hline
     \end{tabular}
     \end{table}

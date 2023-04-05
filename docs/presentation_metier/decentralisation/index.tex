@@ -12,13 +12,40 @@
     \begin{figure}
         \centering
         \includegraphics[scale = 0.22]{decentralisation/reserve_liquidite.png}
-        \caption{BTCRelay}
     \end{figure}
 \end{frame}
 
-\subsection{CVE-2022-3006}
+% schema:
+% @startuml
+% hide footbox
+% actor Bob as B
+% actor Carole as C
+% participant  "Reserve de Liquidité" as R
+% actor Alice as A
+
+% B -> R : dépose 100 A
+% R --> B : gagne 100 LP
+% C -> R : dépose 100 B
+% R --> C : gagne 100 LP
+% ...
+% A -> R : Depose 10 A
+% R --> A : Retire 9 B
+% R --> B : Gagne 0.4 LP
+% R --> C : Gagne 0.4 LP
+% R --> R : Garde 0.1 LP
+% @enduml
+
 \begin{frame}
-    \frametitle{CVE-2022-3006}
+    \frametitle{Présentation du concept de réserve de liquidité}   
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 0.5]{decentralisation/reserve_liquidite_explain.png}
+    \end{figure}
+\end{frame}
+
+\subsection{CVE-2021-3006}
+\begin{frame}
+    \frametitle{CVE-2021-3006}
     \begin{itemize}
         \item Concerne une erreur d'implémentation dans les reserve de liquidités du réseau SEAL.
         \item Details du fonctionnement de SEAL:
@@ -31,10 +58,17 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{CVE-2022-3006}
+    \frametitle{CVE-2021-3006}
     \begin{figure}
         \centering
         \includegraphics[scale = 0.3]{decentralisation/cve_2022_3006.png}
-        \caption{CVE-2022-3006}
-      \end{figure}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{CVE-2021-3006}
+    \begin{figure}
+        \includegraphics[scale = 0.5]{decentralisation/cve_2021_3006_explain.png}
+        \centering
+    \end{figure}
 \end{frame}

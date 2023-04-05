@@ -59,24 +59,43 @@
     \end{itemize}
 \end{frame}
     
-\begin{frame}{Wormhole : \textit{Payload} - \textit{Transfer}}
-    
-    Pour transférer des jetons des chaînes A à B, il y a verrouillage des jetons sur la chaîne A puis on frappe les jetons sur la chaîne B.\newline
-    
-    \begin{itemize}
-        \item ID du \textit{payload}
-        \item Montant du transfert
-        \item L'adresse sur la chaîne d'origine 
-        \item ID de la chaîne d'origine
-        \item L'adresse sur la chaîne de destination
-        \item ID de la chaîne de destination
-    \end{itemize} 
+\begin{frame}{Wormhole : Architecture simplifiée}
+    \centering
+    \includegraphics[scale = 0.5]{centralisation/wormhole_louis.png}
 \end{frame}
     
-\begin{frame}{Wormhole : Conclusion}
-    
-    \begin{itemize}
-        \item Le réseau de gardiens est l'élement le plus critique de l'écosystème mais aussi le plus opaque
-        \item Wormhole justifie sa décentralisation par la présence de plusieurs parties dans le contrôle du réseau
-    \end{itemize}
+\begin{frame}{Wormhole : Récapitulatif}
+    \begin{block}{Avantages}
+        \begin{itemize}
+            \item Un bridge et un protocole important de l'éco-système avec plus de 280M de \$ verrouillés
+            \item Rapidité dans le traitement des messages
+            \item Scalable
+
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Inconvénients}
+        \begin{itemize}
+            \item Le réseau de gardiens est l'élement le plus critique mais aussi le plus opaque
+            \item Rétablissement d'un modèle de confiance
+            \item Justification de sa décentralisation par la présence de plusieurs parties dans le contrôle du réseau
+        \end{itemize}
+    \end{block}
 \end{frame}
+
+% @startuml
+
+% rectangle r1 as "Source
+% Bridge"
+% storage "Guardians" as r2
+% hexagon r3 as "Off-chain 
+% Message Relayer" 
+% rectangle r4 as "Target
+% Bridge"
+
+% r1 -> r2 : publishVAA()
+% r2 -do-> r3 : Signed message
+% r3 -> r4 : Signed message
+% r4 -> r4 : VerifyVAA()
+
+% @enduml

@@ -9,28 +9,20 @@
 			      \item Un verrou temporel.
 			      \item Un verrou de hachage.
 		      \end{itemize}
-		\item Verrouille les fonds dans un portefeuille qui peut être révoqué en cas de problème.
+		\item Utilisé pour des échanges sur la même blockchain puis rendu possible et maintenant largement utilisé pour des échanges \textit{cross-chain}.
 	\end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{HTLC fonctionnement - 1/2}
-	\begin{itemize}
-		\item La modification du contrat peut être effectué uniquement avec l'accord des deux parties.
-		\item Renouvellement du timer à chaque modification.
-	\end{itemize}
-\end{frame}
 
 \begin{frame}
-	\frametitle{HTLC fonctionnement - 2/2}
+	\frametitle{HTLC utilisation}
 
 	\begin{figure}[h!]
 
 		\stackunder{
 			\includegraphics[scale=0.35]{decentralisation/Timed-HashLocks-Diagram-Image.png}}
 		{\scriptsize
-			Source: \url{https://blog.scottlogic.com/2016/06/16/bitcoin-redeem-scripts.html}}
-		\caption[short]{Utilisation d'un HTLC}
+			Source: \url{https://www.coinhouse.com}}
 	\end{figure}
 
 \end{frame}
@@ -39,7 +31,7 @@
 	\frametitle{Atomic Swaps}
 	Un swap atomique permet un échange de cryptomonnaies de blockchains séparées
 	\begin{itemize}
-		\item Effectué entre deux entités sans l’intervention d’un tiers.
+		\item Effectué entre deux entités sans l’intervention d’un tiers de confiance.
 		\item L’idée est de supprimer les intermédiaires centralisés comme les échanges réglementés et de donner aux propriétaires de jetons un contrôle total.
 		\item Utilise les HTLC. \newline
 	\end{itemize}

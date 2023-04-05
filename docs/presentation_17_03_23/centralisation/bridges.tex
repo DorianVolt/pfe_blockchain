@@ -1,105 +1,114 @@
-\begin{frame}{Les types de bridges}
- Protocoles de communication et d'échanges entre différentes blockchains.
- Echange de données / d'actifs \newline \newline
- Plusieurs types de bridges :
- \begin{itemize}
-     \item Trusted
-     \item Trustless
- \end{itemize} 
- Différentes manières d'échanger les actifs:
- \begin{itemize}
-     \item Lock and Mint
-     \item Burnt and Mint
-     \item Atomic Swaps
- \end{itemize}
+\begin{frame}{Les Blockchain Bridges}
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 1]{centralisation/img_bridges/Pont.png}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Trusted Blockchain Bridge}
-    Basés sur une entité centrale en tant que tiers de confiance.
-Des informations clés: 
+    Des informations clés: 
+        \begin{itemize}
+            \item Vérification de la transaction de manière externe.
+            \item Dépendence avec l'opérateur du \textit{bridge}.
+            \item Rapides.
+            \item Rentables.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Trustless Blockchain Bridge}
+    Des informations clés: 
     \begin{itemize}
-        \item Façilite les transferts.
-        \item Utilisation simple.
-        \item Échanges sécurisés.
-        \item Possible remboursement en cas de cyberattaque.
-        \item Cible façile.
+        \item Dépend des chaînes sous-jacentes.
+        \item Plus fiables que les \textit{Trusted Bridges}.
+        \item Les utilisateurs contrôlent leurs actifs.
     \end{itemize}
-    $\Rightarrow$ MAIS l'utilisateur donne le contrôle de ses actifs.\\ 
-Exemple de Trusted Bridge : Binance Bridge.
+    \end{frame}
+
+\begin{frame}{Verrouiller et Frapper}
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 1]{centralisation/img_bridges/LockAndMint.png}
+    \end{figure}
 \end{frame}
 
-\begin{frame}{Trustless Blockchain Bridge}
-Basés sur un réseau décentralisé 
-Des informations clés: 
-\begin{itemize}
-    \item Aucune présence d'un tiers de confiance.
-    \item Sécurité du bridge égale à celle de la chaîne sous-jacente.
-    \item Permettent aux utilisateurs de contrôler leurs actifs.
-    \item Aucune garantie en cas de hack.
-\end{itemize}
-Exemple de trustless bridge : Polygon Bridge.
+\begin{frame}{Détruire et Frapper}
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 0.7]{centralisation/img_bridges/BurnAndMint.png}
+    \end{figure}
 \end{frame}
 
-\begin{frame}{Mécanisme de vérification}
-Les mécanismes de vérification des bridges peuvent être classés en trois types:
-\begin{itemize}
-    \item Locale (ex: Hop/Connext legacy)
-    \item Extérieure (ex: Avalanche Bridge)
-    \item Native (ex: The NEAR Rainbow Bridge)
-\end{itemize}
+\begin{frame}{Atomic Swaps}
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 1]{centralisation/img_bridges/AtomicSwap.png}
+    \end{figure}
 \end{frame}
 
+\begin{frame}{Déroulement d'une transaction}
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 0.6]{centralisation/img_bridges/Transaction1.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Déroulement d'une transaction}
+    \begin{figure}
+        \includegraphics[scale = 0.65]{centralisation/img_bridges/Transaction2.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Déroulement d'une transaction}
+    \begin{figure}
+        \centering
+        \includegraphics[scale = 0.65]{centralisation/img_bridges/Transaction3.png}
+    \end{figure}
+\end{frame}
 
 \begin{frame}{Vérification locale, native et externe}
     \begin{figure}
         \centering
-        \includegraphics[scale = 0.5]{img/DiagrammeResumeVerif.png}
+        \includegraphics[scale = 0.4]{centralisation/img_bridges/DiagrammeResumeVerif.png}
     \end{figure}
 \end{frame}
+
+    
+\begin{frame}{Les faiblesses des bridges}
+    \begin{itemize}
+        \item \textit{Trustless Bridges} : Les \textit{smart contracts} et l'erreur humaine.
+        \item \textit{Trusted Bridges} : Les fraudes \textit{rug pull}.
+        \item Une technologie récente.
+    \end{itemize}
+    \end{frame}
 
 \begin{frame}{Le trilemme de l’interopérabilité}
     Repose sur 3 notions: 
     \begin{figure}
         \centering
-        \includegraphics[scale = 0.7]{img/3notions.png}
+        \includegraphics[scale = 0.7]{centralisation/img_bridges/3notions.png}
     \end{figure}
     \end{frame}
 
 \begin{frame}{Solution optimiste}
-Bridge optimiste avec de l'importance sur la sécurité plutôt que sur la vivacité.
-Déroulement : \newline
-\begin{itemize}
-    \item Envoi de données vers une fonction contrat.
-    \item Validation de la transaction par un vérificateur. 
-    \item Ajout d'un collatéral de la part du vérificateur. 
-    \item Envoi sur une chaîne destination par un \textit{relayer}. 
-    \item 30 minutes de latence pour prouver une fraude.
-    \item Les données sont passées à la chaîne destination puis traitées.
-\end{itemize}
-\end{frame}
+    \begin{figure}
+       \centering
+       \includegraphics[scale = 0.6]{centralisation/img_bridges/VerifOptimiste.png}
+    \end{figure}
+\end{frame}    
 
 \begin{frame}{Possibles faiblesses et leurs solutions}
 \begin{itemize}
     \item \textit{Updater DoS}
         \begin{itemize}
             \item Mécanisme de substitution.
-            \item Perte du collatéral.
+            \item Sanction financière et exclusion.
         \end{itemize}
-    \item \textit{Updater Fraud} \begin{itemize} \item Perte du collatéral. \end{itemize}
+    \item \textit{Updater Fraud} \begin{itemize} \item Sanction financière et exclusion. \end{itemize}
     \item \textit{Watcher DoS} 
         \begin{itemize}
-            \item Signalement de fraude payant.
-            \item Perte du collatéral.
             \item Vérificateurs approuvés.
+            \item Signalement de fraude payant.
+            \item Sanction financière et exclusion.
         \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Les faiblesses des bridges}
-\begin{itemize}
-    \item \textit{Trustless Bridges} : Les \textit{smart contracts} et l'erreur humaine.
-    \item \textit{Trusted Bridges} : Les fraudes \textit{rug pull}.
-    \item Une technologie récente.
-    \item L'\textit{open source}.
 \end{itemize}
 \end{frame}

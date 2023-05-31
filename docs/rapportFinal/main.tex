@@ -1,0 +1,87 @@
+\documentclass{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[affil-it]{authblk}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{biblatex}
+
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+
+\usepackage{stackengine}
+\usepackage{listings}
+\usepackage{glossaries}
+\makeglossaries
+
+\newenvironment*{remerciements}{%
+  \renewcommand*{\abstractname}{Remerciements}
+  \begin{abstract}
+}{
+  \end{abstract}
+}
+
+\bibliography{introduction/sources}
+\bibliography{centralisation/sources}
+\bibliography{decentralisation/sources}
+
+
+\begin{document}
+
+\title{Echange de jetons inter-blockchains}
+\author{VOLPE Dorian, ROTONDO Eloïse, TESTUD Romain,\\DE CAMPOU Louis, JOLY Amaury  \\ \textbf{Encadrants :} TRAVERS Corentin, LABOUREL Arnaud \\ \includegraphics[scale=0.1]{./img/amu.png}}
+\affil{Aix-Marseille Université, M2 Fiabilité et sécurité informatique}
+\date{\today}
+
+\begin{titlepage}
+  \maketitle
+\end{titlepage}
+
+\begin{remerciements}
+  Merci à M. TRAVERS Corentin et M. LABOUREL Arnaud pour la proposition de ce sujet et son encadrement.
+\end{remerciements}
+\begin{abstract}
+  Ces dernières années, un grand nombre de blockchains ont vu le jour, accompagnées d’un lot de problématiques.
+  Parmi les questions les plus importantes figure celle des échanges entre ces blockchains.
+  En effet le marché des cryptomonnaies augmente fortement et malheureusement toutes les blockchains ne sont pas forcément compatibles entre elles, ce qui crée une forte pression sur le marché actuel.
+  Dans cet ouvrage, vous trouverez un résumé exhaustif des recherches menées sur les échanges cross-chain.
+  Que ce soit en termes de protocoles ou bien d'implémentation plus techniques, nous avons essayé de regrouper le plus grand nombre d'exemples.
+  Nous commencerons par les protocoles d’échanges centralisés qui sont les plus répandus grâce à leur facilité d'utilisation et leur rapidité.
+  Mais ces protocoles sont souvent la source d'attaques ou bien même de failles, car le marché des échanges inter-blockchain est souvent rejoint par des entités n'ayant pas de connaissance en fiabilité.
+  Ensuite nous continuerons par les protocoles d'échanges décentralisés qui représentent une bonne alternative aux échanges centralisés, car ils offrent une meilleure sécurité au détriment d'une complexité d'utilisation accrue.
+  Vous allez donc pouvoir comprendre quels sont les avantages et les inconvénients de ces deux méthodes d'échanges de jetons inter-blockchain.
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+\input{introduction/index.tex}
+
+\newpage
+
+\input{glossaire/glossaire.tex}
+
+\newpage
+\section{Systèmes Centralisés}
+\input{centralisation/index.tex}
+
+\newpage
+\section{Systèmes Décentralisés}
+\input{decentralisation/index.tex}
+
+\newpage
+
+\section{Conclusion}
+\input{conclusion/index.tex}
+
+\newpage
+
+\printbibliography
+
+\end{document}

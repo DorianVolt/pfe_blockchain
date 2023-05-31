@@ -1,0 +1,26 @@
+%auteur: Amaury JOLY
+\subsubsection{Définition}
+Les \gls{sidechain}s sont des \textit{\gls{blockchain}s} secondaires qui fonctionnent en parallèle d'une \textit{\gls{blockchain}} principale \cite{jensen2021introduction,qin2018overview,belchior2022survey}. Elles possèdent leurs propres 
+caractéristiques, mais bénéficient de la communauté et de la sécurité inhérente au réseau principal pour les transactions finales qui seront inscrites sur 
+la \textit{\gls{blockchain}} principale. Les sidechains permettent de réaliser des opérations en marge de la chaîne principale, apportant ainsi plus de scalabilité 
+et de fonctionnalités. Par exemple, certaines \gls{sidechain}s sont compatibles avec l'\gls{Ethereum} Virtual Machine (EVM) et peuvent donc porter des applications \gls{Ethereum}.
+
+\subsubsection{Zendoo}
+Zendoo est une plateforme de création de \gls{sidechain}s interopérables avec la \textit{\gls{blockchain}} Horizen \cite{garoffolo2020zendoo,belchior2022survey}. Elle utilise un protocole 
+de transfert cross-chain vérifiable par zk-SNARK \footnote{zk-SNARK est un acronyme qui signifie « Zero-Knowledge Succinct Non-Interactive Argument of Knowledge ». 
+Il s'agit d'une preuve cryptographique qui permet à une partie, le prouveur, de prouver à une autre partie, le vérificateur, qu'une affirmation sur des informations 
+détenues secrètement est vraie sans révéler les informations elles-mêmes.}, qui permet de garantir la sécurité et la décentralisation des communications entre 
+la chaîne principale et les sidechains. Les sidechains Zendoo peuvent avoir des caractéristiques différentes de la chaîne principale, comme le mécanisme de 
+consensus, le modèle comptable ou la structure des données. Elles peuvent même ne pas être des \textit{\gls{blockchain}s} du tout, tant qu'elles respectent le protocole 
+de transfert cross-chain. Zendoo offre ainsi une grande liberté aux développeurs pour créer des applications sur mesure sans compromettre la scalabilité ou la 
+sécurité du réseau Horizen.\\
+De ce fait, Zendoo facilite l'échange de jetons entre différentes chaînes de blocs, sans passer par des intermédiaires centralisés qui perçoivent des commissions. 
+Les utilisateurs peuvent ainsi bénéficier d'une plus grande liquidité et d'une meilleure efficacité dans leurs transactions cross-chain.
+
+\subsubsection{Contrainte technique des sidechains}
+La mise en place de \gls{sidechain}s implique une contrainte technique majeure : la création d'un pont bidirectionnel (\textit{two-way bridge}) entre la chaîne 
+principale et la \gls{sidechain}. Ce pont permet de transférer des \gls{actif}s entre les deux chaînes, en respectant un taux de change prédéfini et en garantissant la 
+conservation du nombre total d'\gls{actif}s. Cependant, ce pont nécessite une coordination entre les deux chaînes, ce qui peut poser des problèmes de sécurité, de 
+performance ou de compatibilité. Par exemple, il est difficile d'utiliser des \gls{sidechain}s avec des \textit{\gls{blockchain}s} comme \gls{Ethereum} ou \gls{Bitcoin}, car elles n'ont 
+pas le même algorithme de consensus, le même modèle comptable ou la même structure de données que les \gls{sidechain}s. Il faudrait donc adapter ces \textit{\gls{blockchain}s} 
+pour qu'elles puissent communiquer avec les \gls{sidechain}s, ce qui impliquerait des modifications importantes dans leur protocole.

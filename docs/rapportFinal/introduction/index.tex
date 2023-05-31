@@ -1,0 +1,32 @@
+Les échanges financiers sur Internet reposent presque exclusivement via les institutions financières, qui
+agissent comme tiers de confiance pour le traitement des paiements électroniques.
+En 2008, le \textit{whitepaper} Bitcoin \cite{Bitcoin} a partagé une solution permettant à deux parties d'échanger de
+la monnaie électronique. La particularité de cette solution est la suppression de ce modèle de confiance par
+l'ajout d'une preuve cryptographique. Cela permet de s'émanciper de la centralisation exercée par ces 
+institutions et de tendre vers la décentralisation.
+\newline
+
+La structure de donnée sous-jacente est la \textit{\gls{blockchain}}, une base de données distribuée constituée 
+d’une chaîne de blocs liés et sécurisés par des hachés cryptographiques. Une des propriétés 
+d'une \gls{fonction de hachage cryptographique} est qu'une modification de l'entrée modifie la sortie, le haché.
+D'où le fait qu'une \textit{\gls{blockchain}} est considérée comme immuable , chaque bloc (sauf le premier) 
+est lié au bloc précédent car il contient le haché de ce dernier. Toute tentative de modifier un bloc antérieur 
+affecterait tous les blocs suivants, créant ainsi une incohérence dans la chaîne.
+\newline
+
+Dans un système centralisé, toutes les transactions sont enregistrées dans une base de données unique gérée 
+par une entité centrale telle qu'une banque. Cette entité est responsable de l'intégrité des données
+et les usagers lui font confiance que toute modification involontaire ou malveillante sera détectée. 
+Dans le cas de la \textit{\gls{blockchain}}, elle est distribuée, un réseau de noeuds connectés travaillent ensemble pour valider et enregistrer les blocs. 
+Un noeud est un périphérique connecté à un réseau pair à pair qui stocke une copie de la \textit{\gls{blockchain}} et participe à la validation 
+et à la propagation des blocs. En raison de sa nature distribuée, les noeuds peuvent valider et ajouter un bloc sans avoir 
+recours à un tiers de confiance, ce qui accrût son caractère décentralisé.
+\newline
+
+Depuis, le concept de \textit{\gls{blockchain}} a grandi en popularité et il existe aujourd'hui un grand nombre de \textit{\gls{blockchain}s}.
+Une problématique est apparue : les utilisateurs ont voulu échanger des jetons provenant de \textit{\gls{blockchain}s} différentes mais ces
+mêmes \textit{\gls{blockchain}s} ne supportaient pas les mêmes protocoles.
+D'où l'implémentation de protocoles d'échanges de jetons inter-\textit{\gls{blockchain}} qui a rajouté un maillon supplémentaire à sécuriser, 
+ce dernier étant un vecteur d'attaque privilégié.
+L'objectif de ce rapport est de dresser un état de l'art de ces protocoles en deux temps : les protocoles d'échanges sur les 
+plateformes centralisées puis les protocoles d'échanges décentralisés.
